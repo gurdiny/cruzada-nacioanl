@@ -707,6 +707,60 @@ def select_paths(paths: list[Path], args, skip_suffixes: set[str] | None = None)
     return out
 
 
+# Cosas que nunca deben servirse como asset estático, pase lo que pase.
+# Pages las excluía sola; Workers no, y por eso un repo con .git de 200 MB
+# revienta el deploy con "Asset too large" (el límite es 25 MiB por archivo).
+NEVER_DEPLOY = (
+    ".git", ".github", ".wrangler", "node_modules", ".DS_Store",
+    "tools", "*.md", ".gitignore", ".assetsignore", "wrangler.jsonc",
+)
+
+
+def cmd_assetsignore(args) -> int:
+    """Escribe .assetsignore para que Cloudflare Workers no suba lo que no sirve."""
+    refs = referenced_media()
+    dead = sorted(
+        str(p)
+        for base in ("assets", "uploads")
+        for p in Path(ROOT / base).rglob("*")
+        if p.is_file() and str(p.relative_to(ROOT)) not in refs
+        for p in [p.relative_to(ROOT)]
+    )
+
+    lines = [
+        "# Generado por: python3 tools/optimize_media.py assetsignore",
+        "# Sintaxis de .gitignore. Marca lo que Cloudflare Workers NO debe subir",
+        "# como asset estático. No tiene nada que ver con .gitignore: ese decide",
+        "# qué rastrea git, este qué se publica.",
+        "",
+        "# --- nunca se publica ---",
+        *NEVER_DEPLOY,
+        "",
+        f"# --- medios que el sitio no referencia ({len(dead)} archivos) ---",
+        "# Detectados leyendo index.html y support.js. Si añades un archivo y no",
+        "# aparece en la página, vuelve a generar este archivo con el comando de",
+        "# arriba. Para publicarlo todo, basta con borrar esta sección.",
+    ]
+    # Las rutas de .assetsignore se comparan tal cual: sin escapes, y los
+    # nombres con espacios o paréntesis van literales.
+    lines += ["/" + d for d in dead]
+
+    out = ROOT / ".assetsignore"
+    text = "\n".join(lines) + "\n"
+    if args.dry_run:
+        print(text)
+        return 0
+    out.write_text(text, encoding="utf-8")
+
+    kept = sum((ROOT / r).stat().st_size for r in refs if (ROOT / r).is_file())
+    skipped = sum((ROOT / d).stat().st_size for d in dead if (ROOT / d).is_file())
+    print(f"Escrito {out.relative_to(ROOT)}")
+    print(f"  se publica : {human(kept)} en {len(refs)} archivos de medios")
+    print(f"  se omite   : {human(skipped)} en {len(dead)} archivos sin referencia")
+    print(f"  más .git, tools/ y metadatos del repo")
+    return 0
+
+
 def run_batch(jobs: list, workers: int, label: str) -> list[dict]:
     results: list[dict] = []
     total = len(jobs)
@@ -853,9 +907,11 @@ def main(argv: Iterable[str] | None = None) -> int:
                "  python3 tools/optimize_media.py analyze\n"
                "  python3 tools/optimize_media.py images --dry-run\n"
                "  python3 tools/optimize_media.py videos --jobs 4\n"
-               "  python3 tools/optimize_media.py all\n",
+               "  python3 tools/optimize_media.py all\n"
+               "  python3 tools/optimize_media.py assetsignore   # para Cloudflare\n",
     )
-    ap.add_argument("command", choices=["analyze", "images", "videos", "all"])
+    ap.add_argument("command",
+                    choices=["analyze", "images", "videos", "all", "assetsignore"])
     ap.add_argument("--dry-run", action="store_true", help="no escribe nada; solo informa")
     ap.add_argument("--force", action="store_true", help="escribe aunque el resultado no sea menor")
     ap.add_argument("--jobs", type=int, default=max(2, (os.cpu_count() or 4)), help="tareas en paralelo")
@@ -870,6 +926,8 @@ def main(argv: Iterable[str] | None = None) -> int:
 
     if args.command == "analyze":
         return cmd_analyze(args)
+    if args.command == "assetsignore":
+        return cmd_assetsignore(args)
 
     # Los archivos se reemplazan en su sitio. Si git ya los tiene guardados,
     # el original siempre se puede recuperar; si no, conviene avisar.

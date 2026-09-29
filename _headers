@@ -1,0 +1,30 @@
+# Cabeceras de respuesta para los assets estáticos (Cloudflare Workers).
+# Sintaxis: una ruta o patrón, y debajo las cabeceras indentadas.
+# Máximo 100 reglas.
+
+# El HTML se revalida siempre: así un cambio se ve al recargar, en vez de
+# quedarse servido desde la caché del navegador durante horas.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Los nombres de los medios NO llevan hash de contenido (foto-01.jpg sigue
+# llamándose igual si la cambias), así que "immutable" sería una trampa:
+# dejaría la versión vieja cacheada un año. Una semana con revalidación en
+# segundo plano da casi todo el beneficio sin ese riesgo.
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/uploads/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# support.js es el motor de la página y cambia con ella: se revalida.
+/support.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Endurecimiento básico. Sin CSP: la página usa estilos en línea por todas
+# partes y una CSP estricta la rompería; añadirla exigiría refactorizarla.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN

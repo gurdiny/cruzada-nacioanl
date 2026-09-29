@@ -1,0 +1,9 @@
+# Wrangler (Cloudflare)
+.wrangler/
+node_modules/
+
+# No confundir con .assetsignore: este decide qué rastrea git,
+# aquel qué publica Cloudflare como asset estático.
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // El nombre tiene que coincidir con el Worker que ya existe en Cloudflare,
+  // o el deploy crearía uno nuevo en otra URL.
+  "name": "cruzada-nacioanl",
+  "compatibility_date": "2026-09-26",
+
+  "observability": {
+    "enabled": true
+  },
+
+  // Sitio estático: no hay código de Worker, solo archivos.
+  // "." es la raíz del repo, así que lo que NO debe publicarse va en
+  // .assetsignore (empezando por .git, que es lo que rompía el build).
+  "assets": {
+    "directory": ".",
+
+    // Sirve /index.html en la raíz y quita el .html de las URLs.
+    "html_handling": "auto-trailing-slash",
+
+    // La página es una sola vista: cualquier ruta desconocida cae en ella
+    // en vez de mostrar un 404 de Cloudflare.
+    "not_found_handling": "single-page-application"
+  }
+}
