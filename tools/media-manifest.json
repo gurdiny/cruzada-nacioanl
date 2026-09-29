@@ -1,0 +1,985 @@
+{
+  "generated": "2026-09-29 10:51:41",
+  "files": [
+    {
+      "file": "assets/tanatologo-placeholder.png",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 26146,
+      "bytes_after": 1721,
+      "webp_bytes": 1032,
+      "status": "ok",
+      "detail": "alpha inútil eliminado, png-quant64 @48dB, webp q72 @50dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-04.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 535021,
+      "bytes_after": 16503,
+      "webp_bytes": 7600,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @43dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-07.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 521505,
+      "bytes_after": 17005,
+      "webp_bytes": 7716,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-03.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 749030,
+      "bytes_after": 22585,
+      "webp_bytes": 11884,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @43dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-02.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 821489,
+      "bytes_after": 20640,
+      "webp_bytes": 9642,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @43dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-01.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 868086,
+      "bytes_after": 14664,
+      "webp_bytes": 5746,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @47dB, webp q72 @44dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-08.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 848939,
+      "bytes_after": 26880,
+      "webp_bytes": 14854,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @41dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-05.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 861578,
+      "bytes_after": 25227,
+      "webp_bytes": 12028,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-06.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 1094812,
+      "bytes_after": 21108,
+      "webp_bytes": 10250,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @41dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-09.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 876055,
+      "bytes_after": 14906,
+      "webp_bytes": 6624,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @45dB, webp q72 @43dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-10.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 345904,
+      "bytes_after": 13686,
+      "webp_bytes": 5630,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @46dB, webp q72 @44dB"
+    },
+    {
+      "file": "assets/rotary-roma-norte.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 44851,
+      "bytes_after": 9010,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "alpha, png-quant128 @40dB, sin webp (11.2 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/foto-11.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 515257,
+      "bytes_after": 17056,
+      "webp_bytes": 8640,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @43dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-12.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 729702,
+      "bytes_after": 22922,
+      "webp_bytes": 11354,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @41dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-13.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 621577,
+      "bytes_after": 18985,
+      "webp_bytes": 9006,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @43dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-15.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 513536,
+      "bytes_after": 17323,
+      "webp_bytes": 7964,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @43dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-14.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 698845,
+      "bytes_after": 20623,
+      "webp_bytes": 8866,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-17.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 601472,
+      "bytes_after": 16153,
+      "webp_bytes": 6390,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-18.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 501247,
+      "bytes_after": 17901,
+      "webp_bytes": 8038,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-16.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 787151,
+      "bytes_after": 19894,
+      "webp_bytes": 8710,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @46dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-22.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 242448,
+      "bytes_after": 9901,
+      "webp_bytes": 3906,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @48dB, webp q72 @46dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-20.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 594460,
+      "bytes_after": 17913,
+      "webp_bytes": 7838,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @45dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-19.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 1135577,
+      "bytes_after": 21316,
+      "webp_bytes": 11038,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @41dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-21.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 896216,
+      "bytes_after": 24308,
+      "webp_bytes": 10804,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @41dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-24.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 397021,
+      "bytes_after": 13319,
+      "webp_bytes": 5346,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @47dB, webp q72 @44dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-23.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 953670,
+      "bytes_after": 26246,
+      "webp_bytes": 14136,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/foto-25.jpg",
+      "kind": "image",
+      "profile_note": "círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+      "bytes_before": 1161501,
+      "bytes_after": 20981,
+      "webp_bytes": 10462,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 800x800→420x420, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-06.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 476057,
+      "bytes_after": 6256,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1408x736→256x134, alpha, png-quant128 @39dB, sin webp (10.2 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-04.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 831807,
+      "bytes_after": 31023,
+      "webp_bytes": 12682,
+      "status": "ok",
+      "detail": "1722x645→256x96, alpha, png-full @99dB, webp q72 @45dB"
+    },
+    {
+      "file": "assets/paso13-transparente.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 194920,
+      "bytes_after": 22612,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "833x803→512x494, alpha, png-quant128 @42dB, sin webp (38.1 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-03.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1192384,
+      "bytes_after": 7810,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "976x1077→232x256, alpha, png-quant128 @39dB, sin webp (12.5 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-02.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 481115,
+      "bytes_after": 60230,
+      "webp_bytes": 21008,
+      "status": "ok",
+      "detail": "720x578→256x206, alpha, png-full @99dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-05.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 541069,
+      "bytes_after": 69360,
+      "webp_bytes": 24882,
+      "status": "ok",
+      "detail": "1024x1024→256x256, alpha, png-full @99dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-11.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 606067,
+      "bytes_after": 13133,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1024x1024→256x256, alpha, png-quant256 @40dB, sin webp (16.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-08.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1739426,
+      "bytes_after": 62663,
+      "webp_bytes": 24104,
+      "status": "ok",
+      "detail": "1550x1600→248x256, alpha, png-full @99dB, webp q72 @43dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-14.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1135607,
+      "bytes_after": 78032,
+      "webp_bytes": 69202,
+      "status": "ok",
+      "detail": "1280x960→256x192, alpha, png-full @99dB, webp lossless @99dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-12.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 2620750,
+      "bytes_after": 8199,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "3543x2362→256x171, alpha, png-quant256 @39dB, sin webp (10.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-09.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 604342,
+      "bytes_after": 64838,
+      "webp_bytes": 26164,
+      "status": "ok",
+      "detail": "1013x1012→256x256, alpha, png-full @99dB, webp q80 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-07.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 832535,
+      "bytes_after": 11291,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1254x1254→256x256, alpha, png-quant128 @39dB, sin webp (22.6 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-13.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1413293,
+      "bytes_after": 104500,
+      "webp_bytes": 86182,
+      "status": "ok",
+      "detail": "1280x1040→256x208, alpha, png-full @99dB, webp lossless @99dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-17.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 331551,
+      "bytes_after": 9935,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "2198x2802→201x256, alpha, png-quant128 @38dB, sin webp (19.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-10.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1117307,
+      "bytes_after": 67787,
+      "webp_bytes": 27616,
+      "status": "ok",
+      "detail": "1254x1254→256x256, alpha, png-full @99dB, webp q72 @43dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-16.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 701560,
+      "bytes_after": 9239,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "930x1235→193x256, alpha, png-quant256 @39dB, sin webp (14.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-15.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 347261,
+      "bytes_after": 10379,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "920x830→256x231, alpha, png-quant128 @40dB, sin webp (19.2 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/testimonios/poster-01.jpg",
+      "kind": "image",
+      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "bytes_before": 580078,
+      "bytes_after": 18910,
+      "webp_bytes": 8132,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-22.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 392277,
+      "bytes_after": 12456,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1024x1024→256x256, alpha, png-quant256 @40dB, sin webp (20.0 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-20.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 211135,
+      "bytes_after": 6031,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1536x1024→256x171, alpha, png-quant128 @41dB, sin webp (9.9 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/testimonios/poster-02.jpg",
+      "kind": "image",
+      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "bytes_before": 610204,
+      "bytes_after": 20516,
+      "webp_bytes": 9924,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/testimonios/poster-03.jpg",
+      "kind": "image",
+      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "bytes_before": 586190,
+      "bytes_after": 16351,
+      "webp_bytes": 7166,
+      "status": "ok",
+      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+    },
+    {
+      "file": "uploads/ChatGPT Image 20 abr 2026, 12_11_46 p.m.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 283692,
+      "bytes_after": 9023,
+      "webp_bytes": 5338,
+      "status": "ok",
+      "detail": "1536x1024→512x341, png-quant128 @48dB, webp q72 @47dB"
+    },
+    {
+      "file": "uploads/7 portales sin fondo.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 43992,
+      "bytes_after": 8983,
+      "webp_bytes": 3858,
+      "status": "ok",
+      "detail": "alpha, png-quant256 @40dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-18.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1572768,
+      "bytes_after": 108194,
+      "webp_bytes": 47240,
+      "status": "ok",
+      "detail": "1254x1254→256x256, alpha, png-full @99dB, webp q80 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-23.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 489489,
+      "bytes_after": 9357,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1504x1392→256x237, alpha, png-quant256 @41dB, sin webp (11.7 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-21.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 926994,
+      "bytes_after": 58869,
+      "webp_bytes": 20374,
+      "status": "ok",
+      "detail": "1282x1536→214x256, alpha, png-full @99dB, webp q72 @41dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-25.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1485385,
+      "bytes_after": 13738,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1536x1024→256x171, alpha, png-quant256 @39dB, sin webp (18.4 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/logo-cruzada-t2.png",
+      "kind": "image",
+      "profile_note": "logo principal clamp(280px,36vw,500px) → 500 CSS px @2.2x",
+      "bytes_before": 826421,
+      "bytes_after": 78952,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1433x1000→1100x768, alpha, png-quant256 @39dB, sin webp (108.0 KB ≥ respaldo)"
+    },
+    {
+      "file": "uploads/ChatGPT Image 7 may 2026, 11_08_23 p.m.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 2155451,
+      "bytes_after": 8113,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1536x1024→512x341, alpha, png-quant64 @39dB, sin webp (23.7 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-19.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1777083,
+      "bytes_after": 105902,
+      "webp_bytes": 33614,
+      "status": "ok",
+      "detail": "1254x1254→256x256, alpha, png-full @99dB, webp q88 @41dB"
+    },
+    {
+      "file": "uploads/Opcion 2.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 1104052,
+      "bytes_after": 20030,
+      "webp_bytes": 15470,
+      "status": "ok",
+      "detail": "1630x730→512x229, alpha, png-quant256 @40dB, webp q72 @40dB"
+    },
+    {
+      "file": "assets/tanatologos/logo-24.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1448943,
+      "bytes_after": 109620,
+      "webp_bytes": 78792,
+      "status": "ok",
+      "detail": "1385x788→256x146, alpha, png-full @99dB, webp lossless @99dB"
+    },
+    {
+      "file": "uploads/GRAXIAS ID_13.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 196049,
+      "bytes_after": 13089,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "3000x3000→512x512, alpha, png-quant64 @44dB, sin webp (25.2 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/tanatologos/logo-01.png",
+      "kind": "image",
+      "profile_note": "insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
+      "bytes_before": 1169565,
+      "bytes_after": 150748,
+      "webp_bytes": 60190,
+      "status": "ok",
+      "detail": "1024x1024→256x256, alpha, png-full @99dB, webp q72 @42dB"
+    },
+    {
+      "file": "uploads/NuevoLogo_sin fondo.png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 407142,
+      "bytes_after": 12816,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "8360x2528→512x155, alpha, png-quant128 @39dB, sin webp (21.9 KB ≥ respaldo)"
+    },
+    {
+      "file": "uploads/Estrella oriental PNG (2).png",
+      "kind": "image",
+      "profile_note": "textura de sprite en Three.js + fondo CSS de 120 px de alto",
+      "bytes_before": 585851,
+      "bytes_after": 22120,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "1254x1254→512x512, alpha, png-quant64 @39dB, sin webp (50.2 KB ≥ respaldo)"
+    },
+    {
+      "file": "uploads/01-jardin-inicial__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 10585746,
+      "bytes_after": 662962,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 14s, audio eliminado, portada 01-jardin-inicial__v01-poster.jpg"
+    },
+    {
+      "file": "assets/testimonios/v3.mp4",
+      "kind": "video",
+      "profile_note": "se reproduce en una caja de max-width:min(880px,94vw)",
+      "bytes_before": 19278000,
+      "bytes_after": 1424766,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf23, 19s, portada v3-poster.jpg"
+    },
+    {
+      "file": "assets/testimonios/v1.mp4",
+      "kind": "video",
+      "profile_note": "se reproduce en una caja de max-width:min(880px,94vw)",
+      "bytes_before": 17348907,
+      "bytes_after": 1887642,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf23, 19s, portada v1-poster.jpg"
+    },
+    {
+      "file": "assets/testimonios/v2.mp4",
+      "kind": "video",
+      "profile_note": "se reproduce en una caja de max-width:min(880px,94vw)",
+      "bytes_before": 16612291,
+      "bytes_after": 2713628,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf23, 21s, portada v2-poster.jpg"
+    },
+    {
+      "file": "uploads/02-diente-leon-amarillo__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 9204643,
+      "bytes_after": 547226,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 02-diente-leon-amarillo__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/04-esfera-blanca__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 9605513,
+      "bytes_after": 423151,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 04-esfera-blanca__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/05-llegada-viento__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 8037469,
+      "bytes_after": 404559,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 05-llegada-viento__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/03-transformacion-botanica__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 17725266,
+      "bytes_after": 1693547,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 14s, audio eliminado, portada 03-transformacion-botanica__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/06-dispersion-semillas__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 7367621,
+      "bytes_after": 416763,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 06-dispersion-semillas__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/07-seleccion-semilla__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 4993484,
+      "bytes_after": 378837,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 10s, audio eliminado, portada 07-seleccion-semilla__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/09-viaje-cielo__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 4668785,
+      "bytes_after": 261625,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 09-viaje-cielo__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/10-paso-frente-al-sol__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 3068793,
+      "bytes_after": 223365,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 7s, audio eliminado, portada 10-paso-frente-al-sol__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/1-regreso-jardin__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 8731449,
+      "bytes_after": 703724,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 7s, audio eliminado, portada 1-regreso-jardin__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/11-rayo-volumetrico__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 2908259,
+      "bytes_after": 161015,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 6s, audio eliminado, portada 11-rayo-volumetrico__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/12-descenso__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 3270548,
+      "bytes_after": 212253,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 7s, audio eliminado, portada 12-descenso__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/13-aproximacion-edificio__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 4849796,
+      "bytes_after": 295383,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 7s, audio eliminado, portada 13-aproximacion-edificio__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/14-ventana__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 8036603,
+      "bytes_after": 678802,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada 14-ventana__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/15-mujer-de-espaldas__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 4290898,
+      "bytes_after": 212910,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 6s, audio eliminado, portada 15-mujer-de-espaldas__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/16-semilla-acercandose__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 5305052,
+      "bytes_after": 289074,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 8s, audio eliminado, portada 16-semilla-acercandose__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/17-semilla-en-la-mano__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 6003127,
+      "bytes_after": 358795,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 8s, audio eliminado, portada 17-semilla-en-la-mano__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/18-llegada-dos-personas__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 5397141,
+      "bytes_after": 351259,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 7s, audio eliminado, portada 18-llegada-dos-personas__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/19-manos-en-hombros__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 5443679,
+      "bytes_after": 304370,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 6s, audio eliminado, portada 19-manos-en-hombros__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/22-pequeno-brote__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 3921552,
+      "bytes_after": 261696,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 6s, audio eliminado, portada 22-pequeno-brote__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/20-closeup-semilla__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 9947447,
+      "bytes_after": 455998,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 8s, audio eliminado, portada 20-closeup-semilla__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/8-ascenso__v01.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 6816043,
+      "bytes_after": 550610,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 14s, audio eliminado, portada 8-ascenso__v01-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_03_CAMINO_EMOCIONAL.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 5865338,
+      "bytes_after": 395697,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 10s, audio eliminado, portada VIDEO_03_CAMINO_EMOCIONAL-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_02_UNIVERSO_HIGIENE.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 8568769,
+      "bytes_after": 546893,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 11s, audio eliminado, portada VIDEO_02_UNIVERSO_HIGIENE-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_01_INTERIOR_SEMILLA.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 16186684,
+      "bytes_after": 1309550,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 14s, audio eliminado, portada VIDEO_01_INTERIOR_SEMILLA-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_04_NACIMIENTO_RED.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 4054435,
+      "bytes_after": 286893,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 8s, audio eliminado, portada VIDEO_04_NACIMIENTO_RED-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_05_ALIADOS.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 5708110,
+      "bytes_after": 321958,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 6s, audio eliminado, portada VIDEO_05_ALIADOS-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_06_GALERIA_TANATOLOGOS.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 14184618,
+      "bytes_after": 517841,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 11s, audio eliminado, portada VIDEO_06_GALERIA_TANATOLOGOS-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_07_CAMINO_ACOMPANAMIENTO.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 15179987,
+      "bytes_after": 1610718,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 12s, audio eliminado, portada VIDEO_07_CAMINO_ACOMPANAMIENTO-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_08_MEXICO.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 13407276,
+      "bytes_after": 928172,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 9s, audio eliminado, portada VIDEO_08_MEXICO-poster.jpg"
+    },
+    {
+      "file": "uploads/higgsfield/VIDEO_09_REGRESO_SEMILLA.mp4",
+      "kind": "video",
+      "profile_note": "vídeo decorativo a pantalla completa, muteado y bajo un velo",
+      "bytes_before": 12634438,
+      "bytes_after": 1106181,
+      "webm_bytes": null,
+      "status": "ok",
+      "detail": "h≤720 crf25, 10s, audio eliminado, portada VIDEO_09_REGRESO_SEMILLA-poster.jpg"
+    }
+  ]
+}

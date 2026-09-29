@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+
+<title>Cruzada Nacional por la Higiene Emocional</title>
+<meta name="description" content="Acompañar es responsabilidad de todos. Una red nacional de tanatólogos y organizaciones aliadas para que nadie atraviese el duelo en soledad.">
+<meta name="theme-color" content="#F7F9FD">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Cruzada Nacional por la Higiene Emocional">
+<meta property="og:description" content="Acompañar es responsabilidad de todos. Una red nacional de tanatólogos y organizaciones aliadas para que nadie atraviese el duelo en soledad.">
+<meta property="og:image" content="assets/logo-cruzada-t2.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Las fuentes se descargan de gstatic, no de googleapis: sin este segundo
+     preconnect el navegador no abre esa conexión hasta leer el CSS. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- El logo es el elemento más grande de la primera pantalla (el LCP):
+     pedirlo ya evita esperar a que el motor de plantillas pinte el <img>. -->
+<link rel="preload" as="image" href="assets/logo-cruzada-t2.png" fetchpriority="high">
+
+<!-- defer libera el parseo del HTML; support.js arranca en DOMContentLoaded,
+     así que no cambia nada para él. -->
+<script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 html,body{margin:0;padding:0;background:#F7F9FD;color:#225C91;font-family:'Instrument Sans',sans-serif}
 a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
@@ -36,7 +58,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 
   <div id="heroLogo" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;animation:floaty 9s ease-in-out infinite">
-      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(280px,36vw,500px);height:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 0 60px rgba(255,255,255,.8)) drop-shadow(0 14px 40px rgba(34,92,145,.18))">
+      <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" sc-camel-fetch-priority="high" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(280px,36vw,500px);height:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 0 60px rgba(255,255,255,.8)) drop-shadow(0 14px 40px rgba(34,92,145,.18))">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 26px;border-radius:999px;background:rgba(255,255,255,.38);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 44px rgba(34,92,145,.14)">
         <span style="width:clamp(20px,3vw,40px);height:2px;background:#D946EF;border-radius:2px"></span>
         <span style="font-family:Figtree,sans-serif;font-size:clamp(13px,1.5vw,19px);letter-spacing:.34em;font-weight:800;color:#5B21B6;white-space:nowrap">EL VIAJE DE UNA SEMILLA</span>
@@ -60,7 +82,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
   </sc-for>
 
   <div id="sm-cruzada" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
-    <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(220px,26vw,380px);height:auto;filter:drop-shadow(0 0 20px rgba(255,255,255,.95)) drop-shadow(0 0 50px rgba(255,255,255,.85))">
+    <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(220px,26vw,380px);height:auto;filter:drop-shadow(0 0 20px rgba(255,255,255,.95)) drop-shadow(0 0 50px rgba(255,255,255,.85))">
     <div style="margin-top:14px;max-width:560px;font-size:clamp(13.5px,1.4vw,17px);line-height:1.65;color:#3E6E9E;text-shadow:0 1px 14px rgba(255,255,255,.95)">Una red de personas y organizaciones que hace posible acercar acompañamiento emocional digno, sensible y accesible.</div>
   </div>
 
@@ -108,10 +130,13 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
       <div style="position:relative;width:clamp(140px,17vw,190px);height:clamp(140px,17vw,190px)">
         <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(217,70,239,.16),rgba(217,70,239,0) 70%)"></div>
         <div style="position:absolute;inset:0;border-radius:50%;border:2.5px solid rgba(255,255,255,.98);box-shadow:0 24px 70px rgba(34,92,145,.2);overflow:hidden;background:#EAF5FF">
-          <img src="{{tanaFoto}}" alt="Fotografía de {{tanaName}}" style="width:100%;height:100%;object-fit:cover">
+          <picture>
+            <source sc-camel-src-set="{{tanaFotoWebp}}" type="image/webp">
+            <img src="{{tanaFoto}}" alt="Fotografía de {{tanaName}}" width="420" height="420" decoding="async" style="width:100%;height:100%;object-fit:cover">
+          </picture>
         </div>
         <div style="position:absolute;right:-16px;bottom:-20px;width:clamp(52px,6vw,68px);height:clamp(52px,6vw,68px);border-radius:50%;border:2px solid rgba(255,255,255,.98);background:#FFFFFF;box-shadow:0 12px 34px rgba(34,92,145,.22);display:flex;align-items:center;justify-content:center;padding:9px">
-          <img src="{{tanaLogo}}" alt="Logotipo de {{tanaName}}" style="max-width:100%;max-height:100%;object-fit:contain">
+          <img src="{{tanaLogo}}" alt="Logotipo de {{tanaName}}" decoding="async" style="max-width:100%;max-height:100%;object-fit:contain">
         </div>
       </div>
       <div style="margin-top:4px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,42px);color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">{{tanaName}}</div>
@@ -166,7 +191,10 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
       <div style="max-width:720px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;opacity:{{tsOp}};transform:translateX({{tsTx}});transition:opacity .5s ease,transform .5s ease">
         <div style="font-size:11px;letter-spacing:.34em;font-weight:600;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">TESTIMONIO {{tsNum}} / {{tsTot}}</div>
         <button onClick="{{tsPlay}}" aria-label="Escuchar su historia" style="cursor:pointer;position:relative;width:clamp(120px,15vw,168px);height:clamp(120px,15vw,168px);border-radius:50%;border:3px solid rgba(255,255,255,.95);background:#EAF5FF;padding:0;overflow:hidden;box-shadow:0 20px 60px rgba(34,92,145,.28)" style-hover="transform:scale(1.05)">
-          <img src="{{tsPoster}}" alt="Carátula del testimonio" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <picture>
+            <source sc-camel-src-set="{{tsPosterWebp}}" type="image/webp">
+            <img src="{{tsPoster}}" alt="Carátula del testimonio" width="384" height="384" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          </picture>
           <span style="position:absolute;right:4%;bottom:4%;width:34%;height:34%;border-radius:50%;background:rgba(217,70,239,.95);border:2px solid #fff;color:#fff;font-size:clamp(13px,1.4vw,17px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(217,70,239,.45)">▶</span>
         </button>
         <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(18px,2.2vw,28px);letter-spacing:.06em;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">ESCUCHAR SU HISTORIA</div>
@@ -194,7 +222,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 
   <div id="ui-cierre" data-screen-label="Cierre" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;padding:0 28px 10vh">
     <div style="display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;padding:26px 50px;background:radial-gradient(closest-side,rgba(250,252,255,.9),rgba(250,252,255,.5) 60%,rgba(250,252,255,0) 100%)">
-      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(90px,13vw,140px);width:auto;filter:drop-shadow(0 0 18px rgba(255,255,255,.9))">
+      <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(90px,13vw,140px);width:auto;filter:drop-shadow(0 0 18px rgba(255,255,255,.9))">
       <div style="font-size:12px;letter-spacing:.3em;color:#225C91;font-weight:600">“ACOMPAÑAR ES RESPONSABILIDAD DE TODOS”</div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 28px;box-shadow:0 12px 36px rgba(217,70,239,.3)" style-hover="filter:brightness(1.08)">QUIERO DAR EL PRIMER PASO</button>
@@ -205,7 +233,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 
   <div id="ui-footer" data-screen-label="Footer" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,60px)">
     <div style="width:min(880px,92vw);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3vh,28px);text-align:center;padding:clamp(28px,4.5vw,52px) clamp(24px,5vw,64px);border-radius:32px;background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.95);box-shadow:0 30px 90px rgba(34,92,145,.14)">
-      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(84px,11vw,116px);width:auto">
+      <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(84px,11vw,116px);width:auto">
       <div style="font-size:11px;letter-spacing:.3em;color:#225C91;font-weight:600">ACOMPAÑAR ES RESPONSABILIDAD DE TODOS</div>
       <div style="display:flex;gap:clamp(14px,2.5vw,28px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(74,143,219,.22);border-bottom:1px solid rgba(74,143,219,.22);padding:14px 6px">
         <sc-for list="{{footNav1}}" as="n">
@@ -256,7 +284,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 </div>
 
 <div id="nav" style="position:fixed;top:12px;left:16px;right:16px;z-index:60;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 16px;pointer-events:auto;background:rgba(255,255,255,.32);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);border-radius:999px;box-shadow:0 10px 40px rgba(34,92,145,.08)">
-  <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:48px;width:auto;cursor:pointer" onClick="{{irInicio}}">
+  <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="height:48px;width:auto;cursor:pointer" onClick="{{irInicio}}">
   <div id="navLinks" style="display:flex;gap:18px;justify-content:center">
     <sc-for list="{{navItems}}" as="n" hint-placeholder-count="6">
       <a onClick="{{n.go}}" style="cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.08em;color:#225C91">{{n.label}}</a>
@@ -322,7 +350,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
     <div style="max-width:420px;width:100%;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.9);border-radius:26px;padding:38px;text-align:center;box-shadow:0 30px 90px rgba(34,92,145,.28)" onClick="{{stop}}">
       <div style="font-size:10.5px;letter-spacing:.3em;color:#7A94B5;font-weight:600">HAS SELECCIONADO A</div>
       <div style="margin:18px auto 0;width:96px;height:96px;border-radius:50%;border:2px solid #D946EF;background:radial-gradient(circle,#FFFFFF 0%,#EAF5FF 100%);display:flex;align-items:center;justify-content:center;padding:14px">
-        <img src="assets/logo-cruzada-t2.png" alt="Logotipo por confirmar" style="max-width:100%;max-height:100%;object-fit:contain;opacity:.85">
+        <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Logotipo por confirmar" style="max-width:100%;max-height:100%;object-fit:contain;opacity:.85">
       </div>
       <div style="margin-top:14px;font-family:Figtree,sans-serif;font-weight:700;font-size:22px;color:#1C3D5F">{{proSel.name}}</div>
       <div style="margin-top:4px;font-size:11.5px;color:#7A94B5">Logotipo y nombre oficiales por confirmar</div>
@@ -334,7 +362,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 
 <sc-if value="{{tsPlaying}}" hint-placeholder-val="{{false}}">
   <div style="position:fixed;inset:0;z-index:92;background:rgba(28,61,95,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px" onClick="{{tsCerrarVid}}">
-    <video src="{{tsVidSrc}}" controls autoplay playsinline style="max-width:min(880px,94vw);max-height:76vh;border-radius:22px;box-shadow:0 40px 120px rgba(0,0,0,.4);background:#000" onClick="{{stop}}"></video>
+    <video src="{{tsVidSrc}}" poster="{{tsVidPoster}}" preload="metadata" controls autoplay playsinline style="max-width:min(880px,94vw);max-height:76vh;border-radius:22px;box-shadow:0 40px 120px rgba(0,0,0,.4);background:#000" onClick="{{stop}}"></video>
     <button onClick="{{tsCerrarVid}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13px;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:11px 26px" style-hover="background:rgba(255,255,255,.3)">VOLVER A LA EXPERIENCIA</button>
   </div>
 </sc-if>
@@ -626,6 +654,10 @@ class Component extends DCLogic {
       tanaOrg: this.PROS[s.tIdx].org || '',
       tanaNota: this.PROS[s.tIdx].org ? '' : 'INFORMACIÓN OFICIAL POR CONFIRMAR',
       tanaFoto: (s.tanaImgOk&&s.tanaImgOk['f'+s.tIdx])?this.PROS[s.tIdx].foto:'assets/tanatologo-placeholder.png',
+      // Hermano .webp para el <source>. Solo se usa en los grupos donde
+      // optimize_media.py genera webp para el 100% de los archivos (fotos y
+      // carátulas): un <source> que da 404 no cae al <img>, rompe la imagen.
+      tanaFotoWebp: ((s.tanaImgOk&&s.tanaImgOk['f'+s.tIdx])?this.PROS[s.tIdx].foto:'assets/tanatologo-placeholder.png').replace(/\.(jpe?g|png)$/i,'.webp'),
       tanaLogo: (s.tanaImgOk&&s.tanaImgOk['l'+s.tIdx])?this.PROS[s.tIdx].logo:'assets/logo-cruzada-t2.png',
       tanaOp: s.tPhase?1:0, tanaTx: s.tPhase?'0px':((this._dir||1)>0?'-46px':'46px'), tanaSc: s.tPhase?1:.94,
       tanaPrev:()=>this.slideTana(-1), tanaNext:()=>this.slideTana(1),
@@ -676,7 +708,11 @@ class Component extends DCLogic {
       tsFirma: this.TESTIS[s.tsIdx].firma,
       tsPlaying: s.tsPlaying,
       tsVidSrc: this.TESTIS[s.tsIdx].video,
+      // Fotograma a 720p que extrae optimize_media.py: da algo que mirar
+      // mientras el vídeo carga, en vez de un rectángulo negro.
+      tsVidPoster: this.TESTIS[s.tsIdx].video.replace(/\.mp4$/i,'-poster.jpg'),
       tsPoster: this.TESTIS[s.tsIdx].poster,
+      tsPosterWebp: this.TESTIS[s.tsIdx].poster.replace(/\.(jpe?g|png)$/i,'.webp'),
       tsPlay:()=>this.setState({tsPlaying:true}),
       tsCerrarVid:()=>this.setState({tsPlaying:false}),
       tsOp: s.tsPhase?1:0, tsTx: s.tsPhase?'0px':((this._tsDir||1)>0?'-40px':'40px'),
