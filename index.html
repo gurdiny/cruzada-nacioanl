@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#F7F9FD;color:#225C91;font-family:'Instrument Sans',sans-serif}
+a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+@keyframes lineDrop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+::selection{background:#E9E1FF}
+</style>
+</helmet>
+<div id="scrollSpace" style="height:5400vh"></div>
+<div id="stage" data-screen-label="Experiencia" style="position:fixed;inset:0;overflow:hidden;background:linear-gradient(180deg,#FAFCFF 0%,#EAF5FF 55%,#F0EBFF 100%);pointer-events:none;z-index:1">
+  <div id="videoWrap" style="position:absolute;inset:0;perspective:900px">
+    <sc-for list="{{videos}}" as="v" hint-placeholder-count="2">
+      <video id="vid-{{v.key}}" data-src="{{v.src}}" preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform"></video>
+    </sc-for>
+  </div>
+  <div id="veil" style="position:absolute;inset:0;background:linear-gradient(180deg,#FAFCFF,#EAF5FF);opacity:0"></div>
+  <sc-for list="{{hvideos}}" as="h" hint-placeholder-count="2">
+    <video id="hv-{{h.key}}" data-src="{{h.src}}" preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform"></video>
+  </sc-for>
+  <video id="hv-testi" data-src="uploads/higgsfield/VIDEO_10_TESTIMONIALES.mp4" preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity"></video>
+  <canvas id="three" style="position:absolute;inset:0;width:100%;height:100%;opacity:0"></canvas>
+  <canvas id="pcanvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+  <div id="flash" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,#FFFFFF 0%,rgba(255,255,255,.92) 45%,rgba(255,255,255,0) 78%);opacity:0"></div>
+  <div id="seedGuide" style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.85) 40%,rgba(255,255,255,0) 72%);box-shadow:0 0 18px 6px rgba(255,255,255,.8),0 0 44px 16px rgba(233,225,255,.55);opacity:0"></div>
+
+  <div id="heroLogo" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;animation:floaty 9s ease-in-out infinite">
+      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(280px,36vw,500px);height:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 0 60px rgba(255,255,255,.8)) drop-shadow(0 14px 40px rgba(34,92,145,.18))">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 26px;border-radius:999px;background:rgba(255,255,255,.38);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 44px rgba(34,92,145,.14)">
+        <span style="width:clamp(20px,3vw,40px);height:2px;background:#D946EF;border-radius:2px"></span>
+        <span style="font-family:Figtree,sans-serif;font-size:clamp(13px,1.5vw,19px);letter-spacing:.34em;font-weight:800;color:#5B21B6;white-space:nowrap">EL VIAJE DE UNA SEMILLA</span>
+        <span style="width:clamp(20px,3vw,40px);height:2px;background:#D946EF;border-radius:2px"></span>
+      </div>
+    </div>
+  </div>
+
+  <sc-for list="{{cineTexts}}" as="c" hint-placeholder-count="1">
+    <div id="ct-{{c.id}}" style="position:absolute;inset:0;display:flex;align-items:{{c.ai}};justify-content:{{c.jc}};opacity:0;padding:clamp(30px,7vw,110px);text-align:{{c.ta}}">
+      <div style="max-width:{{c.maxw}};padding:clamp(26px,4.5vw,60px) clamp(30px,5.5vw,74px);background:radial-gradient(closest-side,rgba(250,252,255,.92),rgba(250,252,255,.5) 58%,rgba(250,252,255,0) 100%)">
+        <div style="font-family:Figtree,sans-serif;font-weight:{{c.fw}};font-size:{{c.fs}};line-height:1.16;color:#1C3D5F;text-wrap:pretty;text-shadow:0 2px 22px rgba(255,255,255,.95)">{{c.text}}</div>
+      </div>
+    </div>
+  </sc-for>
+
+  <sc-for list="{{spaceMsgs}}" as="m" hint-placeholder-count="3">
+    <div id="sm-{{m.id}}" style="position:absolute;inset:0;display:flex;align-items:{{m.ai}};justify-content:{{m.jc}};opacity:0;padding:clamp(70px,12vh,130px) clamp(26px,7vw,110px);text-align:{{m.ta}}">
+      <div style="margin-top:{{m.mt}};max-width:{{m.maxw}};font-family:Figtree,sans-serif;font-weight:{{m.fw}};font-size:{{m.fs}};letter-spacing:{{m.ls}};line-height:1.16;color:{{m.col}};text-wrap:pretty;text-shadow:0 2px 24px rgba(255,255,255,.95),0 0 60px rgba(255,255,255,.8)">{{m.text}}</div>
+    </div>
+  </sc-for>
+
+  <div id="sm-cruzada" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
+    <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(220px,26vw,380px);height:auto;filter:drop-shadow(0 0 20px rgba(255,255,255,.95)) drop-shadow(0 0 50px rgba(255,255,255,.85))">
+    <div style="margin-top:14px;max-width:560px;font-size:clamp(13.5px,1.4vw,17px);line-height:1.65;color:#3E6E9E;text-shadow:0 1px 14px rgba(255,255,255,.95)">Una red de personas y organizaciones que hace posible acercar acompañamiento emocional digno, sensible y accesible.</div>
+  </div>
+
+  <div id="sm-n31" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px">
+    <div style="position:relative;text-align:center">
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(160px,34vw,480px);line-height:1;color:rgba(74,143,219,.12)">25</div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+        <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(20px,2.8vw,36px);line-height:1.3;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">25 TANATÓLOGOS<br>DISPUESTOS A<br>ACOMPAÑARTE.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sm-camUI" style="position:absolute;left:0;right:0;bottom:10vh;display:flex;justify-content:center;opacity:0;pointer-events:none;padding:0 24px">
+    <div style="text-align:center;font-size:clamp(12px,1.2vw,14.5px);font-weight:600;letter-spacing:.14em;color:#3E6E9E;text-shadow:0 1px 12px rgba(255,255,255,.95)">{{camHint}}</div>
+  </div>
+  <sc-for list="{{camNodes}}" as="c" hint-placeholder-count="6">
+    <div id="cn-{{c.id}}" style="position:absolute;left:0;top:0;opacity:0;pointer-events:none;transform:translate(-50%,-50%)">
+      <button onClick="{{c.pick}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;padding:10px;transform:scale({{c.sc}});opacity:{{c.dim}};transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s">
+        <span style="position:relative;width:64px;height:64px;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,{{c.glow}} 0%,rgba(255,255,255,0) 70%);animation:glowPulse 2.6s ease-in-out infinite"></span>
+          <span style="position:relative;width:46px;height:46px;border-radius:50%;border:2px solid {{c.ring}};background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 34px {{c.shadow}};display:flex;align-items:center;justify-content:center;font-family:Figtree,sans-serif;font-weight:800;font-size:15px;color:{{c.numCol}}">{{c.num}}</span>
+        </span>
+        <span style="max-width:200px;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:clamp(12.5px,1.1vw,15px);font-weight:700;line-height:1.3;letter-spacing:.03em;color:{{c.col}};text-shadow:0 1px 12px rgba(255,255,255,.98),0 0 26px rgba(255,255,255,.9)">{{c.label}}</span>
+      </button>
+    </div>
+  </sc-for>
+  <div id="sm-camMsg" style="position:absolute;left:0;right:0;bottom:7vh;display:flex;justify-content:center;pointer-events:none;padding:0 24px">
+    <sc-if value="{{camMsgVis}}" hint-placeholder-val="{{false}}">
+      <div style="max-width:600px;text-align:center;padding:22px 34px;pointer-events:auto;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.95);border-radius:24px;box-shadow:0 24px 70px rgba(34,92,145,.18)">
+        <div style="font-family:Figtree,sans-serif;font-weight:600;font-size:clamp(14.5px,1.5vw,18.5px);line-height:1.5;color:#1C3D5F;text-wrap:pretty">{{camMsg}}</div>
+        <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.08em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:12px 26px;box-shadow:0 10px 32px rgba(217,70,239,.32)" style-hover="filter:brightness(1.08)">QUIERO QUE ME ACOMPAÑEN</button>
+          <div style="align-self:center;font-size:11px;font-weight:700;letter-spacing:.16em;color:#A78BFA">O SIGUE DESLIZANDO ↓</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  <div id="sm-continuar" style="position:absolute;left:0;right:0;bottom:8vh;display:flex;justify-content:center;opacity:0;pointer-events:none">
+    <button onClick="{{continuar}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.14em;color:#9C27C9;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(167,139,250,.5);border-radius:999px;padding:13px 30px" style-hover="background:rgba(255,255,255,.9)">CONTINUAR ↓</button>
+  </div>
+
+  <div id="sm-tana" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:28px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;opacity:{{tanaOp}};transform:translateX({{tanaTx}}) scale({{tanaSc}});transition:opacity .26s ease,transform .26s ease">
+      <div style="font-size:12px;letter-spacing:.34em;font-weight:600;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">{{tanaNum}}</div>
+      <div style="position:relative;width:clamp(140px,17vw,190px);height:clamp(140px,17vw,190px)">
+        <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(217,70,239,.16),rgba(217,70,239,0) 70%)"></div>
+        <div style="position:absolute;inset:0;border-radius:50%;border:2.5px solid rgba(255,255,255,.98);box-shadow:0 24px 70px rgba(34,92,145,.2);overflow:hidden;background:#EAF5FF">
+          <img src="{{tanaFoto}}" alt="Fotografía de {{tanaName}}" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="position:absolute;right:-16px;bottom:-20px;width:clamp(52px,6vw,68px);height:clamp(52px,6vw,68px);border-radius:50%;border:2px solid rgba(255,255,255,.98);background:#FFFFFF;box-shadow:0 12px 34px rgba(34,92,145,.22);display:flex;align-items:center;justify-content:center;padding:9px">
+          <img src="{{tanaLogo}}" alt="Logotipo de {{tanaName}}" style="max-width:100%;max-height:100%;object-fit:contain">
+        </div>
+      </div>
+      <div style="margin-top:4px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,42px);color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">{{tanaName}}</div>
+      <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#6D28D9;text-shadow:0 1px 12px rgba(255,255,255,.95)">{{tanaOrg}}</div>
+      <div style="font-size:11px;color:#7A94B5;letter-spacing:.1em">{{tanaNota}}</div>
+      <div style="display:flex;gap:14px;align-items:center;margin-top:6px">
+        <button onClick="{{tanaPrev}}" aria-label="Anterior" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700" style-hover="background:#fff">←</button>
+        <button onClick="{{tanaElegir}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 30px;box-shadow:0 12px 36px rgba(217,70,239,.32)" style-hover="filter:brightness(1.08)">ELEGIR TANATÓLOGO</button>
+        <button onClick="{{tanaNext}}" aria-label="Siguiente" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700" style-hover="background:#fff">→</button>
+      </div>
+      <button onClick="{{asignarme}}" style="cursor:pointer;background:none;border:none;font-size:11.5px;font-weight:600;letter-spacing:.1em;color:#4A8FDB;margin-top:2px" style-hover="color:#225C91">PREFIERO QUE ME ASIGNEN A ALGUIEN</button>
+    </div>
+  </div>
+
+  <div id="sm-como" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,4vh,34px);opacity:0;pointer-events:none;padding:0 24px">
+    <div style="text-align:center">
+      <div style="margin-top:9vh;font-size:11.5px;letter-spacing:.34em;color:#4A8FDB;font-weight:700">CÓMO FUNCIONA</div>
+      <div style="margin-top:6px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">Cuatro pasos, un mismo acompañamiento.</div>
+    </div>
+    <div style="flex:1;min-height:0"></div>
+    <div style="font-size:11px;letter-spacing:.18em;font-weight:600;color:#A78BFA;text-shadow:0 1px 10px rgba(255,255,255,.9)">LA SEMILLA AVANZA CONTIGO · SIGUE DESLIZANDO</div>
+  </div>
+  <sc-for list="{{comoSteps}}" as="st" hint-placeholder-count="4">
+    <div id="cs-{{st.n}}" style="position:absolute;left:0;top:0;opacity:0;pointer-events:none;transform:translate(-50%,-50%)">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;width:min(640px,86vw);padding:26px 34px;border-radius:26px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1.5px solid rgba(255,255,255,.95);box-shadow:0 24px 70px rgba(34,92,145,.16)">
+        <span class="cs-dot" style="width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Figtree,sans-serif;font-weight:800;font-size:21px;color:#fff;background:{{st.col}};box-shadow:0 10px 30px {{st.glow}}">{{st.n}} </span>
+        <span style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,32px);line-height:1.2;color:{{st.col}}">{{st.t}}</span>
+        <span style="font-size:clamp(13.5px,1.3vw,16.5px);line-height:1.55;font-weight:600;color:#1C3D5F;max-width:460px">{{st.d}}</span>
+        <span style="font-size:10px;letter-spacing:.26em;font-weight:700;color:#7A94B5">PASO {{st.n}} DE 04</span>
+      </div>
+    </div>
+  </sc-for>
+  <div id="sm-eleccion" style="position:absolute;left:clamp(22px,6vw,80px);bottom:12vh;opacity:0;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:4px;padding:16px 22px;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);border-radius:18px">
+      <div style="font-size:9.5px;letter-spacing:.28em;font-weight:600;color:#7A94B5">TU ELECCIÓN</div>
+      <div style="font-size:14px;font-weight:700;color:#9C27C9">{{eleccionTxt}}</div>
+    </div>
+  </div>
+
+  <div id="ui-testi" data-screen-label="Voces que han sido acompañadas" style="position:absolute;inset:0;opacity:0;pointer-events:none">
+    <div id="tstA" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
+      <div style="max-width:680px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95),0 0 60px rgba(255,255,255,.85)">HAY EXPERIENCIAS QUE NO NECESITAN SER EXPLICADAS POR NOSOTROS.</div>
+    </div>
+    <div id="tstB" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
+      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95),0 0 60px rgba(255,255,255,.85)">PUEDEN SER CONTADAS POR QUIENES LAS VIVIERON.</div>
+    </div>
+    <div id="tstT" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;padding:28px;text-align:center">
+      <div style="width:44px;height:2px;background:#D946EF;border-radius:2px"></div>
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#5B21B6;text-shadow:0 2px 24px rgba(255,255,255,.95)">VOCES QUE HAN SIDO ACOMPAÑADAS</div>
+    </div>
+    <div id="tstV" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:28px">
+      <div style="max-width:720px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;opacity:{{tsOp}};transform:translateX({{tsTx}});transition:opacity .5s ease,transform .5s ease">
+        <div style="font-size:11px;letter-spacing:.34em;font-weight:600;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">TESTIMONIO {{tsNum}} / {{tsTot}}</div>
+        <button onClick="{{tsPlay}}" aria-label="Escuchar su historia" style="cursor:pointer;position:relative;width:clamp(120px,15vw,168px);height:clamp(120px,15vw,168px);border-radius:50%;border:3px solid rgba(255,255,255,.95);background:#EAF5FF;padding:0;overflow:hidden;box-shadow:0 20px 60px rgba(34,92,145,.28)" style-hover="transform:scale(1.05)">
+          <img src="{{tsPoster}}" alt="Carátula del testimonio" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;right:4%;bottom:4%;width:34%;height:34%;border-radius:50%;background:rgba(217,70,239,.95);border:2px solid #fff;color:#fff;font-size:clamp(13px,1.4vw,17px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(217,70,239,.45)">▶</span>
+        </button>
+        <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(18px,2.2vw,28px);letter-spacing:.06em;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">ESCUCHAR SU HISTORIA</div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#9C27C9;text-shadow:0 1px 10px rgba(255,255,255,.9)">— {{tsFirma}}</div>
+        <div style="display:flex;gap:14px;align-items:center;margin-top:6px">
+          <button onClick="{{tsPrev}}" aria-label="Anterior" style="cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:17px;font-weight:700" style-hover="background:#fff">←</button>
+          <button onClick="{{tsNext}}" aria-label="Siguiente" style="cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:17px;font-weight:700" style-hover="background:#fff">→</button>
+        </div>
+      </div>
+    </div>
+    <div id="tstF" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">CADA PROCESO ES DIFERENTE.</div>
+    </div>
+    <div id="tstF2" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
+      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">EL TUYO TAMBIÉN MERECE SER ESCUCHADO.</div>
+    </div>
+    <div id="tstG" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;opacity:0;pointer-events:none;padding:28px;text-align:center">
+      <div style="max-width:640px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#5B21B6;text-shadow:0 2px 24px rgba(255,255,255,.95)">CUANDO ESTÉS LISTO/A, PODEMOS COMENZAR.</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:15px 30px;box-shadow:0 12px 36px rgba(217,70,239,.32)" style-hover="filter:brightness(1.08)">QUIERO DAR EL PRIMER PASO</button>
+        <button onClick="{{irPros}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.5px;color:#225C91;background:rgba(255,255,255,.7);border:1px solid rgba(74,143,219,.4);border-radius:999px;padding:15px 26px" style-hover="background:#fff">CONOCER A LOS TANATÓLOGOS</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ui-cierre" data-screen-label="Cierre" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;padding:0 28px 10vh">
+    <div style="display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;padding:26px 50px;background:radial-gradient(closest-side,rgba(250,252,255,.9),rgba(250,252,255,.5) 60%,rgba(250,252,255,0) 100%)">
+      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(90px,13vw,140px);width:auto;filter:drop-shadow(0 0 18px rgba(255,255,255,.9))">
+      <div style="font-size:12px;letter-spacing:.3em;color:#225C91;font-weight:600">“ACOMPAÑAR ES RESPONSABILIDAD DE TODOS”</div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 28px;box-shadow:0 12px 36px rgba(217,70,239,.3)" style-hover="filter:brightness(1.08)">QUIERO DAR EL PRIMER PASO</button>
+        <button onClick="{{irPros}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.5px;color:#225C91;background:rgba(255,255,255,.7);border:1px solid rgba(74,143,219,.4);border-radius:999px;padding:14px 24px" style-hover="background:#fff">CONOCER A LOS TANATÓLOGOS</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ui-footer" data-screen-label="Footer" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,60px)">
+    <div style="width:min(880px,92vw);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3vh,28px);text-align:center;padding:clamp(28px,4.5vw,52px) clamp(24px,5vw,64px);border-radius:32px;background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.95);box-shadow:0 30px 90px rgba(34,92,145,.14)">
+      <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(84px,11vw,116px);width:auto">
+      <div style="font-size:11px;letter-spacing:.3em;color:#225C91;font-weight:600">ACOMPAÑAR ES RESPONSABILIDAD DE TODOS</div>
+      <div style="display:flex;gap:clamp(14px,2.5vw,28px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(74,143,219,.22);border-bottom:1px solid rgba(74,143,219,.22);padding:14px 6px">
+        <sc-for list="{{footNav1}}" as="n">
+          <a onClick="{{n.go}}" style="cursor:pointer;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#3E6E9E">{{n.label}}</a>
+        </sc-for>
+        <sc-for list="{{footNav2}}" as="n">
+          <a onClick="{{n.go}}" style="cursor:pointer;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#3E6E9E">{{n.label}}</a>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 28px;box-shadow:0 10px 30px rgba(217,70,239,.28)" style-hover="filter:brightness(1.08)">NECESITO ACOMPAÑAMIENTO</button>
+        <button onClick="{{abrirAyuda}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-size:12.5px;font-weight:600;color:#B4232A;background:rgba(255,255,255,.6);border:1px solid rgba(180,35,42,.35);border-radius:999px;padding:14px 22px" style-hover="background:rgba(180,35,42,.06)">NECESITO AYUDA INMEDIATA</button>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:11.5px;color:#7A94B5">
+        <span>© Cruzada Nacional por la Higiene Emocional</span>
+        <a onClick="{{abrirPriv}}" style="cursor:pointer;font-weight:600;color:#4A8FDB">Aviso de privacidad</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="actCap" style="position:absolute;left:26px;bottom:24px;opacity:0">
+    <div id="actNum" style="font-size:10px;letter-spacing:.32em;color:#4A8FDB;font-weight:600"></div>
+    <div id="actName" style="font-family:Figtree,sans-serif;font-weight:700;font-size:14px;letter-spacing:.2em;color:#225C91;margin-top:3px;text-shadow:0 1px 12px rgba(255,255,255,.9)"></div>
+  </div>
+  <div id="rail" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);height:46vh;width:2px;background:rgba(74,143,219,.22);border-radius:2px">
+    <sc-for list="{{acts}}" as="a" hint-placeholder-count="6">
+      <div class="act-mark" data-i="{{a.i}}" style="position:absolute;right:-3px;top:{{a.top}}%;display:flex;align-items:center;gap:8px;flex-direction:row-reverse">
+        <div style="width:7px;height:7px;border-radius:50%;background:rgba(74,143,219,.55)"></div>
+        <div class="act-label" style="font-size:9.5px;letter-spacing:.22em;font-weight:600;color:#3E6E9E;white-space:nowrap;opacity:0;transition:opacity .4s;text-shadow:0 1px 8px rgba(255,255,255,.9)">{{a.tag}}</div>
+      </div>
+    </sc-for>
+    <div id="railDot" style="position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;margin-top:-4px;border-radius:50%;background:#D946EF;box-shadow:0 0 12px rgba(217,70,239,.6)"></div>
+  </div>
+  <div id="scrollHint" style="position:absolute;left:0;right:0;bottom:26px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0">
+    <div style="font-size:10px;letter-spacing:.36em;font-weight:700;color:#FFFFFF;text-shadow:0 1px 8px rgba(28,61,95,.7),0 0 22px rgba(28,61,95,.5)">DESLIZA PARA EXPLORAR</div>
+    <div style="width:1.5px;height:30px;background:linear-gradient(180deg,rgba(34,92,145,.7),rgba(34,92,145,0));animation:lineDrop 2.2s ease-in-out infinite"></div>
+  </div>
+</div>
+
+<div id="selPill" style="position:fixed;left:22px;bottom:70px;z-index:55;opacity:0;pointer-events:none">
+  <sc-if value="{{selTag}}" hint-placeholder-val="{{false}}">
+    <button onClick="{{irCaminos}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);border-radius:16px;padding:10px 16px;text-align:left" style-hover="background:rgba(255,255,255,.85)">
+      <span style="font-size:9px;letter-spacing:.26em;font-weight:600;color:#7A94B5">ESTÁS EXPLORANDO</span>
+      <span style="font-size:12.5px;font-weight:700;color:#9C27C9">{{selTag}}</span>
+      <span style="font-size:10px;font-weight:600;color:#4A8FDB">Cambiar opción</span>
+    </button>
+  </sc-if>
+</div>
+
+<div id="nav" style="position:fixed;top:12px;left:16px;right:16px;z-index:60;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 16px;pointer-events:auto;background:rgba(255,255,255,.32);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);border-radius:999px;box-shadow:0 10px 40px rgba(34,92,145,.08)">
+  <img src="assets/logo-cruzada-t2.png" alt="Cruzada Nacional por la Higiene Emocional" style="height:48px;width:auto;cursor:pointer" onClick="{{irInicio}}">
+  <div id="navLinks" style="display:flex;gap:18px;justify-content:center">
+    <sc-for list="{{navItems}}" as="n" hint-placeholder-count="6">
+      <a onClick="{{n.go}}" style="cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.08em;color:#225C91">{{n.label}}</a>
+    </sc-for>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px">
+    <button onClick="{{toggleAudio}}" aria-label="Melodía de relajación" title="Melodía de relajación" style="cursor:pointer;width:38px;height:38px;border-radius:50%;border:1px solid rgba(74,143,219,.35);background:{{audioBg}};color:{{audioCol}};font-size:15px;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.9)">{{audioIcon}}</button>
+    <button onClick="{{abrirMenu}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;color:#225C91;background:none;border:none;padding:10px 4px">MENÚ +</button>
+    <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:11px 18px;box-shadow:0 8px 24px rgba(217,70,239,.28)" style-hover="filter:brightness(1.08)">NECESITO ACOMPAÑAMIENTO</button>
+  </div>
+</div>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:88;background:rgba(250,252,255,.84);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:center;padding:24px;overflow-y:auto" onClick="{{cerrarMenu}}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.8vh,14px);text-align:center" onClick="{{stop}}">
+      <sc-for list="{{menuItems}}" as="n" hint-placeholder-count="12">
+        <a onClick="{{n.goMenu}}" style="cursor:pointer;font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(17px,2.8vh,26px);color:#225C91" style-hover="color:#D946EF">{{n.label}}</a>
+      </sc-for>
+      <button onClick="{{ayudaDesdeMenu}}" style="margin-top:8px;cursor:pointer;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600;color:#B4232A;background:none;border:1px solid rgba(180,35,42,.35);border-radius:999px;padding:11px 22px" style-hover="background:rgba(180,35,42,.06)">NECESITO AYUDA INMEDIATA</button>
+      <button onClick="{{cerrarMenu}}" style="cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Cerrar</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ayudaOpen}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(34,92,145,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{cerrarAyuda}}">
+    <div style="max-width:520px;width:100%;background:rgba(255,255,255,.95);border-radius:24px;padding:34px;text-align:center;box-shadow:0 30px 90px rgba(34,92,145,.3)" onClick="{{stop}}">
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:24px;color:#B4232A">Ayuda inmediata</div>
+      <div style="margin-top:12px;font-size:15px;line-height:1.6;color:#3E6E9E">Si tú o alguien más está en riesgo, contacta ahora los servicios oficiales:</div>
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
+        <a href="tel:8009112000" style="display:block;background:#FDECEC;border-radius:14px;padding:14px;font-weight:700;color:#B4232A;font-size:17px">Línea de la Vida · 800 911 2000 <span style="display:block;font-size:12px;font-weight:500;color:#3E6E9E">Atención 24/7 en todo México</span></a>
+        <a href="tel:911" style="display:block;background:#FDECEC;border-radius:14px;padding:14px;font-weight:700;color:#B4232A;font-size:17px">Emergencias · 911</a>
+      </div>
+      <button onClick="{{cerrarAyuda}}" style="margin-top:18px;cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Cerrar</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{infoOpen}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(34,92,145,.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{cerrarInfo}}">
+    <div style="max-width:560px;width:100%;background:rgba(255,255,255,.95);border-radius:24px;padding:36px;box-shadow:0 30px 90px rgba(34,92,145,.3)" onClick="{{stop}}">
+      <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:22px;color:#1C3D5F">{{infoTitulo}}</div>
+      <div style="margin-top:12px;font-size:14.5px;line-height:1.75;color:#3E6E9E;text-wrap:pretty">{{infoTexto}}</div>
+      <div style="margin-top:10px;font-size:12px;line-height:1.6;color:#7A94B5;border-top:1px solid rgba(74,143,219,.2);padding-top:10px">{{infoNota}}</div>
+      <button onClick="{{cerrarInfo}}" style="margin-top:16px;cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Cerrar</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{aliadoSel}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:80;background:rgba(34,92,145,.1);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)" onClick="{{aliadoCerrar}}">
+    <div style="position:absolute;top:0;right:0;bottom:0;width:min(400px,94vw);background:rgba(255,255,255,.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-left:1px solid rgba(255,255,255,.9);box-shadow:-20px 0 70px rgba(34,92,145,.2);padding:34px;overflow-y:auto;display:flex;flex-direction:column;gap:16px" onClick="{{stop}}">
+      <div role="img" aria-label="{{aliadoSel.name}}" style="height:120px;width:100%;background-image:url('{{aliadoSel.imgCss}}');background-size:contain;background-repeat:no-repeat;background-position:left center"></div>
+      <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:21px;color:#1C3D5F">{{aliadoSel.name}}</div>
+      <div style="font-size:14px;line-height:1.65;color:#3E6E9E">Organización aliada de la Cruzada Nacional por la Higiene Emocional. Semblanza y actividades por confirmar con el aliado.</div>
+      <button onClick="{{aliadoCerrar}}" style="cursor:pointer;background:none;border:1px solid rgba(74,143,219,.4);border-radius:999px;padding:12px;font-size:13px;color:#225C91;font-weight:600" style-hover="background:rgba(234,245,255,.8)">VOLVER A LA RED</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{proSel}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:80;background:rgba(34,92,145,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{proCerrar}}">
+    <div style="max-width:420px;width:100%;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.9);border-radius:26px;padding:38px;text-align:center;box-shadow:0 30px 90px rgba(34,92,145,.28)" onClick="{{stop}}">
+      <div style="font-size:10.5px;letter-spacing:.3em;color:#7A94B5;font-weight:600">HAS SELECCIONADO A</div>
+      <div style="margin:18px auto 0;width:96px;height:96px;border-radius:50%;border:2px solid #D946EF;background:radial-gradient(circle,#FFFFFF 0%,#EAF5FF 100%);display:flex;align-items:center;justify-content:center;padding:14px">
+        <img src="assets/logo-cruzada-t2.png" alt="Logotipo por confirmar" style="max-width:100%;max-height:100%;object-fit:contain;opacity:.85">
+      </div>
+      <div style="margin-top:14px;font-family:Figtree,sans-serif;font-weight:700;font-size:22px;color:#1C3D5F">{{proSel.name}}</div>
+      <div style="margin-top:4px;font-size:11.5px;color:#7A94B5">Logotipo y nombre oficiales por confirmar</div>
+      <button onClick="{{elegirPro}}" style="margin-top:22px;width:100%;cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:.05em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:15px" style-hover="filter:brightness(1.08)">QUIERO RECIBIR ACOMPAÑAMIENTO</button>
+      <button onClick="{{proCerrar}}" style="margin-top:10px;width:100%;cursor:pointer;background:rgba(255,255,255,.7);border:1px solid rgba(74,143,219,.35);border-radius:999px;padding:13px;font-size:13px;color:#225C91;font-weight:600" style-hover="background:#fff">ELEGIR OTRO TANATÓLOGO</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{tsPlaying}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:92;background:rgba(28,61,95,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px" onClick="{{tsCerrarVid}}">
+    <video src="{{tsVidSrc}}" controls autoplay playsinline style="max-width:min(880px,94vw);max-height:76vh;border-radius:22px;box-shadow:0 40px 120px rgba(0,0,0,.4);background:#000" onClick="{{stop}}"></video>
+    <button onClick="{{tsCerrarVid}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13px;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:11px 26px" style-hover="background:rgba(255,255,255,.3)">VOLVER A LA EXPERIENCIA</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{privOpen}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(34,92,145,.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{cerrarPriv}}">
+    <div style="max-width:520px;width:100%;background:rgba(255,255,255,.95);border-radius:24px;padding:34px;box-shadow:0 30px 90px rgba(34,92,145,.3)" onClick="{{stop}}">
+      <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:22px;color:#1C3D5F">Aviso de privacidad</div>
+      <div style="margin-top:12px;font-size:14px;line-height:1.7;color:#3E6E9E">La Cruzada Nacional por la Higiene Emocional tratará tus datos de forma confidencial y únicamente para coordinar tu acompañamiento. El documento oficial completo está en preparación y se publicará aquí.</div>
+      <button onClick="{{cerrarPriv}}" style="margin-top:18px;cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Cerrar</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{formOpen}}" hint-placeholder-val="{{false}}">
+  <div style="position:fixed;inset:0;z-index:85;background:rgba(34,92,145,.18);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto" onClick="{{cerrarForm}}">
+    <div style="max-width:560px;width:100%;max-height:92vh;overflow-y:auto;background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.9);border-radius:26px;padding:clamp(24px,4vw,40px);box-shadow:0 30px 90px rgba(34,92,145,.3)" onClick="{{stop}}">
+      <sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+        <div style="text-align:center;padding:30px 10px">
+          <div style="width:64px;height:64px;border-radius:50%;background:#F7E6FA;color:#D946EF;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px">✓</div>
+          <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:24px">Gracias por dar este paso.</div>
+          <div style="margin-top:10px;font-size:14.5px;line-height:1.6;color:#3E6E9E">La Cruzada te contactará por el medio que elegiste. No estás solo, no estás sola.</div>
+          <button onClick="{{cerrarForm}}" style="margin-top:20px;cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Volver a la experiencia</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{noSent}}" hint-placeholder-val="{{true}}">
+        <div style="font-size:11px;letter-spacing:.3em;color:#D946EF;font-weight:700">ESTAMOS AQUÍ PARA ESCUCHARTE</div>
+        <div style="margin-top:8px;font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,26px)">{{formTitulo}}</div>
+        <div style="margin-top:6px;font-size:13.5px;color:#3E6E9E;line-height:1.5">Solo necesitamos algunos datos para ayudarte a encontrar el acompañamiento adecuado. Comparte solo lo que quieras.</div>
+        <form onSubmit="{{enviar}}" style="margin-top:20px;display:flex;flex-direction:column;gap:13px">
+          <input required name="nombre" placeholder="Nombre" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 16px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91;outline:none" style-focus="border-color:#4A8FDB">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+            <select name="edad" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 12px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91">
+              <option value="">Rango de edad (opcional)</option><option>Menos de 18</option><option>18–29</option><option>30–44</option><option>45–59</option><option>60 o más</option>
+            </select>
+            <select name="medio" required style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 12px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91">
+              <option value="">Medio de contacto</option><option>WhatsApp</option><option>Llamada</option><option>Correo</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+            <input name="tel" placeholder="WhatsApp / teléfono" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 16px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91;outline:none;min-width:0" style-focus="border-color:#4A8FDB">
+            <input name="correo" type="email" placeholder="Correo" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 16px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91;outline:none;min-width:0" style-focus="border-color:#4A8FDB">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+            <div style="font-size:12.5px;color:#3E6E9E;background:#EAF5FF;border-radius:13px;padding:12px 14px;line-height:1.4"><b style="color:#225C91">Situación:</b> {{formSituacion}}</div>
+            <div style="font-size:12.5px;color:#3E6E9E;background:#F7E6FA;border-radius:13px;padding:12px 14px;line-height:1.4"><b style="color:#225C91">Tanatólogo/a:</b> {{formPro}}</div>
+          </div>
+          <select name="horario" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 12px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91">
+            <option value="">Horario preferido</option><option>Mañana (9–12 h)</option><option>Tarde (12–17 h)</option><option>Noche (17–20 h)</option>
+          </select>
+          <textarea name="nota" rows="3" placeholder="¿Hay algo que quieras compartirnos antes de tu sesión? (opcional)" style="font-family:'Instrument Sans',sans-serif;font-size:14px;padding:13px 16px;border-radius:13px;border:1px solid rgba(74,143,219,.35);background:rgba(250,252,255,.8);color:#225C91;outline:none;resize:vertical" style-focus="border-color:#4A8FDB"></textarea>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#3E6E9E;line-height:1.5;cursor:pointer">
+            <input required type="checkbox" style="margin-top:2px">
+            <span>Acepto ser contactado por la Cruzada Nacional por la Higiene Emocional y el tratamiento confidencial de mis datos.</span>
+          </label>
+          <button type="submit" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:16px;box-shadow:0 12px 36px rgba(217,70,239,.3)" style-hover="filter:brightness(1.08)">{{formCta}}</button>
+        </form>
+        <button onClick="{{cerrarForm}}" style="margin-top:12px;width:100%;cursor:pointer;background:none;border:none;font-size:13px;color:#4A8FDB;font-weight:600">Cerrar</button>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    const U = f => 'uploads/' + f;
+    this.VID = [
+      ['jardin','01-jardin-inicial__v01.mp4'],['diente','02-diente-leon-amarillo__v01.mp4'],
+      ['transform','03-transformacion-botanica__v01.mp4'],['esfera','04-esfera-blanca__v01.mp4'],
+      ['viento','05-llegada-viento__v01.mp4'],['dispersion','06-dispersion-semillas__v01.mp4'],
+      ['seleccion','07-seleccion-semilla__v01.mp4'],['ascenso','8-ascenso__v01.mp4'],
+      ['cielo','09-viaje-cielo__v01.mp4'],['sol','10-paso-frente-al-sol__v01.mp4'],
+      ['rayo','11-rayo-volumetrico__v01.mp4'],['descenso','12-descenso__v01.mp4'],
+      ['edificio','13-aproximacion-edificio__v01.mp4'],['ventana','14-ventana__v01.mp4'],
+      ['mujer','15-mujer-de-espaldas__v01.mp4'],['acerca','16-semilla-acercandose__v01.mp4'],
+      ['mano','17-semilla-en-la-mano__v01.mp4'],['dos','18-llegada-dos-personas__v01.mp4'],
+      ['hombros','19-manos-en-hombros__v01.mp4'],['closeup','20-closeup-semilla__v01.mp4'],
+      ['brote','22-pequeno-brote__v01.mp4'],['regreso','1-regreso-jardin__v01.mp4']
+    ].map(v => ({key:v[0], src:U(v[1])}));
+
+    // Placeholders Higgsfield segunda mitad — sustituir archivos en uploads/higgsfield/
+    this.HV = [
+      {key:'h01',file:'VIDEO_01_INTERIOR_SEMILLA.mp4',u0:-.03,u1:.11},
+      {key:'h02',file:'VIDEO_02_UNIVERSO_HIGIENE.mp4',u0:.10,u1:.34},
+      {key:'h03',file:'VIDEO_03_CAMINO_EMOCIONAL.mp4',u0:.32,u1:.56},
+      {key:'h04',file:'VIDEO_04_NACIMIENTO_RED.mp4',u0:.54,u1:.71},
+      {key:'h05',file:'VIDEO_05_ALIADOS.mp4',u0:.70,u1:.82},
+      {key:'h06',file:'VIDEO_06_GALERIA_TANATOLOGOS.mp4',u0:.82,u1:.94},
+      {key:'h07',file:'VIDEO_07_CAMINO_ACOMPANAMIENTO.mp4',u0:.922,u1:.962},
+      {key:'h08',file:'VIDEO_08_MEXICO.mp4',u0:.955,u1:.998},
+      {key:'h09',file:'VIDEO_09_REGRESO_SEMILLA.mp4',u0:.985,u1:1.05}
+    ].map(h=>({...h, src:'uploads/higgsfield/'+h.file}));
+
+    this.CH = [
+      {v:'jardin',fx:.12,w:1.4},{v:'diente',fx:.1,w:.85},{v:'transform',fx:.14},{v:'esfera',fx:.16,w:.85},
+      {v:'viento',fx:.5},{v:'dispersion',fx:.95},{v:'seleccion',fx:.5,w:.9},
+      {v:'ascenso',fx:.35},{v:'cielo',fx:.28,w:.9},{v:'sol',fx:.15,w:.8},{v:'rayo',flash:1,w:.7},
+      {v:'descenso',fx:.2},{v:'edificio',fx:.12,w:.85},{v:'ventana',fx:.1},{v:'mujer',fx:.1},
+      {v:'acerca',fx:.16,w:.85},{v:'mano',fx:.14},{v:'dos',fx:.1,w:.85},{v:'hombros',fx:.12},
+      {v:'closeup',fx:.3,w:1.4,zoom:1},
+      {u3d:1,w:32},
+      {ui:'testi',veil:.1,w:5},
+      {v:'brote',fx:.14,w:1},
+      {v:'regreso',ui:'cierre',w:1.6,fx:.18},
+      {ui:'footer',veil:1,w:1.1}
+    ];
+    this.U3D = 20;
+    this.IDX = {}; this.CH.forEach((c,i)=>{ if(c.ui) this.IDX[c.ui]=i; });
+    const Wts = this.CH.map(c=>c.w||1); this.totalW = Wts.reduce((a,b)=>a+b,0);
+    let acc=0; this.bounds = Wts.map(w=>{const b=[acc/this.totalW,(acc+w)/this.totalW]; acc+=w; return b;});
+    const uSpan = this.bounds[this.U3D];
+    this.pOfU = u => uSpan[0] + u*(uSpan[1]-uSpan[0]);
+    this.ACTP = [
+      [0,'01 TRANSFORMAR'],[this.bounds[4][0],'02 ATRAVESAR'],[this.bounds[13][0],'03 RECONOCER'],
+      [this.pOfU(.02),'04 ENCONTRAR'],[this.pOfU(.8),'05 ACOMPAÑAR'],[this.bounds[21][0],'06 ACTUAR']
+    ];
+
+    const M='clamp(22px,3vw,42px)', C={jc:'center',ai:'center',ta:'center'},
+      BL={jc:'flex-start',ai:'flex-end',ta:'left'}, TL={jc:'flex-start',ai:'flex-start',ta:'left'},
+      BR={jc:'flex-end',ai:'flex-end',ta:'right'}, CR={jc:'flex-end',ai:'center',ta:'right'}, CL={jc:'flex-start',ai:'center',ta:'left'},
+      TC={jc:'center',ai:'flex-start',ta:'center'};
+    this.CINE = [
+      {id:'a0',ch:0,f:.5,t:.72,text:'Todo cambia.',fs:M,fw:700,maxw:'520px',...BL},
+      {id:'a1',ch:0,f:.74,t:.96,text:'También nosotros.',fs:M,fw:700,maxw:'520px',...BL},
+      {id:'b1',ch:1,f:.15,t:.85,text:'Hay etapas que florecen…',fs:M,fw:600,maxw:'560px',...CL},
+      {id:'a2',ch:2,f:.15,t:.85,text:'Hay momentos que transforman la forma en que vivimos.',fs:M,fw:600,maxw:'720px',...C},
+      {id:'b3',ch:3,f:.15,t:.85,text:'…y etapas que cambian de forma.',fs:M,fw:600,maxw:'560px',...CR},
+      {id:'a3',ch:4,f:.15,t:.85,text:'A veces el cambio llega sin que podamos elegirlo.',fs:M,fw:600,maxw:'560px',...TL},
+      {id:'a4',ch:5,f:.15,t:.85,text:'Soltar también puede formar parte del proceso.',fs:M,fw:600,maxw:'560px',...BR},
+      {id:'b6',ch:6,f:.15,t:.85,text:'Cada quien vive su propio desprendimiento.',fs:M,fw:600,maxw:'560px',...CL},
+      {id:'a5',ch:7,f:.15,t:.85,text:'No siempre sabemos hacia dónde vamos.',fs:M,fw:600,maxw:'520px',...CR},
+      {id:'a6',ch:8,f:.2,t:.8,text:'Cuidar lo que sentimos también es cuidarnos.',fs:M,fw:600,maxw:'680px',...C},
+      {id:'b9',ch:9,f:.2,t:.8,text:'Incluso ahí, hay luz.',fs:M,fw:600,maxw:'480px',...C},
+      {id:'b10',ch:10,f:.2,t:.75,text:'Y la luz encuentra camino.',fs:M,fw:600,maxw:'520px',...BL},
+      {id:'a7',ch:11,f:.15,t:.85,text:'Ni necesitamos saberlo todo para pedir acompañamiento.',fs:M,fw:600,maxw:'560px',...BR},
+      {id:'b12',ch:12,f:.15,t:.85,text:'Volver a tocar tierra.',fs:M,fw:600,maxw:'480px',...CL},
+      {id:'a8',ch:13,f:.15,t:.85,text:'Detrás de cada ventana, alguien atraviesa algo.',fs:M,fw:600,maxw:'560px',...TL},
+      {id:'a9',ch:14,f:.15,t:.85,text:'Lo que estás viviendo merece un espacio.',fs:M,fw:600,maxw:'560px',...CL},
+      {id:'b15',ch:15,f:.15,t:.85,text:'A veces el apoyo llega en silencio.',fs:M,fw:600,maxw:'540px',...BR},
+      {id:'a10',ch:16,f:.15,t:.85,text:'No tienes que saber cómo nombrarlo.',fs:M,fw:600,maxw:'620px',...C},
+      {id:'b17',ch:17,f:.15,t:.85,text:'Nadie debería atravesarlo solo.',fs:M,fw:600,maxw:'540px',...TL},
+      {id:'a11',ch:18,f:.08,t:.92,text:'ACOMPAÑAR ES RESPONSABILIDAD DE TODOS.',fs:'clamp(28px,4.6vw,60px)',fw:800,maxw:'900px',...C},
+      {id:'a12',ch:19,f:.08,t:.5,text:'Entremos en la semilla.',fs:M,fw:600,maxw:'620px',...C},
+      {id:'a13',ch:22,f:.2,t:.6,text:'QUIZÁ HOY NO PUEDAS CAMBIAR TODO LO QUE ESTÁS VIVIENDO.',fs:'clamp(20px,2.6vw,36px)',fw:700,maxw:'680px',...C},
+      {id:'a14',ch:23,f:.08,t:.4,text:'PERO PUEDES DECIDIR NO ATRAVESARLO EN SOLEDAD.',fs:'clamp(20px,2.6vw,36px)',fw:700,maxw:'680px',...C}
+    ];
+    this.SEED = {5:[62,54],6:[52,50],7:[50,66],8:[48,36],9:[52,28],10:[50,24],11:[48,42],12:[52,56],13:[50,50],14:[56,54],15:[52,58],16:[50,62],17:[50,60],18:[50,56],19:[50,50]};
+
+    this.TAGS = ['Duelo','Duelo anticipado','Separación','Cambios de vida','Acompañantes','Primer acercamiento'];
+    this.CAM = [
+      {id:1,label:'PÉRDIDA DE ALGUIEN',tag:'Duelo',pos:[-8.2,2.1],frag:['UNA VOZ.','UNA COSTUMBRE.','UN ABRAZO.','UNA PRESENCIA.']},
+      {id:2,label:'ENFERMEDAD / DUELO ANTICIPADO',tag:'Duelo anticipado',pos:[0,2.5],frag:['UNA CERTEZA.','UN RITMO.','UN PLAN.','UNA CALMA.']},
+      {id:3,label:'SEPARACIÓN / RUPTURA',tag:'Separación',pos:[8.2,2.1],frag:['UNA RELACIÓN.','UNA RUTINA.','UN PROYECTO.','UNA IDEA DEL FUTURO.']},
+      {id:4,label:'PÉRDIDA DE ESTABILIDAD',tag:'Cambios de vida',pos:[-7.6,-2.6],frag:['UN INGRESO.','UNA RUTINA.','UN LUGAR.','UNA SEGURIDAD.']},
+      {id:5,label:'QUIERO AYUDAR A ALGUIEN',tag:'Acompañantes',pos:[7.6,-2.6],frag:['UNA PREGUNTA.','UN SILENCIO.','UNA DISTANCIA.','UNA PREOCUPACIÓN.']},
+      {id:6,label:'NO SÉ CÓMO NOMBRARLO',tag:'Primer acercamiento',pos:[0,-3],frag:['ALGO CAMBIÓ.','ALGO PESA.','ALGO FALTA.','ALGO DUELE.']}
+    ];
+    this.EMOS = ['TRISTE','CONFUNDIDO/A','CANSADO/A','CON MIEDO','ENOJADO/A','SOLO/A','EN TRANSICIÓN','NO SÉ QUÉ SIENTO'];
+    this.AMB = ['CAMBIO','PÉRDIDA','MIEDO','SEPARACIÓN','INCERTIDUMBRE','SOLEDAD','TRANSICIÓN','DESPEDIDA'];
+    this.HIST = ['“Todo cambió.”','“Extraño a alguien.”','“No sé cómo seguir.”','“Mi relación terminó.”','“Tengo miedo.”','“Quiero ayudar.”'];
+
+    // Testimonios reales en video
+    this.TESTIS = [
+      {video:'assets/testimonios/v1.mp4', poster:'assets/testimonios/poster-01.jpg', firma:'Persona acompañada por la Cruzada'},
+      {video:'assets/testimonios/v2.mp4', poster:'assets/testimonios/poster-02.jpg', firma:'Persona acompañada por la Cruzada'},
+      {video:'assets/testimonios/v3.mp4', poster:'assets/testimonios/poster-03.jpg', firma:'Voz de la Cruzada'}
+    ];
+    this.ALI = [
+      {name:'Rotary Roma Norte A.I.',img:'assets/rotary-roma-norte.png'},
+      {name:'Fundación Sonríe, Estás Vivo',img:U('NuevoLogo_sin fondo.png')},
+      {name:'Awacatito',img:U('Opcion 2.png')},
+      {name:'Paso 13 · Reinserción Familiar y Social',img:'assets/paso13-transparente.png'},
+      {name:'Graxias A.C.',img:U('GRAXIAS ID_13.png')},
+      {name:'Estrella Oriental A.C.',img:U('Estrella oriental PNG (2).png')},
+      {name:'Tanatología Especializada Latinoamérica',img:U('ChatGPT Image 20 abr 2026, 12_11_46 p.m.png')},
+      {name:'Raúl Cristo · Clown con Corazón',img:U('ChatGPT Image 7 may 2026, 11_08_23 p.m.png')},
+      {name:'7 Portales',img:U('7 portales sin fondo.png')}
+    ];
+    this.PROS = [];
+    // foto y logo: sustituir por archivos reales en assets/tanatologos/ (foto-NN.jpg y logo-NN.png)
+    const NOMBRES = {
+      1:{name:'Lic. Isabel Martínez', org:'Psicología y Tanatología Amor Sui'},
+      2:{name:'Ana María Montalvo López', org:'CAET Oasis de Sanación'},
+      3:{name:'Leticia Rodríguez Rosas', org:'0 Miedo · Tanatología'},
+      4:{name:'Sergio Vergara', org:'Aprendiendo a Soltar A.C.'},
+      5:{name:'Orfilia Rojas Reyes', org:'Amor que Sana'},
+      6:{name:'Tutu Santos', org:'Fundación Duelo sin Culpa'},
+      7:{name:'Karla Yazmín Meza Cuéllar', org:'Serentia · Instituto de Acompañamiento Integral'},
+      8:{name:'Marcelina de Jesús de Jesús', org:'ALMA · Acompañamiento, Liberación, Muerte y Aceptación'},
+      9:{name:'Xochitl de la Garza Romero', org:'Colibrí · Nido de Paz'},
+      10:{name:'Nora Chongo', org:'Consultorio Tanatológico Abrazo del Alma'},
+      11:{name:'Ross Moreno', org:'Programa de Intervención en Crisis y Duelo'},
+      12:{name:'Guillermina García', org:'ITBA · Instituto Tanatológico Brazos Abiertos'},
+      13:{name:'Perla Celeste Hernández Garza', org:'Tanatología Vidas EnGARZAdas'},
+      14:{name:'Dra. Lucía Presuel Concha', org:'Medicina Funcional · Tanatología'},
+      15:{name:'Miriam Jiménez', org:'Casa Mariposa · Acompañamiento Tanatológico'},
+      16:{name:'Gina Bobadilla', org:'Cultivando Esperanza · Psicología y Tanatología'},
+      17:{name:'Carmen Isabel Nieva Sosa', org:'Renacer · Instituto de Estudios Superiores en Tanatología'},
+      18:{name:'Lic. Rosa Elva Sotelo Aguirre', org:'Raíces de Luz · Centro Integral de Sanación'},
+      19:{name:'Antonia Ramos', org:'Centro de Bienestar Humano FARO · Acompañando Pérdida y Duelo'},
+      20:{name:'Araceli Pablo', org:'ARALMA · Tanatología especializada en duelos'},
+      21:{name:'Claudia Martínez Patiño', org:'Sanando con el Alma · Acompañamiento Tanatológico'},
+      22:{name:'Yoana Galicia Cruz', org:'Vamos Juntos · Centro de Tanatología'},
+      23:{name:'Sara Vargas', org:'Asociación SARA Tanatología, A.C.'},
+      24:{name:'María Elena Martínez Páez', org:'Encontrando la Paz A.C.'},
+      25:{name:'Xochitl Morales', org:'Avanzando Juntos, Paso a Paso · Consultorio Psicológico y Tanatológico'}
+    };
+    for(let i=0;i<25;i++){
+      const nn=String(i+1).padStart(2,'0'), fix=NOMBRES[i+1];
+      this.PROS.push({ i, name:fix?fix.name:'Tanatólogo/a '+nn, org:fix?fix.org:null, tag:this.TAGS[i%6],
+        foto:'assets/tanatologos/foto-'+nn+'.jpg', logo:'assets/tanatologos/logo-'+nn+'.png' });
+    }
+
+    const C2=C, med='clamp(20px,2.6vw,36px)', big='clamp(26px,3.8vw,52px)', sml='clamp(13px,1.4vw,17px)', top='clamp(12px,1.35vw,16px)';
+    this.UMSG = [
+      {id:'hs',u0:.10,u1:.15,text:'Cuidar lo que sentimos también forma parte de cuidarnos.',fs:med,fw:600,maxw:'640px',ls:'0',col:'#1C3D5F',...C2},
+      {id:'m2',u0:.155,u1:.25,text:'¿CÓMO LLEGAS HOY?',fs:med,fw:800,maxw:'700px',ls:'.05em',col:'#1C3D5F',...TC},
+      {id:'g1',u0:.175,u1:.215,gate:'emo',text:'GRACIAS POR RECONOCERLO.',fs:med,fw:700,maxw:'640px',ls:'.02em',col:'#9C27C9',...C2},
+      {id:'g2',u0:.21,u1:.252,gate:'emo',text:'No necesitas tener todo claro para comenzar.',fs:med,fw:600,maxw:'640px',ls:'0',col:'#1C3D5F',...C2},
+      {id:'fa1',u0:.252,u1:.276,text:'A veces sabemos exactamente qué pasó.',fs:med,fw:700,maxw:'620px',ls:'0',col:'#0F2A46',...CL},
+      {id:'fa2',u0:.272,u1:.294,text:'Otras veces solo sentimos…',fs:med,fw:700,maxw:'560px',ls:'0',col:'#0F2A46',...CR},
+      {id:'fa4',u0:.306,u1:.33,text:'Y no siempre sabemos cómo nombrarlo.',fs:med,fw:700,maxw:'620px',ls:'0',col:'#0F2A46',...C2},
+      {id:'m3',u0:.33,u1:.45,mt:'8vh',text:'¿QUÉ ESTÁS VIVIENDO?',fs:'clamp(24px,3.2vw,44px)',fw:800,maxw:'760px',ls:'.05em',col:'#1C3D5F',...TC},
+      {id:'f1',u0:.44,u1:.462,hole:'frag1',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CL},
+      {id:'f2',u0:.456,u1:.478,hole:'frag2',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CR},
+      {id:'f3',u0:.472,u1:.494,hole:'frag3',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CL},
+      {id:'f4',u0:.488,u1:.51,hole:'frag4',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CR},
+      {id:'mA',u0:.512,u1:.536,text:'A VECES UNA PÉRDIDA CONTIENE MUCHAS PÉRDIDAS.',fs:med,fw:800,maxw:'680px',ls:'.01em',col:'#1C3D5F',...C2},
+      {id:'mB',u0:.532,u1:.558,text:'LO QUE ESTÁS VIVIENDO TAMBIÉN MERECE UN ESPACIO.',fs:med,fw:800,maxw:'700px',ls:'.01em',col:'#9C27C9',...C2},
+      {id:'mD',u0:.598,u1:.618,text:'DISTINTAS HISTORIAS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
+      {id:'mD2',u0:.614,u1:.632,text:'DISTINTAS PÉRDIDAS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
+      {id:'mD3',u0:.628,u1:.646,text:'DISTINTOS PROCESOS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
+      {id:'mE',u0:.642,u1:.66,text:'UNA MISMA POSIBILIDAD:',fs:med,fw:800,maxw:'620px',ls:'.03em',col:'#1C3D5F',...C2},
+      {id:'mF',u0:.655,u1:.682,text:'ACOMPAÑAMIENTO.',fs:big,fw:800,maxw:'760px',ls:'.05em',col:'#9C27C9',...C2},
+      {id:'mH',u0:.73,u1:.80,text:'9 ALIADOS · UNA MISMA CRUZADA. Selecciona un nodo para conocerlo.',fs:'clamp(13px,1.5vw,19px)',fw:700,maxw:'640px',ls:'.08em',col:'#1C3D5F',...TC},
+      {id:'mJ',u0:.85,u1:.93,hole:'recTxt',fs:top,fw:600,maxw:'640px',ls:'.06em',col:'#3E6E9E',...TC},
+
+      {id:'mL',u0:.968,u1:.998,text:'UNA RED QUE CRECE PARA ACOMPAÑAR.',fs:med,fw:800,maxw:'640px',ls:'.02em',col:'#1C3D5F',...TC},
+      {id:'mM',u0:.97,u1:.998,text:'VISIÓN DE EXPANSIÓN NACIONAL · 9 ALIADOS · 25 TANATÓLOGOS',fs:'clamp(10.5px,1vw,13px)',fw:600,maxw:'600px',ls:'.14em',col:'#7A94B5',jc:'center',ai:'flex-end',ta:'center'}
+    ];
+
+    this.state = {sel:null, emo:null, tIdx:0, tPhase:1, tsIdx:0, tsPhase:1, formOpen:false, formMode:'acomp', sent:false,
+      ayudaOpen:false, menuOpen:false, aliado:null, pro:null, elegido:null, privOpen:false, info:null};
+    this._started = false; this._ver31Mix = 0;
+  }
+
+  renderVals(){
+    const s=this.state;
+    const selCam = this.CAM.find(c=>c.id===s.sel);
+    const frag = (selCam||this.CAM[5]).frag;
+    const INFOS = {
+      quienes:{titulo:'Quiénes somos',texto:'La Cruzada Nacional por la Higiene Emocional es una red de profesionales, organizaciones y personas comprometidas con acercar acompañamiento emocional digno, sensible y accesible en México. Nace del Consultorio Tanatológico junto a 9 organizaciones aliadas y 25 tanatólogos.',nota:'Información institucional ampliada por confirmar.'},
+      tanato:{titulo:'Acompañamiento tanatológico',texto:'La tanatología acompaña experiencias de pérdida, duelo y transición: no solo la muerte de alguien querido, también enfermedades, separaciones, cambios de vida y despedidas difíciles de nombrar.',nota:'No sustituye atención médica, psicológica, psiquiátrica ni servicios de emergencia cuando estos sean necesarios.'}
+    };
+    const info = s.info ? INFOS[s.info] : null;
+    const mk=n=>({label:n[0], go:n[1], goMenu:()=>{this.setState({menuOpen:false}); n[1]();}});
+    const goU=u=>()=>this.goP(this.pOfU(u));
+    const goCh=i=>()=>this.goP(this.bounds[i][0]+.002);
+    const navItems=[['HIGIENE EMOCIONAL',goU(.08)],['QUÉ ESTÁS VIVIENDO',goU(.37)],['LA CRUZADA',goU(.67)],['TANATÓLOGOS',goU(.88)],['CÓMO FUNCIONA',goU(.94)],['IMPACTO',goU(.975)]].map(mk);
+    const menuItems=[
+      ['Inicio',goCh(0)],['Higiene emocional',goU(.08)],['Cómo llegas hoy',goU(.19)],['Qué estás viviendo',goU(.37)],['La Cruzada',goU(.67)],
+      ['Quiénes somos',()=>this.setState({menuOpen:false,info:'quienes'})],['9 aliados',goU(.76)],
+      ['Tanatología',()=>this.setState({menuOpen:false,info:'tanato'})],['25 tanatólogos',goU(.88)],
+      ['Cómo funciona',goU(.94)],['Responsabilidad social',goU(.975)],
+      ['Súmate',()=>{this.setState({menuOpen:false}); this.abrirWhats(true);}],
+      ['Voces que acompañan',goCh(21)],['Contacto',goCh(24)],['Aviso de privacidad',()=>this.setState({menuOpen:false,privOpen:true})]
+    ].map(n=>({label:n[0], goMenu:n[1], go:n[1]}));
+    const sumar=s.formMode==='sumar';
+    return {
+      videos:this.VID, cineTexts:this.CINE,
+      spaceMsgs:this.UMSG.map(m=>({...m, mt:m.mt||'0px',
+        ...(m.hole==='frag1'?{text:frag[0]}:{}), ...(m.hole==='frag2'?{text:frag[1]}:{}),
+        ...(m.hole==='frag3'?{text:frag[2]}:{}), ...(m.hole==='frag4'?{text:frag[3]}:{}),
+        ...(m.hole==='recTxt'?{text:''}:{})})),
+      acts:this.ACTP.map((a,i)=>({i, tag:a[1], top:(a[0]*100).toFixed(2)})),
+      selTag: selCam?selCam.label:null,
+      eleccionTxt: s.elegido ? s.elegido.name : 'Asignación por la Cruzada',
+      comoSteps:[
+        {n:'01',t:'Cuéntanos qué estás viviendo',d:'Escríbenos por WhatsApp; no necesitas tener las palabras exactas.',col:'#2563EB',glow:'rgba(37,99,235,.4)'},
+        {n:'02',t:'Elige quién te acompañará',d:'Te sugerimos tanatólogos según tu situación, o la Cruzada te asigna.',col:'#7C3AED',glow:'rgba(124,58,237,.4)'},
+        {n:'03',t:'Elige un horario',d:'Acordamos el momento y la modalidad que te acomoden.',col:'#0E9F6E',glow:'rgba(14,159,110,.4)'},
+        {n:'04',t:'Comienza tu conversación',d:'Tu proceso inicia con alguien preparado para escucharte.',col:'#D946EF',glow:'rgba(217,70,239,.45)'}
+      ],
+      hvideos:this.HV,
+      tanaNum: String(s.tIdx+1).padStart(2,'0')+' / 25',
+      tanaName: this.PROS[s.tIdx].name,
+      tanaOrg: this.PROS[s.tIdx].org || '',
+      tanaNota: this.PROS[s.tIdx].org ? '' : 'INFORMACIÓN OFICIAL POR CONFIRMAR',
+      tanaFoto: (s.tanaImgOk&&s.tanaImgOk['f'+s.tIdx])?this.PROS[s.tIdx].foto:'assets/tanatologo-placeholder.png',
+      tanaLogo: (s.tanaImgOk&&s.tanaImgOk['l'+s.tIdx])?this.PROS[s.tIdx].logo:'assets/logo-cruzada-t2.png',
+      tanaOp: s.tPhase?1:0, tanaTx: s.tPhase?'0px':((this._dir||1)>0?'-46px':'46px'), tanaSc: s.tPhase?1:.94,
+      tanaPrev:()=>this.slideTana(-1), tanaNext:()=>this.slideTana(1),
+      tanaElegir:()=>this.setState({pro:this.PROS[this.state.tIdx]}),
+      navItems, menuItems,
+      footNav1:[['Higiene emocional',goU(.08)],['La Cruzada',goU(.67)],['Tanatólogos',goU(.88)]].map(mk),
+      footNav2:[['Cómo funciona',goU(.94)],['Responsabilidad social',goU(.975)],['Súmate',()=>this.abrirWhats(true)]].map(mk),
+      menuOpen:s.menuOpen, ayudaOpen:s.ayudaOpen,
+      aliadoSel: s.aliado ? {...s.aliado, imgCss: encodeURI(s.aliado.img)} : null,
+      proSel:s.pro, privOpen:s.privOpen,
+      infoOpen:!!info, infoTitulo:info?info.titulo:'', infoTexto:info?info.texto:'', infoNota:info?info.nota:'',
+      formOpen:s.formOpen, sent:s.sent, noSent:!s.sent,
+      formTitulo: sumar?'Quiero sumarme a la Cruzada':'Quiero recibir acompañamiento',
+      formCta: sumar?'QUIERO SUMARME A LA CRUZADA':'QUIERO RECIBIR ACOMPAÑAMIENTO',
+      formSituacion: selCam?selCam.label:'Por definir (puedes elegirla en la experiencia)',
+      formPro: s.elegido?s.elegido.name:'Asignación por la Cruzada',
+      camHint: 'TOCA UNA SITUACIÓN PARA HACERLA TU CAMINO',
+      camMsg: selCam ? selCam.msg : null,
+      camMsgVis: !!(selCam && s.camZone && s.msgOpen),
+      camNodes: this.CAM.map(c=>{
+        const isSel=s.sel===c.id, other=s.sel&&!isSel;
+        return {id:c.id, num:'0'+c.id, label:c.label,
+          pick:()=>{
+            this.setState({sel:c.id, msgOpen:true});
+            clearTimeout(this._msgTo);
+            this._msgTo=setTimeout(()=>this.setState({msgOpen:false}), 7000);
+          },
+          sc:isSel?1.25:(other?.82:1), dim:other?.45:1,
+          ring:isSel?'#D946EF':'rgba(167,139,250,.9)',
+          glow:isSel?'rgba(217,70,239,.5)':'rgba(167,139,250,.4)',
+          shadow:isSel?'rgba(217,70,239,.45)':'rgba(34,92,145,.18)',
+          numCol:isSel?'#D946EF':'#7A94B5',
+          col:isSel?'#9C27C9':'#1C3D5F'};
+      }),
+      continuar:()=>this.goP(this.pOfU(.27)),
+      abrirForm:()=>this.abrirWhats(false),
+      cerrarForm:()=>this.setState({formOpen:false}),
+      abrirMenu:()=>this.setState({menuOpen:true}), cerrarMenu:()=>this.setState({menuOpen:false}),
+      ayudaDesdeMenu:()=>this.setState({menuOpen:false,ayudaOpen:true}),
+      abrirAyuda:()=>this.setState({ayudaOpen:true}), cerrarAyuda:()=>this.setState({ayudaOpen:false}),
+      cerrarInfo:()=>this.setState({info:null}),
+      aliadoCerrar:()=>this.setState({aliado:null}), proCerrar:()=>this.setState({pro:null}),
+      elegirPro:()=>{ this.setState({elegido:this.state.pro, pro:null}); setTimeout(()=>this.abrirWhats(false),50); },
+      asignarme:()=>{ this.setState({elegido:null}); setTimeout(()=>this.abrirWhats(false),50); },
+      abrirPriv:()=>this.setState({privOpen:true}), cerrarPriv:()=>this.setState({privOpen:false}),
+      tsNum: String(s.tsIdx+1).padStart(2,'0'),
+      tsTot: String(this.TESTIS.length).padStart(2,'0'),
+      tsFirma: this.TESTIS[s.tsIdx].firma,
+      tsPlaying: s.tsPlaying,
+      tsVidSrc: this.TESTIS[s.tsIdx].video,
+      tsPoster: this.TESTIS[s.tsIdx].poster,
+      tsPlay:()=>this.setState({tsPlaying:true}),
+      tsCerrarVid:()=>this.setState({tsPlaying:false}),
+      tsOp: s.tsPhase?1:0, tsTx: s.tsPhase?'0px':((this._tsDir||1)>0?'-40px':'40px'),
+      tsPrev:()=>this.slideTesti(-1), tsNext:()=>this.slideTesti(1),
+      toggleAudio:()=>this.toggleAudio(),
+      audioIcon: s.audioOn ? '♫' : '♪',
+      audioBg: s.audioOn ? '#D946EF' : 'rgba(255,255,255,.6)',
+      audioCol: s.audioOn ? '#fff' : '#225C91',
+      irPros:()=>this.goP(this.pOfU(.88)), irCaminos:()=>this.goP(this.pOfU(.37)), irInicio:()=>this.goP(0),
+      enviar:(e)=>{e.preventDefault(); this.setState({sent:true});},
+      stop:(e)=>e.stopPropagation()
+    };
+  }
+
+  componentDidUpdate(){
+    // detectar si existen foto/logo reales del tanatólogo actual
+    const i=this.state.tIdx, pr=this.PROS[i], ok=this.state.tanaImgOk||{};
+    [['f'+i,pr.foto],['l'+i,pr.logo]].forEach(([k,src])=>{
+      if(ok[k]!==undefined || (this._probing&&this._probing[k])) return;
+      this._probing=this._probing||{}; this._probing[k]=1;
+      const im=new Image();
+      im.onload=()=>this.setState(s2=>({tanaImgOk:{...(s2.tanaImgOk||{}),[k]:true}}));
+      im.onerror=()=>this.setState(s2=>({tanaImgOk:{...(s2.tanaImgOk||{}),[k]:false}}));
+      im.src=src;
+    });
+  }
+
+  toggleAudio(){
+    if(this.state.audioOn){
+      if(this._masterGain) this._masterGain.gain.linearRampToValueAtTime(0, this._ac.currentTime+1.2);
+      clearInterval(this._chordIv);
+      setTimeout(()=>{ if(this._ac && !this.state.audioOn) this._ac.suspend(); }, 1400);
+      this.setState({audioOn:false});
+      return;
+    }
+    const AC = window.AudioContext||window.webkitAudioContext;
+    if(!this._ac) this._ac = new AC();
+    const ac=this._ac; ac.resume();
+    if(!this._masterGain){
+      const mg=ac.createGain(); mg.gain.value=0;
+      // reverb generosa por convolución (cola de 6 s)
+      const len=ac.sampleRate*6, imp=ac.createBuffer(2,len,ac.sampleRate);
+      for(let c=0;c<2;c++){ const d=imp.getChannelData(c);
+        for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.8); }
+      const rev=ac.createConvolver(); rev.buffer=imp;
+      const wet=ac.createGain(); wet.gain.value=.85;
+      const lp=ac.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=1600; lp.Q.value=.4;
+      mg.connect(lp); lp.connect(rev); rev.connect(wet); wet.connect(ac.destination);
+      const dry=ac.createGain(); dry.gain.value=.25; lp.connect(dry); dry.connect(ac.destination);
+      this._masterGain=mg;
+      // brisa suave de fondo (ruido filtrado, como aire)
+      const nb=ac.createBuffer(1,ac.sampleRate*4,ac.sampleRate);
+      const nd=nb.getChannelData(0); for(let i=0;i<nd.length;i++) nd[i]=Math.random()*2-1;
+      const ns=ac.createBufferSource(); ns.buffer=nb; ns.loop=true;
+      const nf=ac.createBiquadFilter(); nf.type='bandpass'; nf.frequency.value=420; nf.Q.value=.32;
+      const ng=ac.createGain(); ng.gain.value=.014;
+      const nlfo=ac.createOscillator(); nlfo.frequency.value=.05;
+      const nlg=ac.createGain(); nlg.gain.value=.007;
+      nlfo.connect(nlg); nlg.connect(ng.gain);
+      ns.connect(nf); nf.connect(ng); ng.connect(mg);
+      ns.start(); nlfo.start();
+    }
+    // campanas/kalimba pentatónicas espaciadas (sin melodía insistente)
+    const notes=[392,440,523.25,587.33,659.25,783.99]; // sol pentatónica
+    const bell=(fq,when,vol)=>{
+      const ac2=this._ac;
+      const o=ac2.createOscillator(); o.type='sine'; o.frequency.value=fq;
+      const h=ac2.createOscillator(); h.type='sine'; h.frequency.value=fq*2.004;
+      const g=ac2.createGain(); g.gain.value=0;
+      const hg=ac2.createGain(); hg.gain.value=.35;
+      o.connect(g); h.connect(hg); hg.connect(g); g.connect(this._masterGain);
+      g.gain.setValueAtTime(0,when);
+      g.gain.linearRampToValueAtTime(vol,when+.02);
+      g.gain.exponentialRampToValueAtTime(.0001,when+4.5);
+      o.start(when); h.start(when); o.stop(when+5); h.stop(when+5);
+    };
+    const playPhrase=()=>{
+      const ac2=this._ac; if(!ac2 || !this.state._pending && !this.state.audioOn && ac2.state!=='running') {}
+      const t0=ac2.currentTime+.1;
+      const n=2+Math.floor(Math.random()*2);
+      let t=t0;
+      for(let i=0;i<n;i++){
+        bell(notes[Math.floor(Math.random()*notes.length)], t, .05+Math.random()*.03);
+        t+=1.8+Math.random()*2.6;
+      }
+    };
+    playPhrase();
+    clearInterval(this._chordIv);
+    this._chordIv=setInterval(playPhrase, 9000);
+    this._masterGain.gain.cancelScheduledValues(ac.currentTime);
+    this._masterGain.gain.setValueAtTime(this._masterGain.gain.value, ac.currentTime);
+    this._masterGain.gain.linearRampToValueAtTime(.9, ac.currentTime+2.5);
+    this.setState({audioOn:true});
+  }
+
+  abrirWhats(sumar){
+    const selCam=this.CAM.find(c=>c.id===this.state.sel);
+    let msg = sumar ? 'Hola, quiero sumarme a la Cruzada Nacional por la Higiene Emocional.'
+      : 'Hola, quiero recibir acompañamiento de la Cruzada Nacional por la Higiene Emocional.';
+    if(!sumar && selCam) msg += ' Situación: '+selCam.label+'.';
+    if(!sumar && this.state.elegido) msg += ' Me gustaría que me acompañe: '+this.state.elegido.name+'.';
+    window.open('https://wa.me/5219985560886?text='+encodeURIComponent(msg), '_blank');
+  }
+
+  slideTesti(d){
+    if(this._tsSliding) return;
+    this._tsSliding=1; this._tsDir=d;
+    this.setState({tsPhase:0});
+    const n=this.TESTIS.length;
+    setTimeout(()=>{ this._tsSliding=0; this.setState({tsIdx:(this.state.tsIdx+d+n)%n, tsPhase:1}); },500);
+  }
+
+  slideTana(d){
+    if(this._sliding) return;
+    this._sliding=1; this._dir=d;
+    this.setState({tPhase:0});
+    setTimeout(()=>{ this._sliding=0; this.setState({tIdx:(this.state.tIdx+d+25)%25, tPhase:1}); },250);
+  }
+
+  goP(p){ window.scrollTo({top:p*this.totalScroll(), behavior:'smooth'}); }
+  vh(){ return window.innerHeight; }
+  totalScroll(){ return document.documentElement.scrollHeight - this.vh(); }
+
+  componentDidMount(){
+    if(this._started) return;
+    const need=['stage','pcanvas','three','scrollSpace','videoWrap'];
+    if(need.some(id=>!document.getElementById(id))){
+      this._retry=(this._retry||0)+1;
+      if(this._retry<200) setTimeout(()=>this.componentDidMount(),80);
+      return;
+    }
+    this._started = true;
+    const $ = id => document.getElementById(id);
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile = () => window.innerWidth < 820;
+    const UNIT = 100;
+    const setH = ()=>{ const sp=$('scrollSpace'); if(sp) sp.style.height = (this.totalW*UNIT)+'vh'; };
+    setH();
+
+    const vids = {};
+    const grabVids = ()=>{ this.VID.forEach(v=>{ if(!vids[v.key]){ const el=$('vid-'+v.key); if(el){ el.muted=true; el.loop=true; el.playsInline=true; el.setAttribute('playsinline',''); vids[v.key]=el; } } }); };
+    grabVids();
+    const cts = {}; this.CINE.forEach(c=>{ cts[c.id]=$('ct-'+c.id); });
+    const veil=$('veil'), flash=$('flash'), pc=$('pcanvas'), tc=$('three');
+
+    let seeds=[]; const initSeeds=n=>{ seeds=[]; for(let i=0;i<n;i++) seeds.push({x:Math.random(),y:Math.random(),vx:.0004+Math.random()*.001,vy:-.0002-Math.random()*.0006,r:1+Math.random()*2.2,o:.25+Math.random()*.5,ph:Math.random()*6.28}); };
+    initSeeds(calm?0:(mobile()?30:80));
+    const fitCanvas=c=>{ const d=Math.min(2,window.devicePixelRatio||1); c.width=c.clientWidth*d; c.height=c.clientHeight*d; return d; };
+    let pd=fitCanvas(pc);
+
+    const par={x:0,y:0,tx:0,ty:0};
+    const onMove=e=>{ par.tx=(e.clientX/window.innerWidth-.5); par.ty=(e.clientY/window.innerHeight-.5); this._mx=e.clientX; this._my=e.clientY; };
+    if(!calm) window.addEventListener('mousemove', onMove, {passive:true});
+
+    const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    const smooth=t=>t<=0?0:t>=1?1:t*t*(3-2*t);
+    const win=(t,a,b)=>{ const inn=smooth(clamp((t-a)/.12,0,1)), out=1-smooth(clamp((t-b)/.08,0,1)); return clamp(Math.min(inn,out),0,1); };
+    const uwin=(u,a,b)=>{ const f=Math.max(.008,(b-a)*.3); return clamp(Math.min(smooth((u-a)/f), 1-smooth((u-b+f)/f)),0,1); };
+    this._uwin=uwin; this._smooth=smooth; this._clamp=clamp;
+
+    this.initThree(tc, mobile());
+    this.buildMexico();
+
+    let lastNav=0;
+    const tick=()=>{
+      this._lastTick=performance.now();
+      this._raf=requestAnimationFrame(tick);
+      try{
+      const T=this.totalScroll(); const p=clamp(window.scrollY/Math.max(1,T),0,.99999);
+      let idx=this.bounds.findIndex(b=>p>=b[0]&&p<b[1]); if(idx<0) idx=this.CH.length-1;
+      const b=this.bounds[idx], t=(p-b[0])/(b[1]-b[0]);
+      const cur=this.CH[idx];
+      par.x+=(par.tx-par.x)*.06; par.y+=(par.ty-par.y)*.06;
+      const parOn = !calm && !mobile();
+      grabVids();
+
+      const ops={}, scls={}, blurs={};
+      this.CH.forEach((c,i)=>{
+        if(!c.v) return;
+        const st=this.bounds[i][0], en=this.bounds[i][1], f=(en-st)*.22;
+        let o=0, entering=0;
+        if(p>st-f && p<en+f){
+          if(p<st){ o=(p-(st-f))/f; entering=1-o; }
+          else if(p>en){ o=1-(p-en)/f; }
+          else o=1;
+        }
+        o=clamp(o,0,1);
+        if(c.zoom && p>=st && p<=en) scls[c.v]=1+smooth(t)*1.9;
+        if(o>(ops[c.v]||0)){
+          ops[c.v]=o;
+          if(!c.zoom){ const lt=clamp((p-st)/(en-st),0,1); scls[c.v]=(1+.16*lt)+entering*.26; blurs[c.v]=entering*12; }
+        }
+      });
+      Object.keys(vids).forEach(k=>{
+        const el=vids[k], o=ops[k]||0;
+        el.style.opacity=o;
+        const sc=(scls[k]||1), bl=blurs[k]||0;
+        const rx=parOn?par.y*2.2:0, ry=parOn?par.x*-3.2:0;
+        el.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg) scale('+sc+') translate('+(parOn?par.x*-14:0)+'px,'+(parOn?par.y*-10:0)+'px)';
+        el.style.filter = bl>0.5 ? 'blur('+bl+'px)' : 'none';
+        if(o>0.01){
+          if(!el.src){ el.src=el.dataset.src; el.load(); }
+          if(el.paused) el.play().catch(()=>{});
+        } else if(!el.paused) el.pause();
+      });
+
+      {
+        let vv = cur.veil!=null ? cur.veil : (cur.u3d ? .12 : 0);
+        if(cur.u3d && t>.32 && t<.56) vv=.02; // ¿Qué estás viviendo?: dejar lucir el video
+        veil.style.opacity = vv;
+      }
+      // videos Higgsfield de la segunda mitad (placeholders: se ocultan si el archivo aún no existe)
+      {
+        let u2 = idx===this.U3D ? t : (idx===this.U3D-1 ? -0.01 : (idx===this.U3D+1 ? 1.0 : -9));
+        this.HV.forEach(h=>{
+          const el=$('hv-'+h.key); if(!el) return;
+          if(el.dataset.dead){ // reintenta cada 6 s por si el archivo aparece después
+            if(performance.now() < (+el.dataset.next||0)) return;
+            delete el.dataset.dead; el.removeAttribute('src');
+          }
+          let o=0;
+          if(u2>-5){ const f=.018; // fundido corto: el video llega antes a plena presencia
+            o = Math.max(0, Math.min( smooth((u2-h.u0)/f), 1-smooth((u2-h.u1+f)/f) )) * (h.key==='h03'?1:.85);
+          }
+          el.style.opacity=o;
+          if(o>0.01){
+            if(!el.getAttribute('src')){ el.muted=true; el.loop=true; el.playsInline=true; el.onerror=()=>{el.dataset.dead=1; el.dataset.next=performance.now()+6000; el.style.opacity=0;}; el.src=el.dataset.src; el.load(); }
+            if(el.paused) el.play().catch(()=>{});
+            el.style.transform='scale('+(1.04+ (parOn?0:0))+') translate('+(parOn?par.x*-16:0)+'px,'+(parOn?par.y*-10:0)+'px)';
+          } else if(el.src && !el.paused) el.pause();
+        });
+      }
+      if(cur.flash){ flash.style.opacity=Math.exp(-Math.pow((t-.55)/.25,2))*.95; } else flash.style.opacity=0;
+
+      this.CINE.forEach(c=>{
+        const el=cts[c.id]; if(!el) return;
+        const o = idx===c.ch ? win(t,c.f,c.t) : 0;
+        el.style.opacity=o;
+        el.style.transform='translateY('+((1-o)*22)+'px) scale('+(0.94+o*0.08)+')';
+      });
+      const hl=$('heroLogo');
+      if(hl) hl.style.opacity = idx===0 ? 1 - smooth(clamp((t-.42)/.1,0,1)) : 0;
+
+      let u = -1;
+      if(idx===this.U3D) u = t;
+      else if(idx===this.U3D-1) u = 0;
+      else if(idx===this.U3D+1) u = 1;
+      let threeOp = 0;
+      if(idx===this.U3D-1) threeOp = smooth(clamp((t-.55)/.4,0,1));
+      else if(idx===this.U3D) threeOp = 1;
+      else if(idx===this.U3D+1) threeOp = 1-smooth(clamp(t/.35,0,1));
+      tc.style.opacity = threeOp;
+      if(threeOp>0.01 && this.three) this.renderUniverse(u<0?0:u, par, parOn);
+
+      const inU = idx===this.U3D;
+      this.UMSG.forEach(m=>{
+        const el=$('sm-'+m.id); if(!el) return;
+        let o = inU ? uwin(u,m.u0,m.u1) : 0;
+        if(m.gate==='emo' && !this.state.emo) o=0;
+        el.style.opacity=o;
+        el.style.transform='scale('+(0.92+o*.08)+')';
+      });
+      const smc=$('sm-cruzada'); if(smc) smc.style.opacity= inU?uwin(u,.685,.73):0;
+      const sm31=$('sm-n31'); if(sm31) sm31.style.opacity= inU?uwin(u,.80,.85):0;
+      const smU=$('sm-camUI'); if(smU) smU.style.opacity = (inU && !this.state.sel) ? uwin(u,.34,.45) : 0;
+      { const zone = inU && u>.33 && u<.54;
+        if(zone!==this._camZonePrev){ this._camZonePrev=zone; this.setState({camZone:zone}); } }
+      const smC2=$('sm-continuar'); if(smC2){ const o=(inU&&this.state.emo)?uwin(u,.185,.26):0; smC2.style.opacity=o; smC2.style.pointerEvents=o>.4?'auto':'none'; }
+      const smP=$('sm-tana'); if(smP){ const o=inU?uwin(u,.845,.938):0; smP.style.opacity=o; smP.style.pointerEvents=o>.4?'auto':'none'; }
+      const smE=$('sm-eleccion'); if(smE){ const o=inU?uwin(u,.932,.968):0; smE.style.opacity=o; }
+      const smCo=$('sm-como');
+      if(smCo){
+        const o = inU ? Math.max(0, Math.min(smooth(clamp((u-.9255)/.004,0,1)), 1-smooth(clamp((u-.97)/.008,0,1)))) : 0;
+        smCo.style.opacity=o;
+        // estaciones ancladas a la ruta 3D, proyectadas a pantalla
+        if(this.comoCurve && this.three){
+          const prog = clamp((u-.928)/.044,0,1);
+          const act = Math.min(3, Math.floor(prog*4.6));
+          // una estación por vez, grande y centrada; la línea y la semilla viajan detrás
+          ['01','02','03','04'].forEach((n,i)=>{
+            const el=$('cs-'+n); if(!el) return;
+            const c2=prog*4;                       // 0..4
+            const local = clamp(c2-i, 0, 1);        // progreso dentro de esta estación
+            let vis = 0;
+            if(c2>=i && c2<i+1){
+              vis = o * Math.min(smooth(clamp(local/.18,0,1)), 1-smooth(clamp((local-.82)/.18,0,1)));
+              const drift = (1-local)*26 - 13;      // entra desde abajo, sale hacia arriba
+              el.style.left='50%';
+              el.style.top='calc(58% + '+drift+'px)';
+              el.style.transform='translate(-50%,-50%) scale('+(0.94+vis*0.1)+')';
+            }
+            el.style.opacity=vis;
+          });
+        }
+      }
+
+      // Voces / testimoniales
+      {
+        const iT=this.IDX.testi, on = idx===iT, elT=$('ui-testi');
+        if(elT) elT.style.opacity = on?1:0;
+        const vt=$('hv-testi');
+        if(vt && !vt.dataset.dead){
+          const o = on ? .88 : 0;
+          vt.style.opacity=o;
+          if(o>0.01){
+            if(!vt.src){ vt.muted=true; vt.loop=true; vt.playsInline=true; vt.onerror=()=>{vt.dataset.dead=1; vt.style.opacity=0;}; vt.src=vt.dataset.src; vt.load(); }
+            if(vt.paused) vt.play().catch(()=>{});
+          } else if(vt.src && !vt.paused) vt.pause();
+        }
+        const sub=(id,a,b2)=>{ const e2=$(id); if(!e2) return 0; const o2=on?win(t,a,b2):0; e2.style.opacity=o2; return o2; };
+        sub('tstA',.03,.12); sub('tstB',.12,.21); sub('tstT',.21,.3);
+        const ov=sub('tstV',.31,.68); const eV=$('tstV'); if(eV) eV.style.pointerEvents = ov>.4?'auto':'none';
+        sub('tstF',.71,.79); sub('tstF2',.79,.87);
+        const oc=sub('tstG',.88,.985); const eG=$('tstG'); if(eG) eG.style.pointerEvents = oc>.4?'auto':'none';
+      }
+      ['cierre','footer'].forEach(k=>{
+        const i=this.IDX[k], el=$('ui-'+k); if(!el) return;
+        let o=0;
+        if(idx===i){ const tin=smooth(clamp((t-(k==='cierre'?.45:0))/.14,0,1)), tout=1-smooth(clamp((t-.92)/.08,0,1)); o=Math.min(tin,tout);}
+        el.style.opacity=o;
+        el.style.pointerEvents = o>.3 ? 'auto' : 'none';
+      });
+
+      const actIdx = this.ACTP.reduce((r,a,i)=>p>=a[0]?i:r,0);
+      const ac=$('actCap'); if(ac) ac.style.opacity=0;
+      document.querySelectorAll('.act-mark').forEach(mk2=>{
+        const i=parseInt(mk2.dataset.i); const lab=mk2.querySelector('.act-label');
+        if(lab) lab.style.opacity = i===actIdx ? .95 : 0;
+        mk2.style.opacity = i===actIdx ? 1 : .55;
+      });
+      const rd=$('railDot'); if(rd) rd.style.top=(p*100)+'%';
+
+      const sp=$('selPill');
+      if(sp){ const show = this.state.sel && ((inU && u>.52) || idx>this.U3D) && idx<this.IDX.footer;
+        sp.style.opacity=show?1:0; sp.style.pointerEvents=show?'auto':'none'; }
+
+      const sg=$('seedGuide');
+      if(sg){
+        const a1=this.SEED[idx], a2=this.SEED[idx+1]||a1;
+        if(a1 && !calm){
+          const nw=performance.now()/1000;
+          sg.style.left=(a1[0]+(a2[0]-a1[0])*t + Math.sin(nw*1.1)*1.6)+'%';
+          sg.style.top=(a1[1]+(a2[1]-a1[1])*t + Math.cos(nw*.9)*1.2)+'%';
+          sg.style.opacity=.9;
+        } else sg.style.opacity=0;
+      }
+      const sh=$('scrollHint'); if(sh) sh.style.opacity = p<.003 ? .9 : Math.max(0, .9-p*200);
+
+      const fxI=(cur.fx||0)*.65;
+      const ctx=pc.getContext('2d');
+      ctx.clearRect(0,0,pc.width,pc.height);
+      if(fxI>0 && seeds.length){
+        const n=Math.floor(seeds.length*clamp(fxI,0,1)*1.2);
+        const now2=performance.now()/1000;
+        ctx.fillStyle='rgba(255,255,255,.9)'; ctx.strokeStyle='rgba(255,255,255,.55)';
+        for(let i=0;i<Math.min(n,seeds.length);i++){
+          const s=seeds[i];
+          s.x+=s.vx*(1+fxI*2)+Math.sin(now2+s.ph)*.0003; s.y+=s.vy*(1+fxI);
+          if(s.x>1.05)s.x=-.05; if(s.y<-.05){s.y=1.05;s.x=Math.random();}
+          const X=s.x*pc.width, Y=s.y*pc.height;
+          ctx.globalAlpha=s.o*fxI*1.6;
+          ctx.beginPath(); ctx.arc(X,Y,s.r*pd,0,6.28); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(X,Y); ctx.lineTo(X-8*pd*(1+fxI),Y+10*pd); ctx.stroke();
+        }
+        ctx.globalAlpha=1;
+      }
+
+      const now=performance.now();
+      if(now-lastNav>500){ lastNav=now; const nl=$('navLinks'); if(nl) nl.style.display = window.innerWidth<1350 ? 'none':'flex'; }
+      }catch(err){}
+    };
+    this._lastTick=0;
+    this._raf=requestAnimationFrame(tick);
+    tick();
+    const iv=setInterval(()=>{ if(performance.now()-this._lastTick>200) tick(); },120);
+    const onScroll=()=>{ if(performance.now()-this._lastTick>90) tick(); };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    const onClick=e=>this.handle3DClick(e);
+    window.addEventListener('click', onClick);
+    const onResize=()=>{ pd=fitCanvas(pc); setH(); initSeeds(calm?0:(mobile()?30:80)); if(this.three){ const {renderer,camera}=this.three; renderer.setSize(tc.clientWidth,tc.clientHeight,false); camera.aspect=tc.clientWidth/tc.clientHeight; camera.updateProjectionMatrix(); } };
+    window.addEventListener('resize', onResize);
+    this._cleanup=()=>{ cancelAnimationFrame(this._raf); clearInterval(iv); window.removeEventListener('scroll',onScroll); window.removeEventListener('resize',onResize); window.removeEventListener('mousemove',onMove); window.removeEventListener('click',onClick); };
+  }
+
+  async initThree(canvas, isMobile){
+    try{
+      const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js');
+      const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:!isMobile});
+      renderer.setPixelRatio(Math.min(isMobile?1:1.5, window.devicePixelRatio||1));
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0xf2f0ff, 8, 70);
+      const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth/canvas.clientHeight, .1, 260);
+      const Z = u => -1050*u;
+      const R=(a,b)=>a+Math.random()*(b-a);
+
+      const mkText = (text, {fs=56, weight=700, color='#1C3D5F', pad=30}={}) => {
+        const c=document.createElement('canvas'), x0=c.getContext('2d');
+        x0.font=weight+' '+fs+'px Figtree, sans-serif';
+        c.width=Math.ceil(x0.measureText(text).width)+pad*2; c.height=fs+pad*2;
+        const x=c.getContext('2d');
+        x.font=weight+' '+fs+'px Figtree, sans-serif';
+        x.fillStyle='#ffffff'; x.textBaseline='middle';
+        x.shadowColor='rgba(255,255,255,.95)'; x.shadowBlur=16;
+        x.fillText(text, pad, c.height/2);
+        const tex=new THREE.CanvasTexture(c);
+        const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex, transparent:true, depthWrite:false, color}));
+        sp.scale.set(c.width/100, c.height/100, 1);
+        return sp;
+      };
+      const mkDot = (size=64, soft=true) => {
+        const c=document.createElement('canvas'); c.width=c.height=size;
+        const x=c.getContext('2d');
+        const g=x.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+        g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(soft?.4:.72,'rgba(255,255,255,'+(soft?.8:.98)+')'); g.addColorStop(1,'rgba(255,255,255,0)');
+        x.fillStyle=g; x.fillRect(0,0,size,size);
+        return new THREE.CanvasTexture(c);
+      };
+      const dotTex=mkDot(64,true), discTex=mkDot(128,false);
+      const grp=(u0,u1)=>{ const g=new THREE.Group(); g.userData={u0,u1}; scene.add(g); return g; };
+
+      // ATMÓSFERA PERSISTENTE: halos + partículas + semillas a la deriva
+      const gAtm = grp(-.1,1.2);
+      const haloCols=[0xE9E1FF,0xDCEEFF,0xF7E6FA,0xE9E1FF,0xDCEEFF,0xF7E6FA,0xE9E1FF,0xDCEEFF];
+      for(let i=0;i<8;i++){
+        const h=new THREE.Sprite(new THREE.SpriteMaterial({map:dotTex, transparent:true, depthWrite:false, color:haloCols[i], opacity:.4}));
+        h.userData.baseOp=.4;
+        h.position.set((i%2?1:-1)*R(4,12), R(-6,6), Z(.03+i*.13));
+        h.scale.set(R(26,42),R(26,42),1);
+        gAtm.add(h);
+      }
+      const nP=isMobile?260:700, pPos=[];
+      for(let i=0;i<nP;i++) pPos.push(R(-16,16), R(-9,9), Z(R(0,1.03)));
+      const pGeo=new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.Float32BufferAttribute(pPos,3));
+      const pMat=new THREE.PointsMaterial({size:.14, color:0xA9C8F0, transparent:true, opacity:.65, sizeAttenuation:true});
+      pMat.map=dotTex; pMat.depthWrite=false;
+      const pCloud=new THREE.Points(pGeo,pMat); pCloud.userData.baseOp=.65; gAtm.add(pCloud);
+      this.drift=[];
+      for(let i=0;i<(isMobile?10:22);i++){
+        const d=new THREE.Sprite(new THREE.SpriteMaterial({map:dotTex, transparent:true, depthWrite:false, color:0xffffff, opacity:.85}));
+        d.userData={baseOp:.85, by:R(-6,6), ph:R(0,6.28), sp:R(.2,.6)};
+        d.position.set(R(-13,13), 0, Z(R(0,1.02))); d.scale.set(.6,.6,1);
+        gAtm.add(d); this.drift.push(d);
+      }
+      // filamentos largos que recorren todo el universo
+      const filMat=new THREE.LineBasicMaterial({color:0xC9BAF8, transparent:true, opacity:.35});
+      filMat.userData={};
+      for(let i=0;i<(isMobile?8:16);i++){
+        const pts=[]; const x0=R(-14,14), y0=R(-8,8);
+        for(let s=0;s<=20;s++){ const z=Z(s/20*1.02); pts.push(new THREE.Vector3(x0+Math.sin(s*.6+i)*3.5, y0+Math.cos(s*.45+i*2)*2.6, z)); }
+        const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), filMat.clone());
+        ln.material.userData=null; ln.userData.baseOp=.35;
+        gAtm.add(ln);
+      }
+
+      // entrada: filamentos radiales de la semilla
+      const gFil = grp(-.05,.1);
+      const filPts=[];
+      for(let i=0;i<52;i++){
+        const a=R(0,Math.PI*2), e=R(-1,1), l=R(12,34);
+        filPts.push(0,0,-14, Math.cos(a)*Math.cos(e)*l, Math.sin(e)*.75*l, -14-Math.abs(Math.sin(a))*l-R(0,66));
+      }
+      const filGeo=new THREE.BufferGeometry(); filGeo.setAttribute('position', new THREE.Float32BufferAttribute(filPts,3));
+      const gfl=new THREE.LineSegments(filGeo, new THREE.LineBasicMaterial({color:0xC9BAF8, transparent:true, opacity:.6}));
+      gfl.userData.baseOp=.6; gFil.add(gfl);
+
+      // HIGIENE / EMOCIONAL en dos planos Z
+      const gHig = grp(.03,.16);
+      const w1=mkText('HIGIENE',{fs:170,weight:800,color:'#1C3D5F'});
+      w1.position.set(-1.2,.9,Z(.075)); gHig.add(w1);
+      const w2=mkText('EMOCIONAL',{fs:170,weight:800,color:'#4A8FDB'});
+      w2.position.set(1.4,-1.1,Z(.098)); gHig.add(w2);
+
+      // palabras flotantes
+      const gAmb = grp(.115,.27);
+      this.AMB.forEach((w,i)=>{
+        const sp=mkText(w,{fs:66,weight:800,color:i%3===0?'#0F2A46':(i%3===1?'#6D28D9':'#1C3D5F')});
+        sp.userData.noFade=.8;
+        sp.position.set(R(-5.5,5.5), R(-3,3), Z(.13+i*.016)+R(-1,1));
+        gAmb.add(sp);
+      });
+
+      // CÓMO LLEGAS HOY: esfera de partículas + emociones orbitando
+      const gEmo = grp(.15,.27);
+      const sphPos=[]; for(let i=0;i<(isMobile?120:280);i++){ const a=R(0,Math.PI*2), e=Math.acos(R(-1,1)); const r=4.1;
+        sphPos.push(r*Math.sin(e)*Math.cos(a), r*Math.cos(e)*.8, Z(.2)+r*Math.sin(e)*Math.sin(a)); }
+      const sphGeo=new THREE.BufferGeometry(); sphGeo.setAttribute('position', new THREE.Float32BufferAttribute(sphPos,3));
+      const sphPtsM=new THREE.PointsMaterial({size:.09, color:0xA78BFA, transparent:true, opacity:.55, map:dotTex, depthWrite:false});
+      const sphC=new THREE.Points(sphGeo,sphPtsM); sphC.userData.baseOp=.55; gEmo.add(sphC);
+      this.emoSprites=[];
+      this.EMOS.forEach((w,i)=>{
+        const sp=mkText(w,{fs:62,weight:800,color:'#1C3D5F'});
+        sp.userData={emo:w, base:(i/8)*Math.PI*2, bz:Z(.2)+R(-1.5,1.5)};
+        sp.userData.bw=sp.scale.x; sp.userData.bh=sp.scale.y;
+        gEmo.add(sp); this.emoSprites.push(sp);
+      });
+
+      // ALGO FALTA
+      const gFal = grp(.27,.335);
+      const wF=mkText('ALGO  FALTA.',{fs:150,weight:800,color:'#0F2A46'});
+      wF.position.set(0,.2,Z(.298)); gFal.add(wF);
+
+      // seis destinos: anclas 3D proyectadas a botones HTML (nítidos y clicables)
+      const gCam = grp(.335,.46);
+      this.camAnchor = this.CAM.map((cm,i)=> new THREE.Vector3(cm.pos[0], cm.pos[1], Z(.393)+((i%2)?1:-1)*.8));
+
+      // historias: puntos con frases
+      const gHis = grp(.55,.66);
+      this.HIST.forEach((h,i)=>{
+        const g2=new THREE.Group();
+        const d=new THREE.Sprite(new THREE.SpriteMaterial({map:dotTex, transparent:true, depthWrite:false, color:0xffffff}));
+        d.scale.set(1.1,1.1,1);
+        const sp=mkText(h,{fs:96,weight:700,color:'#0F2A46'}); sp.scale.multiplyScalar(.5); sp.position.set(1.6,-.05,.01);
+        sp.userData.noFade=.75;
+        g2.add(d); g2.add(sp);
+        g2.position.set(R(-8,6), R(-4,4), Z(.565+i*.012));
+        gHis.add(g2);
+      });
+      const nRed=isMobile?46:90, redPos=[];
+      for(let i=0;i<nRed;i++) redPos.push(R(-13,13), R(-7,7), Z(.62)+R(-24,24));
+      const redGeo=new THREE.BufferGeometry(); redGeo.setAttribute('position', new THREE.Float32BufferAttribute(redPos,3));
+      const redP=new THREE.Points(redGeo, new THREE.PointsMaterial({size:.2, color:0x4A8FDB, transparent:true, opacity:.8, map:dotTex, depthWrite:false}));
+      redP.userData.baseOp=.8;
+      const gRed = grp(.58,.76); gRed.add(redP);
+      const redLn=[];
+      for(let i=0;i<nRed-1;i+=2) redLn.push(redPos[i*3],redPos[i*3+1],redPos[i*3+2], redPos[(i+1)*3],redPos[(i+1)*3+1],redPos[(i+1)*3+2]);
+      const rlGeo=new THREE.BufferGeometry(); rlGeo.setAttribute('position', new THREE.Float32BufferAttribute(redLn,3));
+      const rl=new THREE.LineSegments(rlGeo, new THREE.LineBasicMaterial({color:0x4A8FDB, transparent:true, opacity:.18}));
+      rl.userData.baseOp=.18; gRed.add(rl);
+      const ring=new THREE.Mesh(new THREE.RingGeometry(.98,1,64), new THREE.MeshBasicMaterial({color:0xD946EF, transparent:true, opacity:.6, side:THREE.DoubleSide}));
+      ring.position.z=Z(.66); gRed.add(ring); this.onda=ring;
+
+      // 9 aliados con conexiones
+      const gAli = grp(.71,.815);
+      this.aliSprites=[];
+      const loader=new THREE.TextureLoader();
+      const aliPos=[];
+      this.ALI.forEach((al,i)=>{
+        const a=(i/9)*Math.PI*2 - Math.PI/2;
+        const px=Math.cos(a)*7.4, py=Math.sin(a)*3.9, pz=Z(.762)+((i%3)-1)*3.2;
+        aliPos.push(new THREE.Vector3(px,py,pz));
+        const g2=new THREE.Group();
+        const back=new THREE.Sprite(new THREE.SpriteMaterial({map:discTex, transparent:true, depthWrite:false, color:0xffffff}));
+        back.scale.set(2.9,2.9,1); back.userData={ali:i};
+        g2.add(back);
+        loader.load(encodeURI(al.img), tex=>{
+          tex.colorSpace=THREE.SRGBColorSpace;
+          const iw=tex.image.width, ih=tex.image.height, mx=Math.max(iw,ih);
+          const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex, transparent:true, depthWrite:false}));
+          sp.scale.set(2*iw/mx, 2*ih/mx, 1); sp.userData={ali:i};
+          g2.add(sp);
+        });
+        const nm=mkText(al.name,{fs:34,weight:600,color:'#225C91'}); nm.position.y=-2.1; nm.userData={ali:i};
+        g2.add(nm);
+        g2.position.copy(aliPos[i]); g2.userData={ali:i, ph:R(0,6.28)};
+        gAli.add(g2); this.aliSprites.push(g2);
+      });
+      const aliLn=[];
+      for(let i=0;i<9;i++){ const a=aliPos[i], b2=aliPos[(i+1)%9], c2=aliPos[(i+3)%9];
+        aliLn.push(a.x,a.y,a.z,b2.x,b2.y,b2.z, a.x,a.y,a.z,c2.x,c2.y,c2.z); }
+      const alGeo=new THREE.BufferGeometry(); alGeo.setAttribute('position', new THREE.Float32BufferAttribute(aliLn,3));
+      const alL=new THREE.LineSegments(alGeo, new THREE.LineBasicMaterial({color:0x4A8FDB, transparent:true, opacity:.22}));
+      alL.userData.baseOp=.22; gAli.add(alL);
+      this.aliPos=aliPos;
+
+      // transición 9→25: líneas viajan a nuevos puntos
+      this.proBase=[];
+      for(let i=0;i<25;i++){
+        const a=i*2.39996, r=Math.sqrt((i+.5)/25);
+        this.proBase.push(new THREE.Vector3(Math.cos(a)*r*11, Math.sin(a)*r*6, Z(.875)+((i%5)-2)*2.4));
+      }
+      const trLn=[];
+      for(let i=0;i<25;i++){ const s=aliPos[i%9], e=this.proBase[i]; trLn.push(s.x,s.y,s.z,e.x,e.y,e.z); }
+      const trGeo=new THREE.BufferGeometry(); trGeo.setAttribute('position', new THREE.Float32BufferAttribute(trLn,3));
+      const gTr = grp(.79,.86);
+      const trL=new THREE.LineSegments(trGeo, new THREE.LineBasicMaterial({color:0xA78BFA, transparent:true, opacity:.3}));
+      trL.userData.baseOp=.3; gTr.add(trL); this.trL=trL;
+
+      // ambiente de la galería: puntos suaves en los bordes, centro limpio para logo+nombre HTML
+      const gPro = grp(.835,.945);
+      const galPos=[];
+      for(let i=0;i<25;i++){ const p2=this.proBase[i];
+        const px = p2.x + (p2.x>0?4:-4); // empujados hacia los bordes
+        galPos.push(px, p2.y, p2.z);
+      }
+      const galGeo=new THREE.BufferGeometry(); galGeo.setAttribute('position', new THREE.Float32BufferAttribute(galPos,3));
+      const galP=new THREE.Points(galGeo, new THREE.PointsMaterial({size:.24, color:0xA78BFA, transparent:true, opacity:.6, map:dotTex, depthWrite:false}));
+      galP.userData.baseOp=.6; gPro.add(galP);
+
+      // cómo funciona
+      const gComo = grp(.925,.975);
+      const stations=[['01 · CUÉNTANOS QUÉ ESTÁS VIVIENDO',.936,-3.6],['02 · ELIGE QUIÉN TE ACOMPAÑARÁ',.946,3.6],['03 · ELIGE UN HORARIO',.956,-3.6],['04 · COMIENZA TU CONVERSACIÓN',.966,3.6]];
+      const comoPts=[new THREE.Vector3(0,0,Z(.928))];
+      stations.forEach((st,i)=>comoPts.push(new THREE.Vector3(st[2]*.9, i%2?-1.6:1.6, Z(st[1]))));
+      comoPts.push(new THREE.Vector3(0,0,Z(.972)));
+      const comoCurve=new THREE.CatmullRomCurve3(comoPts);
+      const cl2=new THREE.Line(new THREE.BufferGeometry().setFromPoints(comoCurve.getPoints(90)), new THREE.LineBasicMaterial({color:0x7C3AED, transparent:true, opacity:.85}));
+      cl2.userData={baseOp:.85, noFade:.5}; gComo.add(cl2);
+      // nodos de color en cada estación sobre la ruta
+      const stCols=[0x2563EB,0x7C3AED,0x0E9F6E,0xD946EF];
+      [.14,.4,.66,.92].forEach((f,i)=>{
+        const nd=new THREE.Sprite(new THREE.SpriteMaterial({map:discTex, transparent:true, depthWrite:false, color:stCols[i]}));
+        nd.scale.set(.8,.8,1); nd.position.copy(comoCurve.getPoint(f));
+        nd.userData={noFade:.6};
+        gComo.add(nd);
+      });
+      const seedDot=new THREE.Sprite(new THREE.SpriteMaterial({map:dotTex, transparent:true, depthWrite:false, color:0xD946EF}));
+      seedDot.scale.set(1.6,1.6,1); seedDot.userData={noFade:.9}; gComo.add(seedDot);
+      this.comoDot=seedDot; this.comoCurve=comoCurve;
+
+      const gMx = grp(.955,1.08);
+      gMx.position.set(0,-.5,Z(.995)); gMx.rotation.x=-.22;
+      this.gMx=gMx; this.THREE_=THREE;
+
+      this.groups=[gAtm,gFil,gHig,gAmb,gEmo,gFal,gCam,gHis,gRed,gAli,gTr,gPro,gComo,gMx];
+      this.three={renderer,scene,camera,Z,THREE};
+      this.ray=new THREE.Raycaster(); this.v2=new THREE.Vector2();
+    }catch(e){}
+  }
+
+  async buildMexico(){
+    try{
+      const tj = await import('https://cdn.jsdelivr.net/npm/topojson-client@3/+esm');
+      const r = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      const topo = await r.json();
+      const mx = tj.feature(topo, topo.objects.countries).features.find(f=>f.properties.name==='Mexico');
+      const polys = mx.geometry.type==='Polygon' ? [mx.geometry.coordinates] : mx.geometry.coordinates;
+      let rings = polys.map(p=>p[0]).sort((a,b)=>b.length-a.length).slice(0,3);
+      let minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+      rings.forEach(rg=>rg.forEach(pt=>{minX=Math.min(minX,pt[0]);maxX=Math.max(maxX,pt[0]);minY=Math.min(minY,pt[1]);maxY=Math.max(maxY,pt[1]);}));
+      const wait=()=>new Promise(res=>{const iv=setInterval(()=>{if(this.gMx&&this.THREE_){clearInterval(iv);res();}},200);});
+      await wait();
+      const THREE=this.THREE_, W=17, H=W*(maxY-minY)/(maxX-minX)*1.3;
+      rings.forEach(rg=>{
+        const pts=rg.map(pt=>new THREE.Vector3(((pt[0]-minX)/(maxX-minX)-.5)*W, ((pt[1]-minY)/(maxY-minY)-.5)*H, 0));
+        const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0x225C91, transparent:true, opacity:.78}));
+        ln.userData.total=pts.length; ln.userData.baseOp=.78;
+        this.gMx.add(ln); (this.mxLines=this.mxLines||[]).push(ln);
+      });
+      const main=rings[0];
+      const inPoly=(x,y,rg)=>{let ins=false;for(let i=0,j=rg.length-1;i<rg.length;j=i++){const xi=rg[i][0],yi=rg[i][1],xj=rg[j][0],yj=rg[j][1];if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))ins=!ins;}return ins;};
+      const pos=[]; let guard=0;
+      while(pos.length<25*3 && guard<20000){ guard++;
+        const x=minX+Math.random()*(maxX-minX), y=minY+Math.random()*(maxY-minY);
+        if(inPoly(x,y,main)) pos.push(((x-minX)/(maxX-minX)-.5)*W, ((y-minY)/(maxY-minY)-.5)*H, .1);
+      }
+      const g=new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+      const dots=new THREE.Points(g, new THREE.PointsMaterial({size:.3, color:0xD946EF, transparent:true, opacity:.9}));
+      dots.userData.baseOp=.9;
+      this.gMx.add(dots); this.mxDots=dots;
+    }catch(e){}
+  }
+
+  renderUniverse(u, par, parOn){
+    const {renderer,scene,camera,Z}=this.three;
+    const uw=this._uwin, sm=this._smooth, cl=this._clamp;
+    const s=this.state, now=performance.now()/1000;
+    let cx = parOn?par.x*1.8:0, cy = parOn?par.y*-1.1:0;
+    const selCam=this.CAM.find(c=>c.id===s.sel);
+    if(selCam && u>.42 && u<.52){ const g=sm(cl((u-.42)/.05,0,1)); cx+=selCam.pos[0]*.4*g; cy+=selCam.pos[1]*.35*g; }
+    camera.position.set(cx + Math.sin(u*30)*.2, cy + Math.cos(u*22)*.15, Z(u)+9);
+    camera.lookAt(cx*.5, cy*.5, Z(u)-12);
+
+    const atmDim = (u>.245 && u<.56) ? 0 : 1; // "Algo falta" + ¿Qué estás viviendo?: sin bruma blanca
+    this.groups.forEach((g,gi)=>{
+      const {u0,u1}=g.userData;
+      const vis = u>u0-.04 && u<u1+.04;
+      g.visible=vis;
+      if(!vis) return;
+      let o = uw(u, u0, u1);
+      if(gi===0) o*=atmDim;
+      g.traverse(n=>{ if(n.material){ const fl=(n.userData&&n.userData.noFade)?Math.max(n.userData.noFade,o):o; n.material.opacity = (n.userData&&n.userData.baseOp!=null?n.userData.baseOp:1)*fl; } });
+    });
+    // deriva ambiental
+    if(this.drift) this.drift.forEach(d=>{ d.position.y = d.userData.by + Math.sin(now*d.userData.sp + d.userData.ph)*1.6; });
+    // filamentos de entrada crecen
+    if(this.groups[1] && this.groups[1].visible){ const g=sm(cl((u+.02)/.07,0,1)); this.groups[1].scale.set(.25+g*.75,.25+g*.75,1); }
+    // emociones orbitan
+    if(this.emoSprites) this.emoSprites.forEach((sp,i)=>{
+      const a=sp.userData.base + now*.07;
+      sp.position.set(Math.cos(a)*6.8, Math.sin(a)*3.5, sp.userData.bz);
+      const isSel = s.emo===sp.userData.emo;
+      const hov = this._hover===sp;
+      const tgt = s.emo ? (isSel?1.4:.5) : (hov?1.15:1);
+      sp.scale.set(sp.userData.bw*tgt, sp.userData.bh*tgt, 1);
+      sp.material.color.set(isSel?'#D946EF':'#1C3D5F');
+    });
+    // proyectar anclas de los seis destinos a pantalla (botones HTML)
+    if(this.camAnchor){
+      const cw = Math.max(0, Math.min(sm(cl((u-.335)/.015,0,1)), 1-sm(cl((u-.452)/.015,0,1))));
+      this.camAnchor.forEach((a,i)=>{
+        const el=document.getElementById('cn-'+this.CAM[i].id); if(!el) return;
+        el.style.opacity=cw;
+        el.style.pointerEvents = cw>.4 ? 'auto' : 'none';
+        if(cw>0.01){
+          const v=a.clone(); v.y += Math.sin(now*.6+i*1.7)*.28; v.project(camera);
+          const sx=(v.x+1)/2*window.innerWidth, sy=(1-v.y)/2*window.innerHeight;
+          el.style.left=sx+'px'; el.style.top=sy+'px';
+        }
+      });
+
+    }
+    if(this.onda){ const g=cl((u-.665)/.035,0,1); this.onda.scale.set(1+g*26,1+g*26,1); this.onda.material.opacity=.6*(1-g); }
+    if(this.aliSprites) this.aliSprites.forEach((g2,i)=>{
+      const isSel = s.aliado && this.ALI.indexOf(s.aliado)===i;
+      const hov = this._hoverAli===i;
+      const tgt = s.aliado ? (isSel?1.4:.72) : (hov?1.1:1);
+      g2.scale.set(tgt,tgt,1);
+      g2.position.y = this.aliPos[i].y + Math.sin(now*.5+g2.userData.ph)*.25;
+    });
+    if(this.trL){ const g=sm(cl((u-.8)/.04,0,1)); this.trL.geometry.setDrawRange(0, Math.floor(62*g)); }
+
+    if(this.comoDot && this.comoCurve){ const g=cl((u-.928)/.044,0,1); this.comoDot.position.copy(this.comoCurve.getPoint(g)); }
+    if(this.mxLines){ const g=cl((u-.962)/.022,0,1);
+      this.mxLines.forEach(ln=>ln.geometry.setDrawRange(0, Math.floor(ln.userData.total*sm(g))));
+      const dis=cl((u-.995)/.006,0,1);
+      if(this.mxDots) this.mxDots.material.size=.3+dis*.35;
+      this.gMx.scale.setScalar(1+dis*.7);
+    }
+    // hover raycast
+    if(parOn && this._mx!=null){
+      this.v2.set((this._mx/window.innerWidth)*2-1, -(this._my/window.innerHeight)*2+1);
+      this.ray.setFromCamera(this.v2, camera);
+      this._hover=null; this._hoverCam=null; this._hoverAli=null;
+      let hit=null;
+      if(u>.15&&u<.27&&this.emoSprites){ const h=this.ray.intersectObjects(this.emoSprites,false); if(h.length){this._hover=h[0].object; hit=1;} }
+      else if(u>.71&&u<.815&&this.aliSprites){ const h=this.ray.intersectObjects(this.aliSprites,true); if(h.length&&h[0].object.userData.ali!=null){this._hoverAli=h[0].object.userData.ali; hit=1;} }
+      document.body.style.cursor = hit?'pointer':'';
+    }
+    renderer.render(scene,camera);
+  }
+
+  handle3DClick(e){
+    if(!this.three || !this.ray) return;
+    const tc=document.getElementById('three');
+    if(!tc || parseFloat(tc.style.opacity||'0')<.5) return;
+    if(e.target.closest && e.target.closest('button,a,input,select,textarea,form')) return;
+    const T=this.totalScroll(); const p=Math.max(0,Math.min(1,window.scrollY/Math.max(1,T)));
+    const b=this.bounds[this.U3D];
+    if(p<b[0]||p>b[1]) return;
+    const u=(p-b[0])/(b[1]-b[0]);
+    this.v2.set((e.clientX/window.innerWidth)*2-1, -(e.clientY/window.innerHeight)*2+1);
+    this.ray.setFromCamera(this.v2, this.three.camera);
+    if(u>.15 && u<.27 && this.emoSprites){
+      const h=this.ray.intersectObjects(this.emoSprites,false); if(h.length){ this.setState({emo:h[0].object.userData.emo}); return; }
+    }
+
+    if(u>.71 && u<.815 && this.aliSprites){
+      const h=this.ray.intersectObjects(this.aliSprites,true); if(h.length&&h[0].object.userData.ali!=null){ this.setState({aliado:this.ALI[h[0].object.userData.ali]}); return; }
+    }
+  }
+
+  componentWillUnmount(){ if(this._cleanup) this._cleanup(); document.body.style.cursor=''; }
+}
+</script>
+</body>
+</html>
