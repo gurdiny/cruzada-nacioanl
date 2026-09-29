@@ -4,6 +4,10 @@ node_modules/
 
 # No confundir con .assetsignore: este decide qué rastrea git,
 # aquel qué publica Cloudflare como asset estático.
+
 # Python
 __pycache__/
 *.pyc
+
+# Export original de referencia (551 MB): se conserva en local, no en git.
+Cruzada Nacional Higiene Emocional/

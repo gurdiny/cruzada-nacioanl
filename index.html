@@ -44,7 +44,8 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
 <div id="stage" data-screen-label="Experiencia" style="position:fixed;inset:0;overflow:hidden;background:linear-gradient(180deg,#FAFCFF 0%,#EAF5FF 55%,#F0EBFF 100%);pointer-events:none;z-index:1">
   <div id="videoWrap" style="position:absolute;inset:0;perspective:900px">
     <sc-for list="{{videos}}" as="v" hint-placeholder-count="2">
-      <video id="vid-{{v.k<video id="vid-{{v.key}}" data-src="{{v.src}}" preload="none" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform"></video>
+      <video id="vid-{{v.key}}" data-src="{{v.src}}" preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform"></video>
+    </sc-for>
   </div>
   <div id="veil" style="position:absolute;inset:0;background:linear-gradient(180deg,#FAFCFF,#EAF5FF);opacity:0"></div>
   <sc-for list="{{hvideos}}" as="h" hint-placeholder-count="2">

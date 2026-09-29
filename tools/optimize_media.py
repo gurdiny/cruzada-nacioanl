@@ -713,6 +713,10 @@ def select_paths(paths: list[Path], args, skip_suffixes: set[str] | None = None)
 NEVER_DEPLOY = (
     ".git", ".github", ".wrangler", "node_modules", ".DS_Store",
     "tools", "*.md", ".gitignore", ".assetsignore", "wrangler.jsonc",
+    # Copia de referencia del export original (551 MB). Es material de
+    # trabajo, no del sitio: publicarla duplicaría todos los medios sin
+    # comprimir en una URL pública.
+    "Cruzada Nacional Higiene Emocional/",
 )
 
 
