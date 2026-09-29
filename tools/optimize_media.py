@@ -720,9 +720,36 @@ NEVER_DEPLOY = (
 )
 
 
+def derived_siblings(refs: set[str]) -> set[str]:
+    """Rutas que el sitio arma en tiempo de ejecución, no en el código fuente.
+
+    index.html construye algunas rutas con .replace() sobre otra ruta:
+
+        tanaFotoWebp: …foto.replace(/\.(jpe?g|png)$/i, '.webp')
+        tsVidPoster : …video.replace(/\.mp4$/i, '-poster.jpg')
+
+    Un análisis estático del texto nunca las ve, así que hay que derivarlas
+    igual que hace el navegador. Sin esto, .assetsignore las toma por
+    archivos muertos y los excluye del deploy: el <source> de cada <picture>
+    da 404 y la imagen sale rota, porque un <source> que falla NO cae al
+    <img> de respaldo.
+    """
+    out: set[str] = set()
+    for r in refs:
+        low = r.lower()
+        if low.endswith((".jpg", ".jpeg", ".png")):
+            out.add(re.sub(r"\.(jpe?g|png)$", ".webp", r, flags=re.IGNORECASE))
+        elif low.endswith(".mp4"):
+            out.add(re.sub(r"\.mp4$", "-poster.jpg", r, flags=re.IGNORECASE))
+    # Solo las que de verdad existen: el optimizador no genera webp cuando el
+    # PNG de paleta le gana, ni portada para los vídeos de fondo.
+    return {o for o in out if (ROOT / o).is_file()}
+
+
 def cmd_assetsignore(args) -> int:
     """Escribe .assetsignore para que Cloudflare Workers no suba lo que no sirve."""
     refs = referenced_media()
+    refs |= derived_siblings(refs)
     dead = sorted(
         str(p)
         for base in ("assets", "uploads")

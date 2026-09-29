@@ -19,8 +19,15 @@
     // Sirve /index.html en la raíz y quita el .html de las URLs.
     "html_handling": "auto-trailing-slash",
 
-    // La página es una sola vista: cualquier ruta desconocida cae en ella
-    // en vez de mostrar un 404 de Cloudflare.
-    "not_found_handling": "single-page-application"
+    // "none" = un archivo que falta devuelve 404 de verdad.
+    //
+    // Estuvo en "single-page-application" y fue un error: esa opción hace
+    // que CUALQUIER ruta inexistente responda 200 con el index.html. Un
+    // .webp que faltaba devolvía 200 + text/html, el navegador intentaba
+    // decodificar HTML como imagen y la foto salía en blanco, mientras que
+    // comprobarlo con HEAD decía 200 y parecía estar bien. La página no
+    // tiene enrutado por URL (navega por scroll), así que el respaldo SPA
+    // no aportaba nada y solo escondía los fallos.
+    "not_found_handling": "none"
   }
 }

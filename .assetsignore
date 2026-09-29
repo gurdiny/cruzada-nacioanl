@@ -16,7 +16,7 @@ tools
 wrangler.jsonc
 Cruzada Nacional Higiene Emocional/
 
-# --- medios que el sitio no referencia (130 archivos) ---
+# --- medios que el sitio no referencia (82 archivos) ---
 # Detectados leyendo index.html y support.js. Si añades un archivo y no
 # aparece en la página, vuelve a generar este archivo con el comando de
 # arriba. Para publicarlo todo, basta con borrar esta sección.
@@ -24,57 +24,10 @@ Cruzada Nacional Higiene Emocional/
 /assets/logo-cruzada.png
 /assets/logo-src.png
 /assets/paso13-src.jpg
-/assets/tanatologo-placeholder.webp
-/assets/tanatologos/foto-01.webp
-/assets/tanatologos/foto-02.webp
-/assets/tanatologos/foto-03.webp
-/assets/tanatologos/foto-04.webp
-/assets/tanatologos/foto-05.webp
-/assets/tanatologos/foto-06.webp
-/assets/tanatologos/foto-07.webp
-/assets/tanatologos/foto-08.webp
-/assets/tanatologos/foto-09.webp
-/assets/tanatologos/foto-10.webp
-/assets/tanatologos/foto-11.webp
-/assets/tanatologos/foto-12.webp
-/assets/tanatologos/foto-13.webp
-/assets/tanatologos/foto-14.webp
-/assets/tanatologos/foto-15.webp
-/assets/tanatologos/foto-16.webp
-/assets/tanatologos/foto-17.webp
-/assets/tanatologos/foto-18.webp
-/assets/tanatologos/foto-19.webp
-/assets/tanatologos/foto-20.webp
-/assets/tanatologos/foto-21.webp
-/assets/tanatologos/foto-22.webp
-/assets/tanatologos/foto-23.webp
-/assets/tanatologos/foto-24.webp
-/assets/tanatologos/foto-25.webp
-/assets/tanatologos/logo-01.webp
-/assets/tanatologos/logo-02.webp
-/assets/tanatologos/logo-04.webp
-/assets/tanatologos/logo-05.webp
-/assets/tanatologos/logo-08.webp
-/assets/tanatologos/logo-09.webp
-/assets/tanatologos/logo-10.webp
-/assets/tanatologos/logo-13.webp
-/assets/tanatologos/logo-14.webp
-/assets/tanatologos/logo-18.webp
-/assets/tanatologos/logo-19.webp
-/assets/tanatologos/logo-21.webp
-/assets/tanatologos/logo-24.webp
-/assets/testimonios/poster-01.webp
-/assets/testimonios/poster-02.webp
-/assets/testimonios/poster-03.webp
-/assets/testimonios/v1-poster.jpg
-/assets/testimonios/v2-poster.jpg
-/assets/testimonios/v3-poster.jpg
-/uploads/7 portales sin fondo.webp
 /uploads/ALMA_logo_v2_transparente (4) - alma.tanatologia.png
 /uploads/ARALMA- - Araceli Pablo Lopez.png
 /uploads/CAET_Oasis_de_Sanacion_logo_sin_fondo (1) - ANA MARIA MONTALVO LOPEZ.png
 /uploads/ChatGPT Image 10 sept 2026, 22_23_28.png
-/uploads/ChatGPT Image 20 abr 2026, 12_11_46 p.m.webp
 /uploads/ChatGPT Image 8 sept 2026, 05_16_53 p.m. - Fundación Duelo sin Culpa.png
 /uploads/ChatGPT Image 9 sept 2026, 10_13_37.png
 /uploads/Diseño sin título (2) - Xochitl Rome.png
@@ -103,7 +56,6 @@ Cruzada Nacional Higiene Emocional/
 /uploads/Logo a color Aprender a soltar - Sergio Vergara.png
 /uploads/Logo a color fondo transparente.png
 /uploads/O_MIEDO_logo_transparente - Leticia Rodriguez.png
-/uploads/Opcion 2.webp
 /uploads/ROSARIO MORENO ROJAS - Rosario Moreno.jpeg
 /uploads/ROTARY ACOZAC IXTAPALUCA.PNG
 /uploads/Raices_de_Luz_color_fondo_transparente - raíces de luz (1).png
