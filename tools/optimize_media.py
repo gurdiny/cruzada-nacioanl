@@ -719,6 +719,7 @@ NEVER_DEPLOY = (
     # comprimir en una URL pública.
     "Cruzada Nacional Higiene Emocional/",
     "cruzada-new/",
+    "comprimir.py", "comprimir-informe.json",
 )
 
 

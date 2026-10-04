@@ -12,3 +12,7 @@ __pycache__/
 # Exports de referencia (cientos de MB cada uno): se conservan en local, no en git.
 Cruzada Nacional Higiene Emocional/
 cruzada-new/
+
+# Herramienta local de compresión: el script no se sube, sus resultados sí.
+comprimir.py
+comprimir-informe.json

@@ -16,6 +16,8 @@ tools
 wrangler.jsonc
 Cruzada Nacional Higiene Emocional/
 cruzada-new/
+comprimir.py
+comprimir-informe.json
 
 # --- medios que el sitio no referencia (94 archivos) ---
 # Detectados leyendo index.html y support.js. Si añades un archivo y no
