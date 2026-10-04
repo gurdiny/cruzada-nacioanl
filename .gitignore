@@ -9,5 +9,6 @@ node_modules/
 __pycache__/
 *.pyc
 
-# Export original de referencia (551 MB): se conserva en local, no en git.
+# Exports de referencia (cientos de MB cada uno): se conservan en local, no en git.
 Cruzada Nacional Higiene Emocional/
+cruzada-new/

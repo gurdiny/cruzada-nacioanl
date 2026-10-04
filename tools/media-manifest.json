@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29 10:51:41",
+  "generated": "2026-10-03 23:51:58",
   "files": [
     {
       "file": "assets/tanatologo-placeholder.png",
@@ -444,12 +444,12 @@
     {
       "file": "assets/testimonios/poster-01.jpg",
       "kind": "image",
-      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "profile_note": "botón clamp(150px,19vw,220px) → 220 CSS px @2x",
       "bytes_before": 580078,
-      "bytes_after": 18910,
-      "webp_bytes": 8132,
+      "bytes_after": 23265,
+      "webp_bytes": 9882,
       "status": "ok",
-      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+      "detail": "era PNG con extensión .jpg, 600x600→440x440, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
     },
     {
       "file": "assets/tanatologos/logo-22.png",
@@ -474,22 +474,22 @@
     {
       "file": "assets/testimonios/poster-02.jpg",
       "kind": "image",
-      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "profile_note": "botón clamp(150px,19vw,220px) → 220 CSS px @2x",
       "bytes_before": 610204,
-      "bytes_after": 20516,
-      "webp_bytes": 9924,
+      "bytes_after": 25521,
+      "webp_bytes": 12340,
       "status": "ok",
-      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
+      "detail": "era PNG con extensión .jpg, 600x600→440x440, alpha inútil eliminado, jpeg-q78 @42dB, webp q72 @40dB"
     },
     {
       "file": "assets/testimonios/poster-03.jpg",
       "kind": "image",
-      "profile_note": "botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+      "profile_note": "botón clamp(150px,19vw,220px) → 220 CSS px @2x",
       "bytes_before": 586190,
-      "bytes_after": 16351,
-      "webp_bytes": 7166,
+      "bytes_after": 20116,
+      "webp_bytes": 8762,
       "status": "ok",
-      "detail": "era PNG con extensión .jpg, 600x600→384x384, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
+      "detail": "era PNG con extensión .jpg, 600x600→440x440, alpha inútil eliminado, jpeg-q78 @44dB, webp q72 @42dB"
     },
     {
       "file": "uploads/ChatGPT Image 20 abr 2026, 12_11_46 p.m.png",
@@ -980,6 +980,96 @@
       "webm_bytes": null,
       "status": "ok",
       "detail": "h≤720 crf25, 10s, audio eliminado, portada VIDEO_09_REGRESO_SEMILLA-poster.jpg"
+    },
+    {
+      "file": "assets/aliados/ali-7.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 77650,
+      "bytes_after": 3968,
+      "webp_bytes": 2608,
+      "status": "ok",
+      "detail": "520x243→256x120, alpha inútil eliminado, png-quant64 @45dB, webp q72 @42dB"
+    },
+    {
+      "file": "assets/aliados/ali-9.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 40528,
+      "bytes_after": 31351,
+      "webp_bytes": 5892,
+      "status": "ok",
+      "detail": "alpha, png-full @99dB, webp q88 @41dB"
+    },
+    {
+      "file": "assets/aliados/ali-3.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 96041,
+      "bytes_after": 32736,
+      "webp_bytes": 9360,
+      "status": "ok",
+      "detail": "520x233→256x115, alpha, png-full @99dB, webp q88 @41dB"
+    },
+    {
+      "file": "assets/aliados/ali-2.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 51422,
+      "bytes_after": 6458,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "520x157→256x77, alpha, png-quant256 @39dB, sin webp (9.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/aliados/ali-1.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 44795,
+      "bytes_after": 34054,
+      "webp_bytes": 14262,
+      "status": "ok",
+      "detail": "303x115→256x97, alpha, png-full @99dB, webp q80 @40dB"
+    },
+    {
+      "file": "assets/aliados/ali-8.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 74875,
+      "bytes_after": 20808,
+      "webp_bytes": 10612,
+      "status": "ok",
+      "detail": "520x246→256x121, alpha, png-full @99dB, webp q72 @47dB"
+    },
+    {
+      "file": "assets/aliados/ali-5.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 54481,
+      "bytes_after": 5706,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "520x262→256x129, alpha, png-quant64 @38dB, sin webp (12.4 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/aliados/ali-4.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 143127,
+      "bytes_after": 10847,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "446x520→220x256, alpha, png-quant128 @39dB, sin webp (21.3 KB ≥ respaldo)"
+    },
+    {
+      "file": "assets/aliados/ali-6.png",
+      "kind": "image",
+      "profile_note": "nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
+      "bytes_before": 154571,
+      "bytes_after": 10975,
+      "webp_bytes": null,
+      "status": "ok",
+      "detail": "520x485→256x239, alpha, png-quant128 @39dB, sin webp (20.7 KB ≥ respaldo)"
     }
   ]
 }

@@ -82,21 +82,42 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
     </div>
   </sc-for>
 
+  <div id="sm-ali" style="position:absolute;inset:0;opacity:0;pointer-events:none">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+      <sc-for list="{{aliLinesH}}" as="l" hint-placeholder-count="9">
+        <line x1="{{l.x1}}" y1="{{l.y1}}" x2="{{l.x2}}" y2="{{l.y2}}" stroke="rgba(74,143,219,.45)" stroke-width="1.2" vector-effect="non-scaling-stroke"></line>
+      </sc-for>
+    </svg>
+    <div style="position:absolute;left:50%;top:61%;transform:translate(-50%,-50%);width:clamp(86px,9vw,118px);height:clamp(86px,9vw,118px);border-radius:50%;background:#fff;border:2px solid rgba(217,70,239,.5);box-shadow:0 16px 50px rgba(34,92,145,.2);display:flex;align-items:center;justify-content:center;padding:12px">
+      <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="max-width:100%;max-height:100%;object-fit:contain">
+    </div>
+    <sc-for list="{{aliNodes}}" as="a" hint-placeholder-count="9">
+      <div style="position:absolute;left:{{a.x}}%;top:{{a.y}}%;transform:translate(-50%,-50%)">
+        <button onClick="{{a.open}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;padding:0;animation:floaty {{a.dur}} ease-in-out infinite" style-hover="transform:scale(1.08)">
+          <span style="width:clamp(70px,7vw,96px);height:clamp(70px,7vw,96px);border-radius:50%;background:#fff;border:1.5px solid rgba(255,255,255,.95);box-shadow:0 12px 36px rgba(34,92,145,.18);display:flex;align-items:center;justify-content:center;padding:7%;box-sizing:border-box">
+            <span role="img" aria-label="{{a.name}}" style="width:100%;height:100%;display:block;background-image:url('{{a.imgCss}}');background-size:contain;background-repeat:no-repeat;background-position:center"></span>
+          </span>
+          <span style="max-width:170px;text-align:center;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:clamp(11.5px,1vw,13.5px);line-height:1.3;color:#0F2A46;text-shadow:0 0 2px #fff,0 1px 12px rgba(255,255,255,.98),0 0 24px rgba(255,255,255,.9)">{{a.name}}</span>
+        </button>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:0;right:0;bottom:3vh;text-align:center;font-size:clamp(11px,1vw,13px);font-weight:700;letter-spacing:.16em;color:#3E6E9E;text-shadow:0 1px 10px rgba(255,255,255,.95)">TOCA UN ALIADO PARA CONOCERLO</div>
+  </div>
   <div id="sm-cruzada" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
     <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="width:clamp(220px,26vw,380px);height:auto;filter:drop-shadow(0 0 20px rgba(255,255,255,.95)) drop-shadow(0 0 50px rgba(255,255,255,.85))">
-    <div style="margin-top:14px;max-width:560px;font-size:clamp(13.5px,1.4vw,17px);line-height:1.65;color:#3E6E9E;text-shadow:0 1px 14px rgba(255,255,255,.95)">Una red de personas y organizaciones que hace posible acercar acompañamiento emocional digno, sensible y accesible.</div>
+    <div style="margin-top:clamp(22px,3.2vh,34px);max-width:620px;font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(16px,1.7vw,21px);line-height:1.55;color:#1C3D5F;text-wrap:balance;text-shadow:0 1px 14px rgba(255,255,255,.95)">Una red de personas y organizaciones que hace posible acercar acompañamiento emocional digno, sensible y accesible.</div>
   </div>
 
   <div id="sm-n31" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px">
     <div style="position:relative;text-align:center">
-      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(160px,34vw,480px);line-height:1;color:rgba(74,143,219,.12)">25</div>
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(160px,34vw,480px);line-height:1;color:rgba(74,143,219,.12)">+30</div>
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-        <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(20px,2.8vw,36px);line-height:1.3;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">25 TANATÓLOGOS<br>DISPUESTOS A<br>ACOMPAÑARTE.</div>
+        <div style="font-family:Figtree,sans-serif;font-weight:700;font-size:clamp(20px,2.8vw,36px);line-height:1.3;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">+30 TANATÓLOGOS<br>DISPUESTOS A<br>ACOMPAÑARTE.</div>
       </div>
     </div>
   </div>
 
-  <div id="sm-camUI" style="position:absolute;left:0;right:0;bottom:10vh;display:flex;justify-content:center;opacity:0;pointer-events:none;padding:0 24px">
+  <div id="sm-camUI" style="position:absolute;left:0;right:0;bottom:4vh;display:flex;justify-content:center;opacity:0;pointer-events:none;padding:0 24px">
     <div style="text-align:center;font-size:clamp(12px,1.2vw,14.5px);font-weight:600;letter-spacing:.14em;color:#3E6E9E;text-shadow:0 1px 12px rgba(255,255,255,.95)">{{camHint}}</div>
   </div>
   <sc-for list="{{camNodes}}" as="c" hint-placeholder-count="6">
@@ -106,7 +127,7 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
           <span style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,{{c.glow}} 0%,rgba(255,255,255,0) 70%);animation:glowPulse 2.6s ease-in-out infinite"></span>
           <span style="position:relative;width:46px;height:46px;border-radius:50%;border:2px solid {{c.ring}};background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 34px {{c.shadow}};display:flex;align-items:center;justify-content:center;font-family:Figtree,sans-serif;font-weight:800;font-size:15px;color:{{c.numCol}}">{{c.num}}</span>
         </span>
-        <span style="max-width:200px;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:clamp(12.5px,1.1vw,15px);font-weight:700;line-height:1.3;letter-spacing:.03em;color:{{c.col}};text-shadow:0 1px 12px rgba(255,255,255,.98),0 0 26px rgba(255,255,255,.9)">{{c.label}}</span>
+        <span style="max-width:170px;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:clamp(11.5px,1vw,13.5px);font-weight:700;line-height:1.3;letter-spacing:.03em;color:{{c.col}};text-shadow:0 1px 12px rgba(255,255,255,.98),0 0 26px rgba(255,255,255,.9)">{{c.label}}</span>
       </button>
     </div>
   </sc-for>
@@ -121,14 +142,23 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
       </div>
     </sc-if>
   </div>
+  <div id="sm-hookCta" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:24px">
+    <div style="max-width:720px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
+      <div style="font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(24px,3.2vw,42px);line-height:1.2;color:#0B2240;text-wrap:pretty;text-shadow:0 0 2px #fff,0 2px 18px rgba(255,255,255,.95),0 0 44px rgba(255,255,255,.9);opacity:{{hkOp}};transform:translateY({{hkTy}});transition:opacity .35s ease,transform .35s ease">{{hkText}}</div>
+      <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 30px;box-shadow:0 12px 36px rgba(217,70,239,.35)" style-hover="filter:brightness(1.08)">ESCRÍBENOS POR WHATSAPP</button>
+    </div>
+  </div>
   <div id="sm-continuar" style="position:absolute;left:0;right:0;bottom:8vh;display:flex;justify-content:center;opacity:0;pointer-events:none">
     <button onClick="{{continuar}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.14em;color:#9C27C9;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(167,139,250,.5);border-radius:999px;padding:13px 30px" style-hover="background:rgba(255,255,255,.9)">CONTINUAR ↓</button>
   </div>
 
-  <div id="sm-tana" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:28px">
+  <div id="sm-tana" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:clamp(84px,13vh,110px) 28px 28px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;opacity:{{tanaOp}};transform:translateX({{tanaTx}}) scale({{tanaSc}});transition:opacity .26s ease,transform .26s ease">
+      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);letter-spacing:.08em;color:#0F2A46;text-shadow:0 2px 22px rgba(255,255,255,.95);margin-bottom:2px">TANATÓLOGOS</div>
       <div style="font-size:12px;letter-spacing:.34em;font-weight:600;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">{{tanaNum}}</div>
-      <div style="position:relative;width:clamp(140px,17vw,190px);height:clamp(140px,17vw,190px)">
+      <div style="display:flex;align-items:center;gap:clamp(22px,4vw,56px)">
+      <button onClick="{{tanaPrev}}" aria-label="Anterior" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700;flex-shrink:0" style-hover="background:#fff">←</button>
+      <div style="position:relative;width:clamp(120px,14vw,168px);height:clamp(120px,14vw,168px);flex-shrink:0">
         <div style="position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(217,70,239,.16),rgba(217,70,239,0) 70%)"></div>
         <div style="position:absolute;inset:0;border-radius:50%;border:2.5px solid rgba(255,255,255,.98);box-shadow:0 24px 70px rgba(34,92,145,.2);overflow:hidden;background:#EAF5FF">
           <picture>
@@ -140,15 +170,12 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
           <img src="{{tanaLogo}}" alt="Logotipo de {{tanaName}}" decoding="async" style="max-width:100%;max-height:100%;object-fit:contain">
         </div>
       </div>
+      <button onClick="{{tanaNext}}" aria-label="Siguiente" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700;flex-shrink:0" style-hover="background:#fff">→</button>
+      </div>
       <div style="margin-top:4px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,42px);color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">{{tanaName}}</div>
       <div style="font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#6D28D9;text-shadow:0 1px 12px rgba(255,255,255,.95)">{{tanaOrg}}</div>
       <div style="font-size:11px;color:#7A94B5;letter-spacing:.1em">{{tanaNota}}</div>
-      <div style="display:flex;gap:14px;align-items:center;margin-top:6px">
-        <button onClick="{{tanaPrev}}" aria-label="Anterior" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700" style-hover="background:#fff">←</button>
-        <button onClick="{{tanaElegir}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 30px;box-shadow:0 12px 36px rgba(217,70,239,.32)" style-hover="filter:brightness(1.08)">ELEGIR TANATÓLOGO</button>
-        <button onClick="{{tanaNext}}" aria-label="Siguiente" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:18px;font-weight:700" style-hover="background:#fff">→</button>
-      </div>
-      <button onClick="{{asignarme}}" style="cursor:pointer;background:none;border:none;font-size:11.5px;font-weight:600;letter-spacing:.1em;color:#4A8FDB;margin-top:2px" style-hover="color:#225C91">PREFIERO QUE ME ASIGNEN A ALGUIEN</button>
+      <button onClick="{{agendaTana}}" style="margin-top:8px;cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.08em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:15px 34px;box-shadow:0 12px 36px rgba(217,70,239,.34)" style-hover="filter:brightness(1.08)">AGENDA TU ACOMPAÑAMIENTO</button>
     </div>
   </div>
 
@@ -178,27 +205,28 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
   </div>
 
   <div id="ui-testi" data-screen-label="Voces que han sido acompañadas" style="position:absolute;inset:0;opacity:0;pointer-events:none">
-    <div id="tstA" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
-      <div style="max-width:680px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95),0 0 60px rgba(255,255,255,.85)">HAY EXPERIENCIAS QUE NO NECESITAN SER EXPLICADAS POR NOSOTROS.</div>
+    <div id="tstA" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:96px 28px 28px;text-align:center">
+      <div style="max-width:680px;font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">HAY EXPERIENCIAS QUE NO NECESITAN SER EXPLICADAS POR NOSOTROS.</div>
     </div>
-    <div id="tstB" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
-      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95),0 0 60px rgba(255,255,255,.85)">PUEDEN SER CONTADAS POR QUIENES LAS VIVIERON.</div>
+    <div id="tstB" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:96px 28px 28px;text-align:center">
+      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">PUEDEN SER CONTADAS POR QUIENES LAS VIVIERON.</div>
     </div>
-    <div id="tstT" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;padding:28px;text-align:center">
+    <div id="tstT" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;padding:96px 28px 28px;text-align:center">
       <div style="width:44px;height:2px;background:#D946EF;border-radius:2px"></div>
-      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#5B21B6;text-shadow:0 2px 24px rgba(255,255,255,.95)">VOCES QUE HAN SIDO ACOMPAÑADAS</div>
+      <div style="font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">VOCES QUE HAN SIDO ACOMPAÑADAS</div>
     </div>
-    <div id="tstV" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:28px">
+    <div id="tstV" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;padding:clamp(90px,14vh,120px) 28px 28px">
       <div style="max-width:720px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;opacity:{{tsOp}};transform:translateX({{tsTx}});transition:opacity .5s ease,transform .5s ease">
-        <div style="font-size:11px;letter-spacing:.34em;font-weight:600;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">TESTIMONIO {{tsNum}} / {{tsTot}}</div>
-        <button onClick="{{tsPlay}}" aria-label="Escuchar su historia" style="cursor:pointer;position:relative;width:clamp(120px,15vw,168px);height:clamp(120px,15vw,168px);border-radius:50%;border:3px solid rgba(255,255,255,.95);background:#EAF5FF;padding:0;overflow:hidden;box-shadow:0 20px 60px rgba(34,92,145,.28)" style-hover="transform:scale(1.05)">
+        <div style="font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(24px,3vw,40px);letter-spacing:.06em;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">TESTIMONIOS</div>
+        <div style="margin-top:-6px;font-size:11.5px;letter-spacing:.3em;font-weight:700;color:#7A94B5;text-shadow:0 1px 10px rgba(255,255,255,.9)">{{tsNum}} / {{tsTot}}</div>
+        <button onClick="{{tsPlay}}" aria-label="Escuchar su historia" style="cursor:pointer;position:relative;width:clamp(150px,19vw,220px);height:clamp(150px,19vw,220px);border-radius:50%;border:3px solid rgba(255,255,255,.95);background:#EAF5FF;padding:0;overflow:hidden;box-shadow:0 20px 60px rgba(34,92,145,.28)" style-hover="transform:scale(1.05)">
           <picture>
             <source sc-camel-src-set="{{tsPosterWebp}}" type="image/webp">
-            <img src="{{tsPoster}}" alt="Carátula del testimonio" width="384" height="384" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <img src="{{tsPoster}}" alt="Carátula del testimonio" width="440" height="440" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </picture>
           <span style="position:absolute;right:4%;bottom:4%;width:34%;height:34%;border-radius:50%;background:rgba(217,70,239,.95);border:2px solid #fff;color:#fff;font-size:clamp(13px,1.4vw,17px);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(217,70,239,.45)">▶</span>
         </button>
-        <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(18px,2.2vw,28px);letter-spacing:.06em;color:#1C3D5F;text-shadow:0 2px 22px rgba(255,255,255,.95)">ESCUCHAR SU HISTORIA</div>
+        <div style="font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(18px,2.2vw,28px);letter-spacing:.06em;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">ESCUCHAR SU HISTORIA</div>
         <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#9C27C9;text-shadow:0 1px 10px rgba(255,255,255,.9)">— {{tsFirma}}</div>
         <div style="display:flex;gap:14px;align-items:center;margin-top:6px">
           <button onClick="{{tsPrev}}" aria-label="Anterior" style="cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(74,143,219,.4);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);color:#225C91;font-size:17px;font-weight:700" style-hover="background:#fff">←</button>
@@ -206,28 +234,26 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
         </div>
       </div>
     </div>
-    <div id="tstF" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
-      <div style="font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">CADA PROCESO ES DIFERENTE.</div>
+    <div id="tstF" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:96px 28px 28px;text-align:center">
+      <div style="font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(22px,3vw,40px);color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">CADA PROCESO ES DIFERENTE.</div>
     </div>
-    <div id="tstF2" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:28px;text-align:center">
-      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#1C3D5F;text-shadow:0 2px 24px rgba(255,255,255,.95)">EL TUYO TAMBIÉN MERECE SER ESCUCHADO.</div>
+    <div id="tstF2" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;padding:96px 28px 28px;text-align:center">
+      <div style="max-width:620px;font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(22px,3vw,40px);line-height:1.2;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">EL TUYO TAMBIÉN MERECE SER ESCUCHADO.</div>
     </div>
-    <div id="tstG" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;opacity:0;pointer-events:none;padding:28px;text-align:center">
-      <div style="max-width:640px;font-family:Figtree,sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#5B21B6;text-shadow:0 2px 24px rgba(255,255,255,.95)">CUANDO ESTÉS LISTO/A, PODEMOS COMENZAR.</div>
+    <div id="tstG" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;opacity:0;pointer-events:none;padding:96px 28px 28px;text-align:center">
+      <div style="max-width:640px;font-family:Figtree,sans-serif;font-weight:900;font-size:clamp(24px,3.4vw,46px);line-height:1.15;color:#07152A;text-shadow:0 0 3px #fff,0 0 8px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9),0 0 36px rgba(255,255,255,.75),0 0 70px rgba(255,255,255,.55)">CUANDO ESTÉS LISTO/A, PODEMOS COMENZAR.</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
         <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:15px 30px;box-shadow:0 12px 36px rgba(217,70,239,.32)" style-hover="filter:brightness(1.08)">QUIERO DAR EL PRIMER PASO</button>
-        <button onClick="{{irPros}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.5px;color:#225C91;background:rgba(255,255,255,.7);border:1px solid rgba(74,143,219,.4);border-radius:999px;padding:15px 26px" style-hover="background:#fff">CONOCER A LOS TANATÓLOGOS</button>
       </div>
     </div>
   </div>
 
-  <div id="ui-cierre" data-screen-label="Cierre" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;padding:0 28px 10vh">
+  <div id="ui-cierre" data-screen-label="Cierre" style="position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:96px 28px 28px">
     <div style="display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;padding:26px 50px;background:radial-gradient(closest-side,rgba(250,252,255,.9),rgba(250,252,255,.5) 60%,rgba(250,252,255,0) 100%)">
       <img src="assets/logo-cruzada-t2.png" width="1100" height="768" decoding="async" loading="lazy" alt="Cruzada Nacional por la Higiene Emocional" style="height:clamp(90px,13vw,140px);width:auto;filter:drop-shadow(0 0 18px rgba(255,255,255,.9))">
-      <div style="font-size:12px;letter-spacing:.3em;color:#225C91;font-weight:600">“ACOMPAÑAR ES RESPONSABILIDAD DE TODOS”</div>
+      <div style="font-size:13px;letter-spacing:.3em;color:#07152A;font-weight:800;text-shadow:0 0 3px #fff,0 0 12px rgba(255,255,255,.95),0 0 28px rgba(255,255,255,.8)">“ACOMPAÑAR ES RESPONSABILIDAD DE TODOS”</div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <button onClick="{{abrirForm}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.06em;color:#fff;background:#D946EF;border:none;border-radius:999px;padding:14px 28px;box-shadow:0 12px 36px rgba(217,70,239,.3)" style-hover="filter:brightness(1.08)">QUIERO DAR EL PRIMER PASO</button>
-        <button onClick="{{irPros}}" style="cursor:pointer;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.5px;color:#225C91;background:rgba(255,255,255,.7);border:1px solid rgba(74,143,219,.4);border-radius:999px;padding:14px 24px" style-hover="background:#fff">CONOCER A LOS TANATÓLOGOS</button>
       </div>
     </div>
   </div>
@@ -263,7 +289,6 @@ a{color:#4A8FDB;text-decoration:none}a:hover{color:#225C91}
     <sc-for list="{{acts}}" as="a" hint-placeholder-count="6">
       <div class="act-mark" data-i="{{a.i}}" style="position:absolute;right:-3px;top:{{a.top}}%;display:flex;align-items:center;gap:8px;flex-direction:row-reverse">
         <div style="width:7px;height:7px;border-radius:50%;background:rgba(74,143,219,.55)"></div>
-        <div class="act-label" style="font-size:9.5px;letter-spacing:.22em;font-weight:600;color:#3E6E9E;white-space:nowrap;opacity:0;transition:opacity .4s;text-shadow:0 1px 8px rgba(255,255,255,.9)">{{a.tag}}</div>
       </div>
     </sc-for>
     <div id="railDot" style="position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-4.5px;margin-top:-4px;border-radius:50%;background:#D946EF;box-shadow:0 0 12px rgba(217,70,239,.6)"></div>
@@ -470,7 +495,7 @@ class Component extends DCLogic {
       {ui:'testi',veil:.1,w:5},
       {v:'brote',fx:.14,w:1},
       {v:'regreso',ui:'cierre',w:1.6,fx:.18},
-      {ui:'footer',veil:1,w:1.1}
+      {ui:'footer',veil:1,w:.8}
     ];
     this.U3D = 20;
     this.IDX = {}; this.CH.forEach((c,i)=>{ if(c.ui) this.IDX[c.ui]=i; });
@@ -488,25 +513,25 @@ class Component extends DCLogic {
       BR={jc:'flex-end',ai:'flex-end',ta:'right'}, CR={jc:'flex-end',ai:'center',ta:'right'}, CL={jc:'flex-start',ai:'center',ta:'left'},
       TC={jc:'center',ai:'flex-start',ta:'center'};
     this.CINE = [
-      {id:'a0',ch:0,f:.5,t:.72,text:'Todo cambia.',fs:M,fw:700,maxw:'520px',...BL},
-      {id:'a1',ch:0,f:.74,t:.96,text:'También nosotros.',fs:M,fw:700,maxw:'520px',...BL},
-      {id:'b1',ch:1,f:.15,t:.85,text:'Hay etapas que florecen…',fs:M,fw:600,maxw:'560px',...CL},
-      {id:'a2',ch:2,f:.15,t:.85,text:'Hay momentos que transforman la forma en que vivimos.',fs:M,fw:600,maxw:'720px',...C},
-      {id:'b3',ch:3,f:.15,t:.85,text:'…y etapas que cambian de forma.',fs:M,fw:600,maxw:'560px',...CR},
-      {id:'a3',ch:4,f:.15,t:.85,text:'A veces el cambio llega sin que podamos elegirlo.',fs:M,fw:600,maxw:'560px',...TL},
-      {id:'a4',ch:5,f:.15,t:.85,text:'Soltar también puede formar parte del proceso.',fs:M,fw:600,maxw:'560px',...BR},
-      {id:'b6',ch:6,f:.15,t:.85,text:'Cada quien vive su propio desprendimiento.',fs:M,fw:600,maxw:'560px',...CL},
-      {id:'a5',ch:7,f:.15,t:.85,text:'No siempre sabemos hacia dónde vamos.',fs:M,fw:600,maxw:'520px',...CR},
-      {id:'a6',ch:8,f:.2,t:.8,text:'Cuidar lo que sentimos también es cuidarnos.',fs:M,fw:600,maxw:'680px',...C},
-      {id:'b9',ch:9,f:.2,t:.8,text:'Incluso ahí, hay luz.',fs:M,fw:600,maxw:'480px',...C},
-      {id:'b10',ch:10,f:.2,t:.75,text:'Y la luz encuentra camino.',fs:M,fw:600,maxw:'520px',...BL},
-      {id:'a7',ch:11,f:.15,t:.85,text:'Ni necesitamos saberlo todo para pedir acompañamiento.',fs:M,fw:600,maxw:'560px',...BR},
-      {id:'b12',ch:12,f:.15,t:.85,text:'Volver a tocar tierra.',fs:M,fw:600,maxw:'480px',...CL},
-      {id:'a8',ch:13,f:.15,t:.85,text:'Detrás de cada ventana, alguien atraviesa algo.',fs:M,fw:600,maxw:'560px',...TL},
-      {id:'a9',ch:14,f:.15,t:.85,text:'Lo que estás viviendo merece un espacio.',fs:M,fw:600,maxw:'560px',...CL},
-      {id:'b15',ch:15,f:.15,t:.85,text:'A veces el apoyo llega en silencio.',fs:M,fw:600,maxw:'540px',...BR},
-      {id:'a10',ch:16,f:.15,t:.85,text:'No tienes que saber cómo nombrarlo.',fs:M,fw:600,maxw:'620px',...C},
-      {id:'b17',ch:17,f:.15,t:.85,text:'Nadie debería atravesarlo solo.',fs:M,fw:600,maxw:'540px',...TL},
+      {id:'a0',ch:0,f:.5,t:.72,text:'Todo lo que amamos florece.',fs:M,fw:700,maxw:'520px',...C},
+      {id:'a1',ch:0,f:.74,t:.96,text:'Y un día, se transforma.',fs:M,fw:700,maxw:'520px',...C},
+      {id:'b1',ch:1,f:.15,t:.85,text:'Familia, amigos, compañeros, proyectos y peluditos: cada vínculo deja huella.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'a2',ch:2,f:.15,t:.85,text:'Una enfermedad, un accidente, los años: el cuerpo aprende a habitarse de nuevo.',fs:M,fw:600,maxw:'720px',...C},
+      {id:'b3',ch:3,f:.15,t:.85,text:'Y lo que parecía firme se vuelve frágil.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'a3',ch:4,f:.15,t:.85,text:'Cuando la pérdida llega de golpe, una primera escucha sostiene.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'a4',ch:5,f:.15,t:.85,text:'Se va un trabajo, un ingreso, una certeza… y con ellos, la calma.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'b6',ch:6,f:.15,t:.85,text:'Terminar una relación es despedir el futuro que imaginamos.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'a5',ch:7,f:.15,t:.85,text:'Algunas ausencias no tienen respuesta ni lugar dónde buscar.',fs:M,fw:600,maxw:'520px',...C},
+      {id:'a6',ch:8,f:.2,t:.8,text:'Ciertas preguntas pesan demasiado para cargarlas a solas.',fs:M,fw:600,maxw:'680px',...C},
+      {id:'b9',ch:9,f:.2,t:.8,text:'Incluso ahí, puede entrar la luz.',fs:M,fw:600,maxw:'480px',...C},
+      {id:'b10',ch:10,f:.2,t:.75,text:'Cada cultura honra a los suyos con sus propios rituales.',fs:M,fw:600,maxw:'520px',...C},
+      {id:'a7',ch:11,f:.15,t:.85,text:'Kilómetros de por medio no impiden sentir… ni acompañar.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'b12',ch:12,f:.15,t:.85,text:'Ningún hogar vive la pena de la misma manera.',fs:M,fw:600,maxw:'480px',...C},
+      {id:'a8',ch:13,f:.15,t:.85,text:'Tras una ventana, una persona también extraña.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'a9',ch:14,f:.15,t:.85,text:'Lo que sientes merece un espacio, aunque no sepas nombrarlo.',fs:M,fw:600,maxw:'560px',...C},
+      {id:'b15',ch:15,f:.15,t:.85,text:'El apoyo puede llegar despacio, casi en silencio.',fs:M,fw:600,maxw:'540px',...C},
+      {id:'a10',ch:16,f:.15,t:.85,text:'Pedir ayuda es un acto de valentía.',fs:M,fw:600,maxw:'620px',...C},
+      {id:'b17',ch:17,f:.15,t:.85,text:'Nadie debería atravesar un duelo en soledad.',fs:M,fw:600,maxw:'540px',...C},
       {id:'a11',ch:18,f:.08,t:.92,text:'ACOMPAÑAR ES RESPONSABILIDAD DE TODOS.',fs:'clamp(28px,4.6vw,60px)',fw:800,maxw:'900px',...C},
       {id:'a12',ch:19,f:.08,t:.5,text:'Entremos en la semilla.',fs:M,fw:600,maxw:'620px',...C},
       {id:'a13',ch:22,f:.2,t:.6,text:'QUIZÁ HOY NO PUEDAS CAMBIAR TODO LO QUE ESTÁS VIVIENDO.',fs:'clamp(20px,2.6vw,36px)',fw:700,maxw:'680px',...C},
@@ -516,33 +541,38 @@ class Component extends DCLogic {
 
     this.TAGS = ['Duelo','Duelo anticipado','Separación','Cambios de vida','Acompañantes','Primer acercamiento'];
     this.CAM = [
-      {id:1,label:'PÉRDIDA DE ALGUIEN',tag:'Duelo',pos:[-8.2,2.1],frag:['UNA VOZ.','UNA COSTUMBRE.','UN ABRAZO.','UNA PRESENCIA.']},
-      {id:2,label:'ENFERMEDAD / DUELO ANTICIPADO',tag:'Duelo anticipado',pos:[0,2.5],frag:['UNA CERTEZA.','UN RITMO.','UN PLAN.','UNA CALMA.']},
-      {id:3,label:'SEPARACIÓN / RUPTURA',tag:'Separación',pos:[8.2,2.1],frag:['UNA RELACIÓN.','UNA RUTINA.','UN PROYECTO.','UNA IDEA DEL FUTURO.']},
-      {id:4,label:'PÉRDIDA DE ESTABILIDAD',tag:'Cambios de vida',pos:[-7.6,-2.6],frag:['UN INGRESO.','UNA RUTINA.','UN LUGAR.','UNA SEGURIDAD.']},
-      {id:5,label:'QUIERO AYUDAR A ALGUIEN',tag:'Acompañantes',pos:[7.6,-2.6],frag:['UNA PREGUNTA.','UN SILENCIO.','UNA DISTANCIA.','UNA PREOCUPACIÓN.']},
-      {id:6,label:'NO SÉ CÓMO NOMBRARLO',tag:'Primer acercamiento',pos:[0,-3],frag:['ALGO CAMBIÓ.','ALGO PESA.','ALGO FALTA.','ALGO DUELE.']}
+      {id:1,label:"PRIMEROS AUXILIOS TANATOLÓGICOS",tag:"PRIMEROS AUXILIOS TANATOLÓGICOS",pos:[-11.00,0.4],frag:["UN INSTANTE.","UN IMPACTO.","UNA LLAMADA.","UN VACÍO."],msg:"Cuando algo acaba de ocurrir, una primera contención puede marcar la diferencia. Estamos aquí ahora."},
+      {id:2,label:"DUELO INFANTIL Y JUVENIL",tag:"DUELO INFANTIL Y JUVENIL",pos:[-8.56,-2.9],frag:["UNA PREGUNTA.","UN JUEGO.","UN ABRAZO.","UNA RUTINA."],msg:"Niñas, niños y adolescentes también viven el duelo. Te orientamos para acompañarlos con cuidado."},
+      {id:3,label:"DUELO POR MASCOTAS",tag:"DUELO POR MASCOTAS",pos:[-6.11,0.4],frag:["UN PASEO.","UNA MIRADA.","UN RINCÓN.","UNA COMPAÑÍA."],msg:"El vínculo con un peludito es real, y su ausencia también. Tu dolor es válido."},
+      {id:4,label:"DUELO DE PAREJA",tag:"DUELO DE PAREJA",pos:[-3.67,-2.9],frag:["UNA RELACIÓN.","UNA COSTUMBRE.","UN PROYECTO.","UNA IDEA DEL FUTURO."],msg:"Una relación también representa vínculos, proyectos e identidad. Su final merece ser acompañado."},
+      {id:5,label:"PÉRDIDA POR SUICIDIO",tag:"PÉRDIDA POR SUICIDIO",pos:[-1.22,0.4],frag:["UN PORQUÉ.","UN SILENCIO.","UNA CULPA.","UNA HISTORIA."],msg:"Perder a alguien así deja preguntas difíciles. No tienes que cargarlas sin apoyo especializado."},
+      {id:6,label:"DUELO A DISTANCIA",tag:"DUELO A DISTANCIA",pos:[1.22,-2.9],frag:["UNA FRONTERA.","UNA PANTALLA.","UN VIAJE.","UNA DESPEDIDA PENDIENTE."],msg:"Aunque la distancia te haya impedido estar ahí, tu duelo es real. Podemos acompañarte en línea."},
+      {id:7,label:"DUELO AMBIGUO / DESAPARICIÓN",tag:"DUELO AMBIGUO / DESAPARICIÓN",pos:[3.67,0.4],frag:["UNA ESPERA.","UNA BÚSQUEDA.","UNA INCERTIDUMBRE.","UN NOMBRE."],msg:"Cuando alguien desaparece, el duelo no tiene cierre. Esa espera también merece acompañamiento."},
+      {id:8,label:"TANATOLOGÍA ANTROPOLÓGICA",tag:"TANATOLOGÍA ANTROPOLÓGICA",pos:[6.11,-2.9],frag:["UN RITUAL.","UNA TRADICIÓN.","UNA OFRENDA.","UNA MEMORIA."],msg:"Cada cultura tiene sus formas de despedir. Te acompañamos respetando tus creencias y tradiciones."},
+      {id:9,label:"DUELO FINANCIERO",tag:"DUELO FINANCIERO",pos:[8.56,0.4],frag:["UN INGRESO.","UN PATRIMONIO.","UN LUGAR.","UNA SEGURIDAD."],msg:"Perder estabilidad económica también es una pérdida. Reconocerlo ya es un primer paso."},
+      {id:10,label:"DUELO FÍSICO",tag:"DUELO FÍSICO",pos:[11.00,-2.9],frag:["UNA CAPACIDAD.","UNA IMAGEN.","UNA AUTONOMÍA.","UNA PARTE DE TI."],msg:"Cuando el cuerpo cambia por enfermedad, accidente o edad, también cambia la forma de vivir. No lo transites solo/a."}
     ];
     this.EMOS = ['TRISTE','CONFUNDIDO/A','CANSADO/A','CON MIEDO','ENOJADO/A','SOLO/A','EN TRANSICIÓN','NO SÉ QUÉ SIENTO'];
     this.AMB = ['CAMBIO','PÉRDIDA','MIEDO','SEPARACIÓN','INCERTIDUMBRE','SOLEDAD','TRANSICIÓN','DESPEDIDA'];
     this.HIST = ['“Todo cambió.”','“Extraño a alguien.”','“No sé cómo seguir.”','“Mi relación terminó.”','“Tengo miedo.”','“Quiero ayudar.”'];
 
     // Testimonios reales en video
+    this.HOOKS = ["¿Acaba de ocurrir? Escríbenos hoy mismo.","Tu hijo pregunta por quien ya no está. Te orientamos.","Extrañar a tu peludito es válido. Hablemos.","¿Terminó tu relación? Encuentra contención aquí.","Perder así duele distinto. Busca apoyo especializado.","Estés donde estés, conectamos contigo en línea.","Cuando alguien desaparece, la espera pesa. Te escuchamos.","Honra tus tradiciones mientras sanas.","Tu economía se tambaleó; tu bienestar importa. Agenda una sesión.","Una amputación, un diagnóstico, la vejez: reencuéntrate contigo."];
     this.TESTIS = [
       {video:'assets/testimonios/v1.mp4', poster:'assets/testimonios/poster-01.jpg', firma:'Persona acompañada por la Cruzada'},
       {video:'assets/testimonios/v2.mp4', poster:'assets/testimonios/poster-02.jpg', firma:'Persona acompañada por la Cruzada'},
       {video:'assets/testimonios/v3.mp4', poster:'assets/testimonios/poster-03.jpg', firma:'Voz de la Cruzada'}
     ];
     this.ALI = [
-      {name:'Rotary Roma Norte A.I.',img:'assets/rotary-roma-norte.png'},
-      {name:'Fundación Sonríe, Estás Vivo',img:U('NuevoLogo_sin fondo.png')},
-      {name:'Awacatito',img:U('Opcion 2.png')},
-      {name:'Paso 13 · Reinserción Familiar y Social',img:'assets/paso13-transparente.png'},
-      {name:'Graxias A.C.',img:U('GRAXIAS ID_13.png')},
-      {name:'Estrella Oriental A.C.',img:U('Estrella oriental PNG (2).png')},
-      {name:'Tanatología Especializada Latinoamérica',img:U('ChatGPT Image 20 abr 2026, 12_11_46 p.m.png')},
-      {name:'Raúl Cristo · Clown con Corazón',img:U('ChatGPT Image 7 may 2026, 11_08_23 p.m.png')},
-      {name:'7 Portales',img:U('7 portales sin fondo.png')}
+      {name:'Rotary Roma Norte A.I.',img:'assets/aliados/ali-1.png'},
+      {name:'Fundación Sonríe, Estás Vivo',img:'assets/aliados/ali-2.png'},
+      {name:'Awacatito',img:'assets/aliados/ali-3.png'},
+      {name:'Paso 13 · Reinserción Familiar y Social',img:'assets/aliados/ali-4.png'},
+      {name:'Graxias A.C.',img:'assets/aliados/ali-5.png'},
+      {name:'Estrella Oriental A.C.',img:'assets/aliados/ali-6.png'},
+      {name:'Tanatología Especializada Latinoamérica',img:'assets/aliados/ali-7.png'},
+      {name:'Raúl Cristo · Clown con Corazón',img:'assets/aliados/ali-8.png'},
+      {name:'7 Portales',img:'assets/aliados/ali-9.png'}
     ];
     this.PROS = [];
     // foto y logo: sustituir por archivos reales en assets/tanatologos/ (foto-NN.jpg y logo-NN.png)
@@ -573,9 +603,11 @@ class Component extends DCLogic {
       24:{name:'María Elena Martínez Páez', org:'Encontrando la Paz A.C.'},
       25:{name:'Xochitl Morales', org:'Avanzando Juntos, Paso a Paso · Consultorio Psicológico y Tanatológico'}
     };
+    const EXCLUIR=[1,25]; // retiradas: Lic. Isabel Martínez, Xochitl
     for(let i=0;i<25;i++){
+      if(EXCLUIR.includes(i+1)) continue;
       const nn=String(i+1).padStart(2,'0'), fix=NOMBRES[i+1];
-      this.PROS.push({ i, name:fix?fix.name:'Tanatólogo/a '+nn, org:fix?fix.org:null, tag:this.TAGS[i%6],
+      this.PROS.push({ i:this.PROS.length, name:fix?fix.name:'Tanatólogo/a '+nn, org:fix?fix.org:null, tag:this.TAGS[i%6],
         foto:'assets/tanatologos/foto-'+nn+'.jpg', logo:'assets/tanatologos/logo-'+nn+'.png' });
     }
 
@@ -585,29 +617,26 @@ class Component extends DCLogic {
       {id:'m2',u0:.155,u1:.25,text:'¿CÓMO LLEGAS HOY?',fs:med,fw:800,maxw:'700px',ls:'.05em',col:'#1C3D5F',...TC},
       {id:'g1',u0:.175,u1:.215,gate:'emo',text:'GRACIAS POR RECONOCERLO.',fs:med,fw:700,maxw:'640px',ls:'.02em',col:'#9C27C9',...C2},
       {id:'g2',u0:.21,u1:.252,gate:'emo',text:'No necesitas tener todo claro para comenzar.',fs:med,fw:600,maxw:'640px',ls:'0',col:'#1C3D5F',...C2},
-      {id:'fa1',u0:.252,u1:.276,text:'A veces sabemos exactamente qué pasó.',fs:med,fw:700,maxw:'620px',ls:'0',col:'#0F2A46',...CL},
-      {id:'fa2',u0:.272,u1:.294,text:'Otras veces solo sentimos…',fs:med,fw:700,maxw:'560px',ls:'0',col:'#0F2A46',...CR},
-      {id:'fa4',u0:.306,u1:.33,text:'Y no siempre sabemos cómo nombrarlo.',fs:med,fw:700,maxw:'620px',ls:'0',col:'#0F2A46',...C2},
       {id:'m3',u0:.33,u1:.45,mt:'8vh',text:'¿QUÉ ESTÁS VIVIENDO?',fs:'clamp(24px,3.2vw,44px)',fw:800,maxw:'760px',ls:'.05em',col:'#1C3D5F',...TC},
-      {id:'f1',u0:.44,u1:.462,hole:'frag1',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CL},
-      {id:'f2',u0:.456,u1:.478,hole:'frag2',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CR},
-      {id:'f3',u0:.472,u1:.494,hole:'frag3',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CL},
-      {id:'f4',u0:.488,u1:.51,hole:'frag4',fs:med,fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...CR},
-      {id:'mA',u0:.512,u1:.536,text:'A VECES UNA PÉRDIDA CONTIENE MUCHAS PÉRDIDAS.',fs:med,fw:800,maxw:'680px',ls:'.01em',col:'#1C3D5F',...C2},
+      {id:'f1',u0:.44,u1:.462,hole:'frag1',fs:'clamp(34px,5.6vw,78px)',fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...C2},
+      {id:'f2',u0:.456,u1:.478,hole:'frag2',fs:'clamp(34px,5.6vw,78px)',fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...C2},
+      {id:'f3',u0:.472,u1:.494,hole:'frag3',fs:'clamp(34px,5.6vw,78px)',fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...C2},
+      {id:'f4',u0:.488,u1:.51,hole:'frag4',fs:'clamp(34px,5.6vw,78px)',fw:800,maxw:'560px',ls:'.03em',col:'#6D28D9',...C2},
+      {id:'mA',u0:.512,u1:.536,text:'A VECES UNA SOLA AUSENCIA CONTIENE MUCHAS DESPEDIDAS.',fs:med,fw:800,maxw:'680px',ls:'.01em',col:'#1C3D5F',...C2},
       {id:'mB',u0:.532,u1:.558,text:'LO QUE ESTÁS VIVIENDO TAMBIÉN MERECE UN ESPACIO.',fs:med,fw:800,maxw:'700px',ls:'.01em',col:'#9C27C9',...C2},
       {id:'mD',u0:.598,u1:.618,text:'DISTINTAS HISTORIAS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
       {id:'mD2',u0:.614,u1:.632,text:'DISTINTAS PÉRDIDAS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
       {id:'mD3',u0:.628,u1:.646,text:'DISTINTOS PROCESOS.',fs:med,fw:800,maxw:'600px',ls:'.03em',col:'#1C3D5F',...C2},
       {id:'mE',u0:.642,u1:.66,text:'UNA MISMA POSIBILIDAD:',fs:med,fw:800,maxw:'620px',ls:'.03em',col:'#1C3D5F',...C2},
       {id:'mF',u0:.655,u1:.682,text:'ACOMPAÑAMIENTO.',fs:big,fw:800,maxw:'760px',ls:'.05em',col:'#9C27C9',...C2},
-      {id:'mH',u0:.73,u1:.80,text:'9 ALIADOS · UNA MISMA CRUZADA. Selecciona un nodo para conocerlo.',fs:'clamp(13px,1.5vw,19px)',fw:700,maxw:'640px',ls:'.08em',col:'#1C3D5F',...TC},
+      {id:'mH',u0:.73,u1:.80,mt:'1vh',text:'9 ALIADOS · UNA MISMA CRUZADA',fs:'clamp(18px,2.2vw,28px)',fw:800,maxw:'760px',ls:'.08em',col:'#0F2A46',...TC},
       {id:'mJ',u0:.85,u1:.93,hole:'recTxt',fs:top,fw:600,maxw:'640px',ls:'.06em',col:'#3E6E9E',...TC},
 
-      {id:'mL',u0:.968,u1:.998,text:'UNA RED QUE CRECE PARA ACOMPAÑAR.',fs:med,fw:800,maxw:'640px',ls:'.02em',col:'#1C3D5F',...TC},
-      {id:'mM',u0:.97,u1:.998,text:'VISIÓN DE EXPANSIÓN NACIONAL · 9 ALIADOS · 25 TANATÓLOGOS',fs:'clamp(10.5px,1vw,13px)',fw:600,maxw:'600px',ls:'.14em',col:'#7A94B5',jc:'center',ai:'flex-end',ta:'center'}
+      {id:'mL',u0:.968,u1:.998,text:'UNA RED QUE CRECE PARA ACOMPAÑAR.',fs:med,fw:800,maxw:'700px',ls:'.02em',col:'#0B2240',mt:'clamp(34px,6vh,64px)',...TC},
+      {id:'mM',u0:.97,u1:.998,text:'VISIÓN DE EXPANSIÓN NACIONAL · 9 ALIADOS · +30 TANATÓLOGOS',fs:'clamp(11px,1.05vw,13.5px)',fw:800,maxw:'700px',ls:'.14em',col:'#123A66',jc:'center',ai:'flex-end',ta:'center'}
     ];
 
-    this.state = {sel:null, emo:null, tIdx:0, tPhase:1, tsIdx:0, tsPhase:1, formOpen:false, formMode:'acomp', sent:false,
+    this.state = {hkIdx:0, hkPh:1, sel:null, emo:null, tIdx:0, tPhase:1, tsIdx:0, tsPhase:1, formOpen:false, formMode:'acomp', sent:false,
       ayudaOpen:false, menuOpen:false, aliado:null, pro:null, elegido:null, privOpen:false, info:null};
     this._started = false; this._ver31Mix = 0;
   }
@@ -615,9 +644,9 @@ class Component extends DCLogic {
   renderVals(){
     const s=this.state;
     const selCam = this.CAM.find(c=>c.id===s.sel);
-    const frag = (selCam||this.CAM[5]).frag;
+    const frag = (selCam||this.CAM[0]).frag;
     const INFOS = {
-      quienes:{titulo:'Quiénes somos',texto:'La Cruzada Nacional por la Higiene Emocional es una red de profesionales, organizaciones y personas comprometidas con acercar acompañamiento emocional digno, sensible y accesible en México. Nace del Consultorio Tanatológico junto a 9 organizaciones aliadas y 25 tanatólogos.',nota:'Información institucional ampliada por confirmar.'},
+      quienes:{titulo:'Quiénes somos',texto:'La Cruzada Nacional por la Higiene Emocional es una red de profesionales, organizaciones y personas comprometidas con acercar acompañamiento emocional digno, sensible y accesible en México. Nace del Consultorio Tanatológico junto a 9 organizaciones aliadas y +30 tanatólogos.',nota:'Información institucional ampliada por confirmar.'},
       tanato:{titulo:'Acompañamiento tanatológico',texto:'La tanatología acompaña experiencias de pérdida, duelo y transición: no solo la muerte de alguien querido, también enfermedades, separaciones, cambios de vida y despedidas difíciles de nombrar.',nota:'No sustituye atención médica, psicológica, psiquiátrica ni servicios de emergencia cuando estos sean necesarios.'}
     };
     const info = s.info ? INFOS[s.info] : null;
@@ -628,7 +657,7 @@ class Component extends DCLogic {
     const menuItems=[
       ['Inicio',goCh(0)],['Higiene emocional',goU(.08)],['Cómo llegas hoy',goU(.19)],['Qué estás viviendo',goU(.37)],['La Cruzada',goU(.67)],
       ['Quiénes somos',()=>this.setState({menuOpen:false,info:'quienes'})],['9 aliados',goU(.76)],
-      ['Tanatología',()=>this.setState({menuOpen:false,info:'tanato'})],['25 tanatólogos',goU(.88)],
+      ['Tanatología',()=>this.setState({menuOpen:false,info:'tanato'})],['+30 tanatólogos',goU(.88)],
       ['Cómo funciona',goU(.94)],['Responsabilidad social',goU(.975)],
       ['Súmate',()=>{this.setState({menuOpen:false}); this.abrirWhats(true);}],
       ['Voces que acompañan',goCh(21)],['Contacto',goCh(24)],['Aviso de privacidad',()=>this.setState({menuOpen:false,privOpen:true})]
@@ -636,7 +665,7 @@ class Component extends DCLogic {
     const sumar=s.formMode==='sumar';
     return {
       videos:this.VID, cineTexts:this.CINE,
-      spaceMsgs:this.UMSG.map(m=>({...m, mt:m.mt||'0px',
+      spaceMsgs:this.UMSG.map(m=>({mt:'0px',...m, mt:m.mt||'0px',
         ...(m.hole==='frag1'?{text:frag[0]}:{}), ...(m.hole==='frag2'?{text:frag[1]}:{}),
         ...(m.hole==='frag3'?{text:frag[2]}:{}), ...(m.hole==='frag4'?{text:frag[3]}:{}),
         ...(m.hole==='recTxt'?{text:''}:{})})),
@@ -645,12 +674,12 @@ class Component extends DCLogic {
       eleccionTxt: s.elegido ? s.elegido.name : 'Asignación por la Cruzada',
       comoSteps:[
         {n:'01',t:'Cuéntanos qué estás viviendo',d:'Escríbenos por WhatsApp; no necesitas tener las palabras exactas.',col:'#2563EB',glow:'rgba(37,99,235,.4)'},
-        {n:'02',t:'Elige quién te acompañará',d:'Te sugerimos tanatólogos según tu situación, o la Cruzada te asigna.',col:'#7C3AED',glow:'rgba(124,58,237,.4)'},
-        {n:'03',t:'Elige un horario',d:'Acordamos el momento y la modalidad que te acomoden.',col:'#0E9F6E',glow:'rgba(14,159,110,.4)'},
-        {n:'04',t:'Comienza tu conversación',d:'Tu proceso inicia con alguien preparado para escucharte.',col:'#D946EF',glow:'rgba(217,70,239,.45)'}
+        {n:'02',t:'Agenda tu acompañamiento',d:'Te conectamos con el tanatólogo adecuado para tu situación.',col:'#7C3AED',glow:'rgba(124,58,237,.4)'},
+        {n:'03',t:'Respira y date permiso',d:'Ya diste el paso más difícil. Llega a tu sesión a tu ritmo, sin presión.',col:'#0E9F6E',glow:'rgba(14,159,110,.4)'},
+        {n:'04',t:'Comienza tu camino a la sanación',d:'Tu proceso inicia con alguien preparado para escucharte.',col:'#D946EF',glow:'rgba(217,70,239,.45)'}
       ],
       hvideos:this.HV,
-      tanaNum: String(s.tIdx+1).padStart(2,'0')+' / 25',
+      tanaNum: String(s.tIdx+1).padStart(2,'0')+' / '+String(this.PROS.length).padStart(2,'0'),
       tanaName: this.PROS[s.tIdx].name,
       tanaOrg: this.PROS[s.tIdx].org || '',
       tanaNota: this.PROS[s.tIdx].org ? '' : 'INFORMACIÓN OFICIAL POR CONFIRMAR',
@@ -680,7 +709,7 @@ class Component extends DCLogic {
       camMsgVis: !!(selCam && s.camZone && s.msgOpen),
       camNodes: this.CAM.map(c=>{
         const isSel=s.sel===c.id, other=s.sel&&!isSel;
-        return {id:c.id, num:'0'+c.id, label:c.label,
+        return {id:c.id, num:String(c.id).padStart(2,'0'), label:c.label,
           pick:()=>{
             this.setState({sel:c.id, msgOpen:true});
             clearTimeout(this._msgTo);
@@ -704,6 +733,12 @@ class Component extends DCLogic {
       elegirPro:()=>{ this.setState({elegido:this.state.pro, pro:null}); setTimeout(()=>this.abrirWhats(false),50); },
       asignarme:()=>{ this.setState({elegido:null}); setTimeout(()=>this.abrirWhats(false),50); },
       abrirPriv:()=>this.setState({privOpen:true}), cerrarPriv:()=>this.setState({privOpen:false}),
+      hkNum: String(s.hkIdx+1).padStart(2,'0'),
+      hkText: this.HOOKS[s.hkIdx],
+      hkOp: s.hkPh?1:0, hkTy: s.hkPh?'0px':'10px',
+      aliNodes: this.ALI.map((a,i)=>{ const ang=(i/9)*Math.PI*2-Math.PI/2+Math.PI/9; return {...a, imgCss:encodeURI(a.img), x:(50+38*Math.cos(ang)).toFixed(2), y:(61+23*Math.sin(ang)).toFixed(2), dur:(6+i*.5)+'s', open:()=>this.setState({aliado:a})}; }),
+      aliLinesH: (()=>{ const P=this.ALI.map((a,i)=>{const ang=(i/9)*Math.PI*2-Math.PI/2+Math.PI/9; return [50+38*Math.cos(ang),61+23*Math.sin(ang)];}); const L=[]; P.forEach((p,i)=>{ L.push({x1:50,y1:61,x2:p[0],y2:p[1]}); const q=P[(i+1)%9]; L.push({x1:p[0],y1:p[1],x2:q[0],y2:q[1]}); }); return L; })(),
+      agendaTana:()=>{ const p=this.PROS[this.state.tIdx]; this._forcePro=p; this.setState({elegido:p}); this.abrirWhats(false); this._forcePro=null; },
       tsNum: String(s.tsIdx+1).padStart(2,'0'),
       tsTot: String(this.TESTIS.length).padStart(2,'0'),
       tsFirma: this.TESTIS[s.tsIdx].firma,
@@ -814,7 +849,8 @@ class Component extends DCLogic {
     let msg = sumar ? 'Hola, quiero sumarme a la Cruzada Nacional por la Higiene Emocional.'
       : 'Hola, quiero recibir acompañamiento de la Cruzada Nacional por la Higiene Emocional.';
     if(!sumar && selCam) msg += ' Situación: '+selCam.label+'.';
-    if(!sumar && this.state.elegido) msg += ' Me gustaría que me acompañe: '+this.state.elegido.name+'.';
+    const pro = this._forcePro || this.state.elegido;
+    if(!sumar && pro) msg += ' Me gustaría que me acompañe: '+pro.name+'.';
     window.open('https://wa.me/5219985560886?text='+encodeURIComponent(msg), '_blank');
   }
 
@@ -830,7 +866,7 @@ class Component extends DCLogic {
     if(this._sliding) return;
     this._sliding=1; this._dir=d;
     this.setState({tPhase:0});
-    setTimeout(()=>{ this._sliding=0; this.setState({tIdx:(this.state.tIdx+d+25)%25, tPhase:1}); },250);
+    setTimeout(()=>{ this._sliding=0; this.setState({tIdx:(this.state.tIdx+d+this.PROS.length)%this.PROS.length, tPhase:1}); },250);
   }
 
   goP(p){ window.scrollTo({top:p*this.totalScroll(), behavior:'smooth'}); }
@@ -919,6 +955,12 @@ class Component extends DCLogic {
           if(el.paused) el.play().catch(()=>{});
         } else if(!el.paused) el.pause();
       });
+      // precarga: los videos de los 2 capítulos siguientes empiezan a descargarse antes de llegar
+      for(let k2=idx; k2<=Math.min(this.CH.length-1, idx+2); k2++){
+        const c2=this.CH[k2]; if(!c2.v) continue;
+        const el2=vids[c2.v];
+        if(el2 && !el2.src){ el2.preload='auto'; el2.src=el2.dataset.src; el2.load(); }
+      }
 
       {
         let vv = cur.veil!=null ? cur.veil : (cur.u3d ? .12 : 0);
@@ -939,6 +981,8 @@ class Component extends DCLogic {
             o = Math.max(0, Math.min( smooth((u2-h.u0)/f), 1-smooth((u2-h.u1+f)/f) )) * (h.key==='h03'?1:.85);
           }
           el.style.opacity=o;
+          const near = u2>-5 && u2>h.u0-.07 && u2<h.u1;
+          if(near && o<=0.01 && !el.getAttribute('src')){ el.muted=true; el.loop=true; el.playsInline=true; el.preload='auto'; el.onerror=()=>{el.dataset.dead=1; el.dataset.next=performance.now()+6000; el.style.opacity=0;}; el.src=el.dataset.src; el.load(); }
           if(o>0.01){
             if(!el.getAttribute('src')){ el.muted=true; el.loop=true; el.playsInline=true; el.onerror=()=>{el.dataset.dead=1; el.dataset.next=performance.now()+6000; el.style.opacity=0;}; el.src=el.dataset.src; el.load(); }
             if(el.paused) el.play().catch(()=>{});
@@ -981,6 +1025,10 @@ class Component extends DCLogic {
       const smU=$('sm-camUI'); if(smU) smU.style.opacity = (inU && !this.state.sel) ? uwin(u,.34,.45) : 0;
       { const zone = inU && u>.33 && u<.54;
         if(zone!==this._camZonePrev){ this._camZonePrev=zone; this.setState({camZone:zone}); } }
+      const smAl=$('sm-ali'); if(smAl){ const o=inU?uwin(u,.712,.812):0; smAl.style.opacity=o; smAl.style.pointerEvents=o>.4?'auto':'none'; }
+      const smHk=$('sm-hookCta'); if(smHk){ const o=inU?Math.max(0,Math.min(smooth(clamp((u-.25)/.005,0,1)),1-smooth(clamp((u-.33)/.004,0,1)))):0; smHk.style.opacity=o; smHk.style.pointerEvents=o>.4?'auto':'none';
+        if(inU && u>=.252 && u<.334){ const k=Math.max(0,Math.min(9,Math.floor((u-.254)/(.078/10))));
+          if(k!==this.state.hkIdx && !this._hkSw){ this._hkSw=1; this.setState({hkPh:0}); setTimeout(()=>{ this._hkSw=0; this.setState({hkIdx:k, hkPh:1}); },300); } } }
       const smC2=$('sm-continuar'); if(smC2){ const o=(inU&&this.state.emo)?uwin(u,.185,.26):0; smC2.style.opacity=o; smC2.style.pointerEvents=o>.4?'auto':'none'; }
       const smP=$('sm-tana'); if(smP){ const o=inU?uwin(u,.845,.938):0; smP.style.opacity=o; smP.style.pointerEvents=o>.4?'auto':'none'; }
       const smE=$('sm-eleccion'); if(smE){ const o=inU?uwin(u,.932,.968):0; smE.style.opacity=o; }
@@ -1018,12 +1066,13 @@ class Component extends DCLogic {
         if(vt && !vt.dataset.dead){
           const o = on ? .88 : 0;
           vt.style.opacity=o;
+          if(!on && idx>=iT-2 && idx<iT && !vt.src){ vt.muted=true; vt.loop=true; vt.playsInline=true; vt.preload='auto'; vt.onerror=()=>{vt.dataset.dead=1; vt.style.opacity=0;}; vt.src=vt.dataset.src; vt.load(); }
           if(o>0.01){
             if(!vt.src){ vt.muted=true; vt.loop=true; vt.playsInline=true; vt.onerror=()=>{vt.dataset.dead=1; vt.style.opacity=0;}; vt.src=vt.dataset.src; vt.load(); }
             if(vt.paused) vt.play().catch(()=>{});
           } else if(vt.src && !vt.paused) vt.pause();
         }
-        const sub=(id,a,b2)=>{ const e2=$(id); if(!e2) return 0; const o2=on?win(t,a,b2):0; e2.style.opacity=o2; return o2; };
+        const sub=(id,a,b2)=>{ const e2=$(id); if(!e2) return 0; const o2=on?Math.max(0,Math.min(smooth(clamp((t-a)/.03,0,1)),1-smooth(clamp((t-(b2-.03))/.03,0,1)))):0; e2.style.opacity=o2; return o2; };
         sub('tstA',.03,.12); sub('tstB',.12,.21); sub('tstT',.21,.3);
         const ov=sub('tstV',.31,.68); const eV=$('tstV'); if(eV) eV.style.pointerEvents = ov>.4?'auto':'none';
         sub('tstF',.71,.79); sub('tstF2',.79,.87);
@@ -1032,7 +1081,7 @@ class Component extends DCLogic {
       ['cierre','footer'].forEach(k=>{
         const i=this.IDX[k], el=$('ui-'+k); if(!el) return;
         let o=0;
-        if(idx===i){ const tin=smooth(clamp((t-(k==='cierre'?.45:0))/.14,0,1)), tout=1-smooth(clamp((t-.92)/.08,0,1)); o=Math.min(tin,tout);}
+        if(idx===i){ const tin=smooth(clamp((t-(k==='cierre'?.45:0))/.14,0,1)), tout=k==='footer'?1:1-smooth(clamp((t-.92)/.08,0,1)); o=k==='footer'?smooth(clamp(t/.25,0,1)):Math.min(tin,tout);}
         el.style.opacity=o;
         el.style.pointerEvents = o>.3 ? 'auto' : 'none';
       });
@@ -1041,7 +1090,7 @@ class Component extends DCLogic {
       const ac=$('actCap'); if(ac) ac.style.opacity=0;
       document.querySelectorAll('.act-mark').forEach(mk2=>{
         const i=parseInt(mk2.dataset.i); const lab=mk2.querySelector('.act-label');
-        if(lab) lab.style.opacity = i===actIdx ? .95 : 0;
+        if(lab) lab.style.opacity = 0;
         mk2.style.opacity = i===actIdx ? 1 : .55;
       });
       const rd=$('railDot'); if(rd) rd.style.top=(p*100)+'%';
@@ -1181,11 +1230,17 @@ class Component extends DCLogic {
       gfl.userData.baseOp=.6; gFil.add(gfl);
 
       // HIGIENE / EMOCIONAL en dos planos Z
-      const gHig = grp(.03,.16);
+      const gHig = grp(0,.16);
+      const w0a=mkText('CRUZADA',{fs:170,weight:800,color:'#1C3D5F'});
+      w0a.position.set(-1.4,1,Z(.052)); gHig.add(w0a);
+      const w0b=mkText('NACIONAL',{fs:170,weight:800,color:'#4A8FDB'});
+      w0b.position.set(1.4,-1,Z(.064)); gHig.add(w0b);
+      const w0c=mkText('POR LA',{fs:140,weight:700,color:'#7C3AED'});
+      w0c.position.set(0,.2,Z(.075)); gHig.add(w0c);
       const w1=mkText('HIGIENE',{fs:170,weight:800,color:'#1C3D5F'});
-      w1.position.set(-1.2,.9,Z(.075)); gHig.add(w1);
+      w1.position.set(-1.2,.9,Z(.087)); gHig.add(w1);
       const w2=mkText('EMOCIONAL',{fs:170,weight:800,color:'#4A8FDB'});
-      w2.position.set(1.4,-1.1,Z(.098)); gHig.add(w2);
+      w2.position.set(1.4,-1.1,Z(.1)); gHig.add(w2);
 
       // palabras flotantes
       const gAmb = grp(.115,.27);
@@ -1212,13 +1267,13 @@ class Component extends DCLogic {
       });
 
       // ALGO FALTA
-      const gFal = grp(.27,.335);
+      const gFal = grp(5,6);
       const wF=mkText('ALGO  FALTA.',{fs:150,weight:800,color:'#0F2A46'});
       wF.position.set(0,.2,Z(.298)); gFal.add(wF);
 
       // seis destinos: anclas 3D proyectadas a botones HTML (nítidos y clicables)
       const gCam = grp(.335,.46);
-      this.camAnchor = this.CAM.map((cm,i)=> new THREE.Vector3(cm.pos[0], cm.pos[1], Z(.393)+((i%2)?1:-1)*.8));
+      this.camAnchor = this.CAM.map((cm,i)=> new THREE.Vector3(cm.pos[0], cm.pos[1], Z(.393)));
 
       // historias: puntos con frases
       const gHis = grp(.55,.66);
@@ -1247,7 +1302,7 @@ class Component extends DCLogic {
       ring.position.z=Z(.66); gRed.add(ring); this.onda=ring;
 
       // 9 aliados con conexiones
-      const gAli = grp(.71,.815);
+      const gAli = grp(5,6);
       this.aliSprites=[];
       const loader=new THREE.TextureLoader();
       const aliPos=[];
@@ -1325,7 +1380,7 @@ class Component extends DCLogic {
       this.comoDot=seedDot; this.comoCurve=comoCurve;
 
       const gMx = grp(.955,1.08);
-      gMx.position.set(0,-.5,Z(.995)); gMx.rotation.x=-.22;
+      gMx.position.set(0,-1.35,Z(.995)); gMx.rotation.x=-.16;
       this.gMx=gMx; this.THREE_=THREE;
 
       this.groups=[gAtm,gFil,gHig,gAmb,gEmo,gFal,gCam,gHis,gRed,gAli,gTr,gPro,gComo,gMx];
@@ -1346,12 +1401,18 @@ class Component extends DCLogic {
       rings.forEach(rg=>rg.forEach(pt=>{minX=Math.min(minX,pt[0]);maxX=Math.max(maxX,pt[0]);minY=Math.min(minY,pt[1]);maxY=Math.max(maxY,pt[1]);}));
       const wait=()=>new Promise(res=>{const iv=setInterval(()=>{if(this.gMx&&this.THREE_){clearInterval(iv);res();}},200);});
       await wait();
-      const THREE=this.THREE_, W=17, H=W*(maxY-minY)/(maxX-minX)*1.3;
+      const THREE=this.THREE_, W=18.5, H=W*(maxY-minY)/(maxX-minX)*1.3;
       rings.forEach(rg=>{
         const pts=rg.map(pt=>new THREE.Vector3(((pt[0]-minX)/(maxX-minX)-.5)*W, ((pt[1]-minY)/(maxY-minY)-.5)*H, 0));
-        const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0x225C91, transparent:true, opacity:.78}));
-        ln.userData.total=pts.length; ln.userData.baseOp=.78;
-        this.gMx.add(ln); (this.mxLines=this.mxLines||[]).push(ln);
+        [[0,0],[.045,0],[-.045,0],[0,.045],[0,-.045]].forEach(o=>{
+          const pp=pts.map(v=>new THREE.Vector3(v.x+o[0],v.y+o[1],.02));
+          const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp), new THREE.LineBasicMaterial({color:0x123A66, transparent:true, opacity:1}));
+          ln.userData.total=pp.length; ln.userData.baseOp=1;
+          this.gMx.add(ln); (this.mxLines=this.mxLines||[]).push(ln);
+        });
+        const shp=new THREE.Shape(pts.map(v=>new THREE.Vector2(v.x,v.y)));
+        const fill=new THREE.Mesh(new THREE.ShapeGeometry(shp), new THREE.MeshBasicMaterial({color:0xFFFFFF, transparent:true, opacity:.55, side:THREE.DoubleSide, depthWrite:false}));
+        fill.userData.baseOp=.55; this.gMx.add(fill);
       });
       const main=rings[0];
       const inPoly=(x,y,rg)=>{let ins=false;for(let i=0,j=rg.length-1;i<rg.length;j=i++){const xi=rg[i][0],yi=rg[i][1],xj=rg[j][0],yj=rg[j][1];if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))ins=!ins;}return ins;};
@@ -1361,8 +1422,8 @@ class Component extends DCLogic {
         if(inPoly(x,y,main)) pos.push(((x-minX)/(maxX-minX)-.5)*W, ((y-minY)/(maxY-minY)-.5)*H, .1);
       }
       const g=new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
-      const dots=new THREE.Points(g, new THREE.PointsMaterial({size:.3, color:0xD946EF, transparent:true, opacity:.9}));
-      dots.userData.baseOp=.9;
+      const dots=new THREE.Points(g, new THREE.PointsMaterial({size:.48, color:0xD946EF, transparent:true, opacity:1}));
+      dots.userData.baseOp=1;
       this.gMx.add(dots); this.mxDots=dots;
     }catch(e){}
   }
@@ -1403,15 +1464,21 @@ class Component extends DCLogic {
     });
     // proyectar anclas de los seis destinos a pantalla (botones HTML)
     if(this.camAnchor){
-      const cw = Math.max(0, Math.min(sm(cl((u-.335)/.015,0,1)), 1-sm(cl((u-.452)/.015,0,1))));
+      const cw = Math.max(0, Math.min(sm(cl((u-.335)/.015,0,1)), 1-sm(cl((u-.424)/.012,0,1))));
       this.camAnchor.forEach((a,i)=>{
         const el=document.getElementById('cn-'+this.CAM[i].id); if(!el) return;
         el.style.opacity=cw;
         el.style.pointerEvents = cw>.4 ? 'auto' : 'none';
         if(cw>0.01){
-          const v=a.clone(); v.y += Math.sin(now*.6+i*1.7)*.28; v.project(camera);
-          const sx=(v.x+1)/2*window.innerWidth, sy=(1-v.y)/2*window.innerHeight;
-          el.style.left=sx+'px'; el.style.top=sy+'px';
+          // layout fijo en pantalla: 5 columnas × 2 filas, siempre dentro del viewport
+          const W=window.innerWidth, H=window.innerHeight;
+          const mob = W<760;
+          const cols = mob?2:5, col = mob ? i%2 : Math.floor(i/2), row = mob ? Math.floor(i/2) : i%2;
+          const x0 = mob ? .27 : .12, x1 = mob ? .73 : .82;
+          const fx = x0 + (cols>1 ? col/(cols-1) : .5)*(x1-x0) + (mob?0:(row?.05:0));
+          const fy = mob ? (.26 + row*.13) : (row ? .68 : .42);
+          const px = (par && par.x ? par.x : 0)*10*(row?1:.6), py = Math.sin(now*.6+i*1.7)*5;
+          el.style.left=(fx*W+px)+'px'; el.style.top=(fy*H+py)+'px';
         }
       });
 
@@ -1430,7 +1497,7 @@ class Component extends DCLogic {
     if(this.mxLines){ const g=cl((u-.962)/.022,0,1);
       this.mxLines.forEach(ln=>ln.geometry.setDrawRange(0, Math.floor(ln.userData.total*sm(g))));
       const dis=cl((u-.995)/.006,0,1);
-      if(this.mxDots) this.mxDots.material.size=.3+dis*.35;
+      if(this.mxDots) this.mxDots.material.size=.48+dis*.35;
       this.gMx.scale.setScalar(1+dis*.7);
     }
     // hover raycast
@@ -1461,7 +1528,7 @@ class Component extends DCLogic {
       const h=this.ray.intersectObjects(this.emoSprites,false); if(h.length){ this.setState({emo:h[0].object.userData.emo}); return; }
     }
 
-    if(u>.71 && u<.815 && this.aliSprites){
+    if(false){
       const h=this.ray.intersectObjects(this.aliSprites,true); if(h.length&&h[0].object.userData.ali!=null){ this.setState({aliado:this.ALI[h[0].object.userData.ali]}); return; }
     }
   }

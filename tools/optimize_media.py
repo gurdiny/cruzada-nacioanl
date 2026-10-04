@@ -115,23 +115,23 @@ class VideoProfile:
 IMAGE_PROFILES: dict[str, ImageProfile] = {
     "foto-tanatologo": ImageProfile(
         max_px=420, fallback="jpeg", psnr_floor=36,
-        note="círculo clamp(140px,17vw,190px) → 190 CSS px @2x",
+        note="círculo clamp(120px,14vw,168px) → 168 CSS px @2.5x",
     ),
     "logo-badge": ImageProfile(
         max_px=256, fallback="png", psnr_floor=40,
         note="insignia clamp(52px,6vw,68px) → 68 CSS px @3.5x",
     ),
     "poster-testimonio": ImageProfile(
-        max_px=384, fallback="jpeg", psnr_floor=36,
-        note="botón clamp(120px,15vw,168px) → 168 CSS px @2x",
+        max_px=440, fallback="jpeg", psnr_floor=36,
+        note="botón clamp(150px,19vw,220px) → 220 CSS px @2x",
     ),
     "logo-hero": ImageProfile(
         max_px=1100, fallback="png", psnr_floor=40,
         note="logo principal clamp(280px,36vw,500px) → 500 CSS px @2.2x",
     ),
     "logo-aliado": ImageProfile(
-        max_px=512, fallback="png", psnr_floor=40,
-        note="textura de sprite en Three.js + fondo CSS de 120 px de alto",
+        max_px=256, fallback="png", psnr_floor=40,
+        note="nodo de la pantalla de aliados: clamp(70px,7vw,96px) → 96 CSS px @2.5x",
     ),
     "generic": ImageProfile(
         max_px=1280, fallback="jpeg", psnr_floor=38,
@@ -160,6 +160,7 @@ IMAGE_RULES: Sequence[tuple[str, str]] = (
     ("assets/testimonios/poster-*", "poster-testimonio"),
     ("assets/logo-cruzada-t2.png", "logo-hero"),
     ("assets/tanatologo-placeholder.png", "foto-tanatologo"),
+    ("assets/aliados/*", "logo-aliado"),
     ("assets/rotary-roma-norte.png", "logo-aliado"),
     ("assets/paso13-transparente.png", "logo-aliado"),
     ("uploads/*.png", "logo-aliado"),
@@ -713,15 +714,16 @@ def select_paths(paths: list[Path], args, skip_suffixes: set[str] | None = None)
 NEVER_DEPLOY = (
     ".git", ".github", ".wrangler", "node_modules", ".DS_Store",
     "tools", "*.md", ".gitignore", ".assetsignore", "wrangler.jsonc",
-    # Copia de referencia del export original (551 MB). Es material de
-    # trabajo, no del sitio: publicarla duplicaría todos los medios sin
+    # Copias de referencia de los exports (cientos de MB). Son material de
+    # trabajo, no del sitio: publicarlas duplicaría todos los medios sin
     # comprimir en una URL pública.
     "Cruzada Nacional Higiene Emocional/",
+    "cruzada-new/",
 )
 
 
 def derived_siblings(refs: set[str]) -> set[str]:
-    """Rutas que el sitio arma en tiempo de ejecución, no en el código fuente.
+    r"""Rutas que el sitio arma en tiempo de ejecución, no en el código fuente.
 
     index.html construye algunas rutas con .replace() sobre otra ruta:
 

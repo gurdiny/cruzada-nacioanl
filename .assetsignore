@@ -15,8 +15,9 @@ tools
 .assetsignore
 wrangler.jsonc
 Cruzada Nacional Higiene Emocional/
+cruzada-new/
 
-# --- medios que el sitio no referencia (82 archivos) ---
+# --- medios que el sitio no referencia (94 archivos) ---
 # Detectados leyendo index.html y support.js. Si añades un archivo y no
 # aparece en la página, vuelve a generar este archivo con el comando de
 # arriba. Para publicarlo todo, basta con borrar esta sección.
@@ -24,19 +25,28 @@ Cruzada Nacional Higiene Emocional/
 /assets/logo-cruzada.png
 /assets/logo-src.png
 /assets/paso13-src.jpg
+/assets/paso13-transparente.png
+/assets/rotary-roma-norte.png
+/uploads/7 portales sin fondo.png
+/uploads/7 portales sin fondo.webp
 /uploads/ALMA_logo_v2_transparente (4) - alma.tanatologia.png
 /uploads/ARALMA- - Araceli Pablo Lopez.png
 /uploads/CAET_Oasis_de_Sanacion_logo_sin_fondo (1) - ANA MARIA MONTALVO LOPEZ.png
 /uploads/ChatGPT Image 10 sept 2026, 22_23_28.png
+/uploads/ChatGPT Image 20 abr 2026, 12_11_46 p.m.png
+/uploads/ChatGPT Image 20 abr 2026, 12_11_46 p.m.webp
+/uploads/ChatGPT Image 7 may 2026, 11_08_23 p.m.png
 /uploads/ChatGPT Image 8 sept 2026, 05_16_53 p.m. - Fundación Duelo sin Culpa.png
 /uploads/ChatGPT Image 9 sept 2026, 10_13_37.png
 /uploads/Diseño sin título (2) - Xochitl Rome.png
 /uploads/Diseño sin título.jpg
+/uploads/Estrella oriental PNG (2).png
 /uploads/Foto Institucional - Xochitl Rome.png
 /uploads/Foto fondo blanco.png
 /uploads/Foto para consultorio tanatologico - orfilia Rojas.jpeg
 /uploads/FotoPerfil - 0 Miedo _Tanatología_.jpg
 /uploads/Fundacion_Duelo_sin_Culpa_sin_llave_transparente - Fundación Duelo sin Culpa.png
+/uploads/GRAXIAS ID_13.png
 /uploads/IDEO_09_REGRESO_SEMILLA.mp4
 /uploads/IMG-20260710-WA0141 - carmen isabel Nieva.jpg
 /uploads/IMG-20260818-WA0060 - Sara Vargas.jpg
@@ -55,7 +65,10 @@ Cruzada Nacional Higiene Emocional/
 /uploads/Imagen de WhatsApp 2025-09-03 a las 22.28.25_adb503f9 - Editado.png
 /uploads/Logo a color Aprender a soltar - Sergio Vergara.png
 /uploads/Logo a color fondo transparente.png
+/uploads/NuevoLogo_sin fondo.png
 /uploads/O_MIEDO_logo_transparente - Leticia Rodriguez.png
+/uploads/Opcion 2.png
+/uploads/Opcion 2.webp
 /uploads/ROSARIO MORENO ROJAS - Rosario Moreno.jpeg
 /uploads/ROTARY ACOZAC IXTAPALUCA.PNG
 /uploads/Raices_de_Luz_color_fondo_transparente - raíces de luz (1).png
